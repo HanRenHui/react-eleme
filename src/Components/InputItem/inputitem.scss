@@ -1,0 +1,43 @@
+@import "assets/style/common.scss";
+
+.inputWrapper {
+  position: relative;
+  width: px2rem(270);
+  height: px2rem(42);
+  margin-bottom: px2rem(16);
+  border-radius: 4px;
+  color: #333;
+  input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-left: 10px;
+    width: 96%;
+    color: #333;
+    height: 95%;
+    font-size: px2rem(13);
+    // border: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    &:focus {
+      border-color: #0089dc;
+      // border: 1px solid #0089dc;
+      outline: #0089dc;
+      // font-size: 17px;
+    }
+  }
+  button {
+    position: absolute;
+    right: px2rem(5);
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ccc;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: px2rem(13);
+    &.useful {
+      color: #0089dc
+    }
+  }
+}

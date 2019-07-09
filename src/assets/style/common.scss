@@ -1,0 +1,20 @@
+$ratio: 375/10;
+
+@function px2rem($px) {
+  @return $px / $ratio + rem;
+} 
+
+// 主色调
+$main: #0085ff;
+
+// $blue: #1890ff;
+
+
+.container {
+  margin: 0 auto;
+  // height: 100%;
+  width: 100%;
+  padding: 0 px2rem(12); 
+  box-sizing: border-box;
+}
+
