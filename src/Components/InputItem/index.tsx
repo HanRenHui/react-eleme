@@ -5,7 +5,9 @@ interface IProps {
   hasButton: boolean,
   isBtnUseful?: boolean,
   data: string,
-  cb: any
+  cb: any,
+  BtnCb?: any,
+  BtnMsg?: any
 }
 
 const InputItem = memo((props: IProps) => {
@@ -14,8 +16,11 @@ const InputItem = memo((props: IProps) => {
     hasButton,
     isBtnUseful,
     data,
-    cb
+    cb,
+    BtnCb,
+    BtnMsg
   } = props
+
   return (
     <div className="inputWrapper">
       <input
@@ -23,9 +28,10 @@ const InputItem = memo((props: IProps) => {
         placeholder={placeholder}
         value={data}
         onChange={cb}
+        
       />
       {hasButton
-        ? <button className={` ${isBtnUseful ? 'useful' : ''}`}>获取验证码</button>
+        ? <button onClick={BtnCb} className={` ${isBtnUseful ? 'useful' : ''}`}>{BtnMsg}</button>
         : null
       }
     </div>

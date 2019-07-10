@@ -1,24 +1,21 @@
 import axios from 'axios'
 
-interface IOption {
-  url: string,
-  method: string
-}
-
-
 class Ajax {
   baseURL: string
   timeout: number 
   queue: object
+  withCredentials: boolean
   constructor() {
     this.baseURL = 'http://localhost:1888' 
     this.timeout = 3000 
     this.queue = {}
+    this.withCredentials = true
   }
   mergeConfig(option: object) {
     return {
       baseURL: this.baseURL,  
       timeout: this.timeout, 
+      withCredentials: this.withCredentials,
       ...option
     }
   }
@@ -33,7 +30,7 @@ class Ajax {
     })
     
   }
-  request(option: IOption) {
+  request(option: any) {
     let config = this.mergeConfig(option)
     let instance = axios.create() 
     this.setInterceptors(instance, option.url)
