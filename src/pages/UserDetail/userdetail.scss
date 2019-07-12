@@ -1,0 +1,28 @@
+@import "assets/style/common.scss";
+.userdetail {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  background: #f5f5fe;
+ 
+  .userdetail-logout {
+    display: flex;
+    align-items: center;
+    // text-align: center;
+    justify-content: center;
+    color: #ff5339;
+    border-radius: .8vw;
+    font-size: .426667rem;
+    font-weight: 700;
+    height: px2rem(45);
+    margin-top: px2rem(20);
+  }
+  .extra-msg {
+    font-size: 0.426667rem;
+    margin-right: px2rem(2);
+    color: #666;
+  }
+}

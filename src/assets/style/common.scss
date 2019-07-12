@@ -2,19 +2,42 @@ $ratio: 375/10;
 
 @function px2rem($px) {
   @return $px / $ratio + rem;
-} 
+}
 
 // 主色调
 $main: #0085ff;
 
-// $blue: #1890ff;
-
-
 .container {
   margin: 0 auto;
-  // height: 100%;
   width: 100%;
-  padding: 0 px2rem(12); 
+  padding: 0 px2rem(12);
   box-sizing: border-box;
+}
+@mixin flexcenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flexcolcenter($pos) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: $pos;
+}
+
+@mixin preloader {
+  background: #f4f4f4;
+  animation: skeleton1 1.2s ease-out infinite;
+}
+@keyframes skeleton1 {
+  0% {
+    opacity: 1;
+  }
+ 30% {
+  opacity: 0.6;
+ }
+  100% {
+    opacity: 1;
+  }
 }
 

@@ -1,0 +1,94 @@
+@import "assets/style/common.scss";
+
+.address-model {
+  .model-address-input {
+    width: 100%;
+    height: px2rem(50);
+    background: #fff;
+    .model-address-input-content {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      .model-add-input-left {
+        @include flexcenter;
+        width: 20%;
+        height: 80%;
+        font-size: 0.32rem;
+        color: #333;
+        font-weight: bold;
+        i {
+          color: #0af;
+          margin-right: px2rem(2);
+          font-size: px2rem(18);
+        }
+      }
+      .model-add-input-wrapper {
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 80%;
+        height: 80%;
+        border-radius: px2rem(18);
+        .model-add-input-search {
+          position: absolute;
+          left: px2rem(5);
+          top: 50%;
+          transform: translateY(-50%);
+          color: #999;
+        }
+        input {
+          box-sizing: border-box;
+          padding-left: px2rem(23);
+          border: none;
+          outline: none;
+          width: 95%;
+          height: 80%;
+          color: #999;
+          background: #f2f2f2;
+          font-size: 0.346667rem;
+        }
+      }
+    }
+  }
+  .searchList {
+    .search-item {
+      border-bottom: 1px solid #f4f4f4;
+      background-color: #fff;
+      padding: 0.293333rem 0.4rem;
+      padding: 2.933333vw 4vw;
+      color: #2a2a2a;
+      // display: flex;
+      .search-item-title {
+        font-weight: bold;
+        font-size: px2rem(16);
+        margin-bottom: px2rem(10);
+      }
+      .search-item-desc {
+        font-size: 0.32rem;
+        color: gray;
+      }
+    }
+  }
+  .address-model-noresult {
+    @include flexcolcenter('center');
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    img {
+      width: 53.333333vw;
+    }
+    p {
+      margin: 3.333333vw 0 2.666667vw;
+      color: #6a6a6a;
+      font-weight: 400;
+      font-size: .453333rem;
+    }
+    span {
+      margin: 0 0 .333333rem;
+      margin: 0 0 3.333333vw;
+      color: #999;
+      font-size: .306667rem;
+    }
+  }
+}

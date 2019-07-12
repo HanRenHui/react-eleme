@@ -1,0 +1,116 @@
+@import "assets/style/common.scss";
+.home {
+  width: 100%;
+  min-height: 100%;
+  background: #fff;
+  .home-header {
+    background-image: linear-gradient(90deg, #0af, #0085ff);
+    height: px2rem(50);
+    // font-size: 0;
+    margin-bottom: px2rem(-1);
+    .home-header-top {
+      // @include flexcenter;
+      height: 100%;
+      i {
+        color: #fff;
+      }
+      .icon-loc {
+        font-size: px2rem(20);
+        margin-right: px2rem(2);
+      }
+      .home-header-t-address {
+        font-weight: bold;
+        color: #fff;
+        font-size: px2rem(17);
+      }
+      .icon-down {
+        color: #fff;
+        font-size: px2rem(10);
+        margin-left: px2rem(3);
+      }
+    }
+  }
+  .home-header-input {
+    @include flexcenter;
+    background-image: linear-gradient(90deg, #0af, #0085ff);
+    height: px2rem(48);
+    margin-bottom: px2rem(5);
+    .home-h-input-content {
+      width: 100%;
+      margin: 0 px2rem(18);
+      height: 76%;
+      background: #fff;
+      @include flexcenter;
+      .home-h-in-cont-search {
+        color: #999;
+        margin-right: px2rem(4);
+      }
+      span {
+        font-family: "simsun";
+        color: #999;
+        font-size: 0.373333rem;
+      }
+    }
+  }
+
+  .prerender-swiper {
+    display: flex;
+    flex-wrap: wrap;
+    .pre-s-item {
+      width: 20%;
+      height: px2rem(80);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .pre-s-i-top {
+        @include preloader;
+        border-radius: 50%;
+        width: 11vw;
+        height: 11vw;
+        background-size: 12vw 12vw;
+      }
+      .pre-s-i-bottom {
+        @include preloader;
+        width: 9vw;
+        margin-top: px2rem(10);
+        height: px2rem(10);
+      }
+    }
+  }
+}
+
+
+
+
+.address-model {
+  position: absolute;
+  top: 0;
+  // left: 100%;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  background: #f4f4f4;
+}
+
+
+.fade-enter {
+  left: 100%;
+}
+.fade-enter-active {
+  transition: all 0.3s;
+  left: 0;
+}
+.fade-enter-done {
+  left: 0;
+}
+.fade-exit {
+  left: 0;
+}
+.fade-exit-active {
+  transition: all 0.4s;
+  left: 100%;
+}
+.fade-exit-done {
+  left: 100%;
+}

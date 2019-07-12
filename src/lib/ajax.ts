@@ -1,5 +1,6 @@
 import axios from 'axios'
-
+import store from './../store'
+import * as actions from './../store/actions/homeAction'
 class Ajax {
   baseURL: string
   timeout: number 
@@ -21,11 +22,15 @@ class Ajax {
   }
   setInterceptors(instance: any, url: string) {
     instance.interceptors.request.use((config: any) => {
-      // this.queue[url] = true
+      (this.queue as any)[url] = true
+      store.dispatch(actions.show_loading())
       return config 
     })
     instance.interceptors.response.use((res: any) => {
-      // delete this.queue[url]
+      delete (this.queue as any)[url]
+      if (!Object.keys(this.queue).length) {
+        store.dispatch(actions.hide_loading())
+      }
       return res.data 
     })
     

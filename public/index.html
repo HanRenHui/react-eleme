@@ -12,8 +12,8 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <link rel="stylesheet" href="//at.alicdn.com/t/font_1284985_wsomagabmpp.css">
-  <link rel="stylesheet" href="//at.alicdn.com/t/font_1284985_oxq0yzcjwk.css">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_1284985_g43nv90vmqt.css">
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=63120d2dcdb4e5b09fff2229a8b2b435"></script>
   <!-- 引入组件库 -->
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -26,8 +26,10 @@
     -->
   <title>Elme</title>
   <style>
+    html, body {
+      position: relative;
+    }
     #root {
-      /* min-height: 100%; */
       height: 100%;
     }
   </style>
@@ -36,16 +38,7 @@
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
-  <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+  
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const html = document.querySelector('html')

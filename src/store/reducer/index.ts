@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux-immutable'
-import HomeReducers from './home'
+import UserReducer from './user'
+import HomeReducer from './home'
 export default combineReducers({
-  home: HomeReducers
+  user: UserReducer,
+  home: HomeReducer
 })

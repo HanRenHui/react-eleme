@@ -3,7 +3,7 @@ import InputItem from './../../Components/InputItem'
 import { Button, Toast } from 'antd-mobile'
 import { req_sms_code, req_login } from './../../api/user'
 import { connect } from 'react-redux'
-import * as actions from './../../store/actions/homeAction'
+import * as actions from '../../store/actions/userAction'
 import './login.scss'
 
 

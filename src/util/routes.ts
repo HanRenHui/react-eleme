@@ -1,8 +1,9 @@
 import Home from '../pages/Home'
-import My from './../pages/My'
-import Order from './../pages/Order'
-import Search from './../pages/Search'
-import Login from './../pages/Login'
+import My from '../pages/My'
+import Order from '../pages/Order'
+import Search from '../pages/Search'
+import Login from '../pages/Login'
+import UserDetail from '../pages/UserDetail'
 export default [
   {
     path: '/',
@@ -33,5 +34,11 @@ export default [
     key: 'login',
     exact: true, 
     component: Login
+  },
+  {
+    path: '/userdetail',
+    key: 'userdetail',
+    exact: true, 
+    component: UserDetail
   }
 ]

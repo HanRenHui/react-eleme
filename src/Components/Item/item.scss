@@ -1,0 +1,55 @@
+@import "assets/style/common.scss";
+.item {
+  background: #fff;
+  padding: px2rem(15) 0;
+  &:active {
+    background: #f5f5f5;
+  }
+  .item-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+    .item-left {
+      display: flex;
+      align-items: center;
+      .thumb {
+        color: #0097ff;
+        font-size: px2rem(25);
+        margin-right: px2rem(10);
+      }
+
+      .money {
+        color: orange;
+      }
+      .rule {
+        // font-size: px2rem(20);
+      }
+      .present {
+        color: rgb(106, 194, 11);;
+      } 
+    }
+    .extra {
+      width: px2rem(60);
+      height: px2rem(60);
+      border-radius: 50%;
+    }
+    .item-title {
+      color: #333;
+      font-size: px2rem(15);
+      // font-weight: bold;
+    }
+    .weight {
+      font-weight: bold;
+    }
+    .item-right {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      .icon {
+        color: #e0e0e0;
+      }
+    }
+  }
+}

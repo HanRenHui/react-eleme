@@ -1,0 +1,34 @@
+@import "assets/style/common.scss";
+
+.header {
+  // display: flex;
+  // align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  $headerHeight: px2rem(46);
+  height: $headerHeight;
+  width: 100%;
+  background-image: linear-gradient(90deg,#0af,#0085ff);
+  // background: $main;
+  .header-left {
+    line-height: $headerHeight;
+    color: #fff;
+    font-size: px2rem(25);
+    font-weight: 300;
+    float: left;
+  }
+  .header-center {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height: 100%;
+    color: #fff;
+    font-weight: 500;
+    margin: 0 auto;
+    text-align: center;
+    width: px2rem(280);
+    font-size: px2rem(18);
+    
+  }
+}

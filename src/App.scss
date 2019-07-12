@@ -1,0 +1,40 @@
+.Loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  transform-origin: 0 0;
+  background-position-x: 0;
+  user-select: none;
+  cursor: pointer;
+  animation: Loading 1.5s normal infinite steps(43);
+  width: 13.333333vw;
+  height: 13.333333vw;
+  background-image: url(//fuss10.elemecdn.com/c/7f/f26d800336750924f6a4b37f52d74png.png);
+}
+.loading-model {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+@keyframes Loading {
+  0% {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 100%;
+  }
+}
+@keyframes Loading-3Gfbr {
+  0% {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 100%;
+  }
+}
