@@ -87,17 +87,19 @@ function getLnglatLocattion() {
 
 
 export const getSearchTips = (city: string, keyword: string, fn: any) => {
-  AMap.plugin('AMap.Autocomplete', function(){
+  AMap.plugin('AMap.Autocomplete', function () {
     // 实例化Autocomplete
     var autoOptions = {
       //city 限定城市，默认全国
       city
     }
-    var autoComplete= new AMap.Autocomplete(autoOptions);
-    autoComplete.search(keyword, fn)
+    var autoComplete = new AMap.Autocomplete(autoOptions);
+    if (keyword) {
+      autoComplete.search(keyword, fn)
+    } else {
+      fn(200, { tips: [] })
+    }
+
   })
 }
 
-// function(status, result) {
-//   // 搜索成功时，result即是对应的匹配数据
-// }

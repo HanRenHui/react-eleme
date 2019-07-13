@@ -8,7 +8,13 @@
     height: px2rem(50);
     // font-size: 0;
     margin-bottom: px2rem(-1);
+    .home-header-content {
+      height: 100%;
+    }
     .home-header-top {
+      display: flex;
+      height: 100%;
+      align-items: center;
       // @include flexcenter;
       height: 100%;
       i {
@@ -19,6 +25,12 @@
         margin-right: px2rem(2);
       }
       .home-header-t-address {
+        // width: 60%;
+        max-width: 70%;
+        overflow: hidden;
+        white-space: nowrap;
+
+        text-overflow: ellipsis;
         font-weight: bold;
         color: #fff;
         font-size: px2rem(17);
@@ -80,37 +92,64 @@
   }
 }
 
-
-
-
-.address-model {
+@mixin model {
   position: absolute;
   top: 0;
-  // left: 100%;
-  left: 0;
+  left: 100%;
   width: 100%;
   min-height: 100%;
   background: #f4f4f4;
 }
 
+.address-model {
+  @include model;
+}
 
-.fade-enter {
+.fade1-enter {
   left: 100%;
 }
-.fade-enter-active {
+.fade1-enter-active {
   transition: all 0.3s;
   left: 0;
 }
-.fade-enter-done {
+.fade1-enter-done {
   left: 0;
 }
-.fade-exit {
+.fade1-exit {
   left: 0;
 }
-.fade-exit-active {
+.fade1-exit-active {
   transition: all 0.4s;
   left: 100%;
 }
-.fade-exit-done {
+.fade1-exit-done {
+  left: 100%;
+}
+
+
+.cityselect {
+  @include model;
+  background: #fff;
+}
+
+
+.fade2-enter {
+  left: 100%;
+}
+.fade2-enter-active {
+  transition: all 0.3s;
+  left: 0;
+}
+.fade2-enter-done {
+  left: 0;
+}
+.fade2-exit {
+  left: 0;
+}
+.fade2-exit-active {
+  transition: all 0.4s;
+  left: 100%;
+}
+.fade2-exit-done {
   left: 100%;
 }

@@ -1,3 +1,32 @@
+@import "assets/style/common.scss";
+
 .hidden {
   display: none;
+}
+.city-list {
+  height: 88vh;
+  overflow: hidden;
+}
+.city-section {
+  .city-section-idx {
+    padding: 3.733333vw 0 1.866667vw 4vw;
+    color: #666;
+    background: #f5f5f5;
+    font-size: .373333rem;
+  }
+  .city-item {
+    color: #333;
+    font-size: .373333rem;
+    border-bottom: 1px solid #ddd;
+    line-height: 13.333333vw;
+    margin-left: 4vw;
+    i {
+      color: #0af;
+      font-size: px2rem(20);
+      margin-right: px2rem(5);
+    }
+  }
+  .city-item-current {
+    font-weight: bold;
+  }
 }

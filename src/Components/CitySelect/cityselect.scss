@@ -1,0 +1,63 @@
+@import "assets/style/common.scss";
+
+  .cityselect-tab {
+    // position: sticky;
+    // top: 0;
+    width: 100%;
+    // z-index: 999;
+    .cityselect-input {
+      $headerHeight: px2rem(40);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: $headerHeight;
+      background-image: linear-gradient(90deg, #0af, #0085ff);
+      .cityselect-input-inner {
+        display: flex;
+        align-items: center;
+        width: 84%;
+        height: 70%;
+        border-radius: px2rem(14);
+        border: none;
+        background: #fff;
+        .citys-input-icon {
+          color: gray;
+          float: left;
+          margin-left: px2rem(10);
+        }
+        input {
+          width: 85%;
+          padding: px2rem(3) 0 px2rem(2) px2rem(10);
+          box-sizing: border-box;
+
+          // background: red;
+          float: left;
+          height: 90%;
+          border: none;
+          outline: none;
+          font-size: px2rem(13);
+
+        }
+      }
+    }
+  }
+  .cityselect-alph {
+    position: absolute;
+    right: px2rem(10);
+    top: 40vw;
+    color: #999;
+    line-height: 5.333333vw;
+    width: px2rem(20); 
+    .alph-item {
+      text-align: center;
+      font-size: px2rem(11);
+      height: 5.333333vw;
+      // font-weight: 500;
+    }
+  }
+  .cityselect-loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    // transform: translate(-50%, -50%);
+  }
