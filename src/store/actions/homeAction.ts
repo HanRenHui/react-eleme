@@ -1,6 +1,12 @@
 import * as types from './../action-types'
 import { fromJS } from 'immutable'
-import { req_citylist } from './../../api/location'
+import {
+  req_citylist,
+  req_swiper_data,
+  req_resturant,
+  req_filter_data
+} from '../../api/home'
+
 interface Location {
   type: typeof types.SET_LOCATION,
   payload: any
@@ -30,6 +36,19 @@ interface CityList {
 interface CurrentCity {
   type: typeof types.SET_CURRENT_CITY,
   payload: string
+}
+
+interface SwiperData {
+  type: typeof types.SET_SWIPER_DATA,
+  payload: []
+}
+interface RestData {
+  type: typeof types.REQ_RESTURANT,
+  payload: any
+}
+interface FilterData {
+  type: typeof types.REQ_FILTER_DATA,
+  payload: any
 }
 
 export const set_location = (location: any): Location => ({
@@ -79,7 +98,7 @@ export const req_city_list = () => {
     } else {
       const { expires, data } = JSON.parse(city)
       if (Date.now() > expires) {
-      // 缓存过期, 重新请求
+        // 缓存过期, 重新请求
         cityList = await reqCityAndSetCache()
       } else {
         // 优先取localstorage
@@ -97,5 +116,41 @@ export const set_current_city = (city: string): CurrentCity => ({
   payload: city
 })
 
+
+const set_swiper_data = (payload: []): SwiperData => ({
+  type: types.SET_SWIPER_DATA,
+  payload: payload
+})
+
+export const get_swiper_data = () => {
+  return async (dispatch: any) => {
+    let rs: any = await req_swiper_data()
+    dispatch(set_swiper_data(rs.swiperData))
+  }
+}
+
+const set_rest_data = (data: any): RestData => ({
+  type: types.REQ_RESTURANT,
+  payload: data
+})
+
+export const get_resturant = (latitude: number, longitude: number, offset: number, limit: number) => {
+  return async (dispatch: any) => {
+    let rs = await req_resturant(latitude, longitude, offset, limit)
+    dispatch(set_rest_data(rs))
+  }
+}
+const set_filter_data = (data: any): FilterData => ({
+  type: types.REQ_FILTER_DATA,
+  payload: data
+})
+export const get_filter_data = () => {
+  return async (dispatch: any) => {
+    let rs = await req_filter_data()
+    dispatch(set_filter_data(rs))
+  }
+}
+
 export type Action = Location | Address | ShowLoading | HideLoading
-| SelectAddress | CityList | CurrentCity
+  | SelectAddress | CityList | CurrentCity | SwiperData | RestData
+  | FilterData

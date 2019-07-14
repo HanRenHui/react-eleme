@@ -1,5 +1,6 @@
 import * as types from '../action-types'
 
+
 interface UserInfo {
   type: typeof types.SET_USER_INFO,
   payload: any
@@ -32,4 +33,4 @@ export const edit_name_action = (payload: string): EditName => ({
   payload
 })
 
-export type Action = UserInfo | LogOut | EditName
+export type Action = UserInfo | LogOut | EditName 

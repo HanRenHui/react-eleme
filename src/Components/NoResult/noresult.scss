@@ -1,0 +1,23 @@
+@import 'assets/style/common.scss';
+.noresult {
+  @include flexcolcenter('center');
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  img {
+    width: 53.333333vw;
+  }
+  p {
+    margin: 3.333333vw 0 2.666667vw;
+    color: #6a6a6a;
+    font-weight: 400;
+    font-size: .453333rem;
+  }
+  span {
+    margin: 0 0 .333333rem;
+    margin: 0 0 3.333333vw;
+    color: #999;
+    font-size: .306667rem;
+  }
+}

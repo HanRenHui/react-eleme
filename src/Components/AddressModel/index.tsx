@@ -4,6 +4,7 @@ import { Icon } from 'antd-mobile'
 import { connect } from 'react-redux'
 import { getSearchTips } from './../../util/gaodeAPI'
 import * as actions from './../../store/actions/homeAction'
+import NoResult from './../NoResult/index'
 import './addressmodel.scss'
 interface IProps {
   hide: any,
@@ -93,16 +94,6 @@ const SearchItem = memo((props: searchItemProps) => {
 })
 
 
-// 找不到结果组件
-const NoResult = memo(() => {
-  return (
-    <div className="address-model-noresult">
-      <img src="https://fuss10.elemecdn.com/6/87/4efda8c6bf4734d39faf86fe190c3gif.gif" alt="没有结果" />
-      <p>没有搜索结果</p>
-      <span>换个关键字试试</span>
-    </div>
-  )
-})
 
 
 
@@ -161,7 +152,7 @@ const AddressModel = memo((props: IProps) => {
       </ul>
       {
         noRs
-          ? <NoResult />
+          ? <NoResult title='没有搜索结果' des='换个关键字试试' />
           : null
       }
     </div>

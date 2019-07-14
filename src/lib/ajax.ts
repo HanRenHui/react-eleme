@@ -23,13 +23,13 @@ class Ajax {
   setInterceptors(instance: any, url: string) {
     instance.interceptors.request.use((config: any) => {
       (this.queue as any)[url] = true
-      store.dispatch(actions.show_loading())
+      // store.dispatch(actions.show_loading())
       return config 
     })
     instance.interceptors.response.use((res: any) => {
       delete (this.queue as any)[url]
       if (!Object.keys(this.queue).length) {
-        store.dispatch(actions.hide_loading())
+        // store.dispatch(actions.hide_loading())
       }
       return res.data 
     })

@@ -50,3 +50,8 @@ table {
 html, body {
 	height: 100%;
 }
+* { touch-action: pan-y; } 
+html {
+font-family: 'Helvetica Neue',Tahoma,Arial,PingFangSC-Regular,'Hiragino Sans GB','Microsoft Yahei',sans-serif;
+
+}

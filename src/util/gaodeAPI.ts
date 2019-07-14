@@ -51,7 +51,7 @@ function getLnglatLocattion() {
           })
           // var lnglat = [116.396574, 39.992706]
           const lnglat = result.rectangle.split(';')[0].split(',')
-
+          console.log(lnglat)
           geocoder.getAddress(lnglat, function (status: string, result: any) {
             if (status === 'complete' && result.info === 'OK') {
               // result为对应的地理位置详细信息

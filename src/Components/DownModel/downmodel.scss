@@ -1,0 +1,33 @@
+@import "assets/style/common.scss";
+.down-model {
+  overflow: hidden;
+  .down-list {
+    width: 100%;
+    height: 100%;
+    margin: px2rem(10) 0;
+    $itemheight: px2rem(40);
+    .down-item {
+      height: $itemheight;
+      line-height: $itemheight;
+      display: flex;
+      justify-content: space-between;
+      box-sizing: border-box;
+      padding: 0 px2rem(20);
+      .down-item-right {
+        display: none;
+      }
+      .down-item-left {
+        font-size: px2rem(14);
+
+      }
+      .down-select {
+        color: #3190e8;
+        font-weight: 700;
+      }
+      .item-right-show {
+        display: block;
+        color: #3190e8;
+      }
+    }
+  }
+}
