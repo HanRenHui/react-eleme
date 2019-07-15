@@ -38,11 +38,11 @@ const App = (props: IProps) => {
       <ProtectRoute to="/userdetail" component={UserDetail} />
       <ProtectRoute to="/myaddress" component={MyAddress} />
       <BottomTab />
-      {/* {
+      {
         showLoading
           ? <div className="loading-model"><div className="Loading"></div></div>
           : null
-      } */}
+      }
 
     </Router>
   )

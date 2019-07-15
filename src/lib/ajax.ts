@@ -3,19 +3,16 @@ import store from './../store'
 import * as actions from './../store/actions/homeAction'
 class Ajax {
   baseURL: string
-  timeout: number 
   queue: object
   withCredentials: boolean
   constructor() {
     this.baseURL = 'http://localhost:1888' 
-    this.timeout = 3000 
     this.queue = {}
     this.withCredentials = true
   }
   mergeConfig(option: object) {
     return {
       baseURL: this.baseURL,  
-      timeout: this.timeout, 
       withCredentials: this.withCredentials,
       ...option
     }
@@ -23,13 +20,13 @@ class Ajax {
   setInterceptors(instance: any, url: string) {
     instance.interceptors.request.use((config: any) => {
       (this.queue as any)[url] = true
-      // store.dispatch(actions.show_loading())
+      store.dispatch(actions.show_loading())
       return config 
     })
     instance.interceptors.response.use((res: any) => {
       delete (this.queue as any)[url]
       if (!Object.keys(this.queue).length) {
-        // store.dispatch(actions.hide_loading())
+        store.dispatch(actions.hide_loading())
       }
       return res.data 
     })

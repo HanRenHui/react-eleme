@@ -50,6 +50,17 @@ interface FilterData {
   type: typeof types.REQ_FILTER_DATA,
   payload: any
 }
+interface ChooseType {
+  type: typeof types.SET_TYPE_SELECT,
+  payload: {
+    part: number, 
+    item: number, 
+    flag: boolean
+  }
+}
+interface clearSlect {
+  type: typeof types.CLEAR_ALL_SELECT
+}
 
 export const set_location = (location: any): Location => ({
   type: types.SET_LOCATION,
@@ -137,6 +148,8 @@ const set_rest_data = (data: any): RestData => ({
 export const get_resturant = (latitude: number, longitude: number, offset: number, limit: number) => {
   return async (dispatch: any) => {
     let rs = await req_resturant(latitude, longitude, offset, limit)
+    console.log(rs)
+    // console.l
     dispatch(set_rest_data(rs))
   }
 }
@@ -151,6 +164,18 @@ export const get_filter_data = () => {
   }
 }
 
+export const set_choose_type = (part: number, item: number, flag: boolean): ChooseType => ({
+  type: types.SET_TYPE_SELECT,
+  payload: {
+    part,
+    item,
+    flag
+  }
+})
+export const clear_all_select = (): clearSlect => ({
+  type: types.CLEAR_ALL_SELECT
+})
+
 export type Action = Location | Address | ShowLoading | HideLoading
   | SelectAddress | CityList | CurrentCity | SwiperData | RestData
-  | FilterData
+  | FilterData | ChooseType | clearSlect

@@ -1,12 +1,11 @@
-import React, { memo, useState, useEffect, createContext, useContext } from 'react'
+import React, { memo, useState, useEffect, createContext } from 'react'
 import * as actions from './../../store/actions/homeAction'
 import { connect } from 'react-redux'
 import DownModel from './../DownModel'
 import ChooseModel from './../ChooseModel'
 import { CSSTransition } from 'react-transition-group'
-
-
 import './restaurant.scss'
+import RestauList from '../RestauList'
 export const ResaurantCounter = createContext({})
 
 interface IProps {
@@ -17,34 +16,11 @@ interface IProps {
   navTab: any
 }
 
-interface ListProps {
-  get_resturant: any,
-  rests: [],
-  sortType: Array<string>
-}
 
 
 
 
-let ResaurantList: any = memo((props: ListProps) => {
-  const { get_resturant, rests } = props
-  useEffect(() => {
-    get_resturant(27.818289, 113.107385, 0, 8)
-  }, [get_resturant])
-  return (
-    <ul className="resturant-list">
-
-    </ul>
-  )
-})
-const mapStateToProp = (state: any) => ({
-  rests: state.getIn(['home', 'resturants']),
-})
-ResaurantList = connect(mapStateToProp, actions)(ResaurantList)
-
-
-
-const Resaurant = memo((props: IProps) => {
+const Restaurant = memo((props: IProps) => {
   // 用于标记当前筛选条件
   const {
     setInputTopClass,
@@ -53,7 +29,6 @@ const Resaurant = memo((props: IProps) => {
     get_filter_data,
     navTab
   } = props
-  console.log(navTab)
   const [current, setCurrent] = useState(-1)
   // 用于标记是否显示黑色蒙版
   const [showMsk, setShowMsk] = useState(false)
@@ -124,7 +99,7 @@ const Resaurant = memo((props: IProps) => {
           ))}
         </ul>
         {/* 餐厅 */}
-        <ResaurantList />
+        <RestauList />
         {/* 蒙版 */}
         <div
           className={`filter-mask ${showMsk ? '' : 'mask-hide'}`}
@@ -154,4 +129,4 @@ const mapState = (state: any) => ({
   navTab: state.getIn(['home', 'filterNavTab', 'navTab'])
 })
 
-export default connect(mapState, actions)(Resaurant)
+export default connect(mapState, actions)(Restaurant)

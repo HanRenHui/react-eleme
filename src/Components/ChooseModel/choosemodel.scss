@@ -1,4 +1,67 @@
-@import 'assets/style/common.scss';
+@import "assets/style/common.scss";
 .choose-model {
   overflow: hidden;
+  position: relative;
+  .choose-model-part {
+    box-sizing: border-box;
+    padding: px2rem(10) px2rem(20);
+    .choose-model-title {
+      margin-bottom: 2vw;
+      font-size: px2rem(13);
+      color: #666;
+    }
+    .choose-model-part-list {
+      display: flex;
+      flex-wrap: wrap;
+      .choose-model-part-item {
+        margin-right: px2rem(4);
+        margin-bottom: px2rem(3);
+        @include flexcenter;
+        width: 32%;
+        height: 9.333333vw;
+        color: #333;
+        background: #fafafa;
+        .part-item-icon {
+          width: 3.466667vw;
+          margin-right: px2rem(5);
+        }
+        .part-item-content {
+          font-size: 0.346667rem;
+        }
+      }
+      .item-selected {
+        font-weight: 700;
+        color: #3190e8;
+        background-color: #edf5ff;
+      }
+    }
+  }
+  $btnheight: px2rem(42);
+  @mixin btn {
+    position: absolute;
+    bottom: 0;
+    height: $btnheight;
+    line-height: $btnheight;
+    text-align: center;
+    background-color: #fafafa;
+    box-shadow: 0 -0.266667vw 0.533333vw 0 #ededed;
+    font-size: .426667rem;
+  }
+  .choose-model-clear {
+    @include btn;
+    left: 0;
+    width: 50%;
+    color: #ddd;
+  }
+  .clear-useful {
+    color: #000;
+  }
+  .choose-model-ok {
+    @include btn;
+    right: 0;
+    width: 50%;
+    background-color: #00d762;
+    border: .133333vw solid #00d762;
+    color: #fff;
+  }
 }

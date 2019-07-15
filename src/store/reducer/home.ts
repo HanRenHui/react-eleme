@@ -9,8 +9,10 @@ const defaultState = fromJS({
   currentCity: '',
   swiper: [],
   resturants: [],
-  sortType: ['综合排序', '好评优先', '销量最高', '起送价最低', '配送最快', '配送费最低', '人均从低到高', '人均从高到低', '通用排序'],
-  filterNavTab: {}
+  // sortType: ['综合排序', '好评优先', '销量最高', '起送价最低', '配送最快', '配送费最低', '人均从低到高', '人均从高到低', '通用排序'],
+  filterNavTab: {},
+  // 记录当前选中的筛选类型
+  currentSelect: { 1: undefined, 2: undefined },
 })
 
 export default function reducer(state: any = defaultState, action: Action) {
@@ -36,8 +38,30 @@ export default function reducer(state: any = defaultState, action: Action) {
       return state.set('swiper', fromJS(action.payload))
     case types.REQ_RESTURANT:
       return state.set('resturants', fromJS(action.payload.items))
-    case types.REQ_FILTER_DATA: 
+    case types.REQ_FILTER_DATA:
       return state.set('filterNavTab', fromJS(action.payload))
+    case types.SET_TYPE_SELECT:
+      const { part, item, flag } = action.payload
+      if (part === 0) {
+        return state.setIn(['filterNavTab', 'chooseBy', part, 'data', item, 'select'], flag)
+      } else {
+        const currentSelect = state.get('currentSelect')
+        const lastSelectItem = currentSelect.get(part)
+        return state
+          // 将其他设为未选中
+          .setIn(['filterNavTab', 'chooseBy', part, 'data', lastSelectItem, 'select'], false)
+          // 设置特定的为选中
+          .setIn(['filterNavTab', 'chooseBy', part, 'data', item, 'select'], flag)
+          // 修改选中记录
+          .setIn(['currentSelect', part], flag ? item : undefined)
+      }
+    case types.CLEAR_ALL_SELECT:
+      state.getIn(['filterNavTab', 'chooseBy']).forEach((part: any, index: number) => {
+        part.get('data').forEach((item: any, idx: number) => {
+          state = state.setIn(['filterNavTab', 'chooseBy', index, 'data', idx, 'select'], false)
+        })
+      })
+      return state.set('currentSelect', fromJS({ 1: undefined, 2: undefined }))
     default:
       return state
   }
