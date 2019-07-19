@@ -51,6 +51,9 @@ function getLnglatLocattion() {
           })
           // var lnglat = [116.396574, 39.992706]
           const lnglat = result.rectangle.split(';')[0].split(',')
+          let lat = parseFloat(lnglat[1])
+          let lng = parseFloat(lnglat[0])
+          store.dispatch(actions.setLatLnt(lat, lng))
           console.log(lnglat)
           geocoder.getAddress(lnglat, function (status: string, result: any) {
             if (status === 'complete' && result.info === 'OK') {

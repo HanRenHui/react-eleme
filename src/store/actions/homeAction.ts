@@ -7,60 +7,25 @@ import {
   req_filter_data
 } from '../../api/home'
 
-interface Location {
-  type: typeof types.SET_LOCATION,
-  payload: any
-
-}
-interface Address {
-  type: typeof types.SET_ADDRESS,
-  payload: any
-
-}
-interface ShowLoading {
-  type: typeof types.SHOW_LOADING
-}
-interface HideLoading {
-  type: typeof types.HIDE_LOADING
-}
-interface SelectAddress {
-  type: typeof types.SELECT_ADDRESS,
-  payload: string
-}
-
-interface CityList {
-  // type: typeof
-  type: typeof types.SET_CITY_LIST,
-  payload: any
-}
-interface CurrentCity {
-  type: typeof types.SET_CURRENT_CITY,
-  payload: string
-}
-
-interface SwiperData {
-  type: typeof types.SET_SWIPER_DATA,
-  payload: []
-}
-interface RestData {
-  type: typeof types.REQ_RESTURANT,
-  payload: any
-}
-interface FilterData {
-  type: typeof types.REQ_FILTER_DATA,
-  payload: any
-}
-interface ChooseType {
-  type: typeof types.SET_TYPE_SELECT,
-  payload: {
-    part: number, 
-    item: number, 
-    flag: boolean
-  }
-}
-interface clearSlect {
-  type: typeof types.CLEAR_ALL_SELECT
-}
+import {
+  Location,
+  Address,
+  ShowLoading,
+  HideLoading,
+  SelectAddress,
+  CityList,
+  CurrentCity,
+  SwiperData,
+  RestData,
+  FilterData,
+  clearSlect,
+  ClearRests,
+  LntLat,
+  DeliverMode,
+  ActivityMode,
+  CurrentSortType,
+  CurrentOffset
+} from './../interface'
 
 export const set_location = (location: any): Location => ({
   type: types.SET_LOCATION,
@@ -91,7 +56,7 @@ const set_city_list = (payload: any): CityList => ({
 
 async function reqCityAndSetCache() {
   let rs: any = await req_citylist()
-  let cityList = rs.cityList
+  let cityList = rs
   localStorage.setItem('city', JSON.stringify({
     expires: Date.now() + 60 * 1000 * 60 * 24,
     data: cityList
@@ -126,17 +91,23 @@ export const set_current_city = (city: string): CurrentCity => ({
   type: types.SET_CURRENT_CITY,
   payload: city
 })
-
+export const setLatLnt = (lat: number, lng: number): LntLat => ({
+  type: types.SET_LAT_LNT,
+  payload: {
+    lat,
+    lng
+  }
+})
 
 const set_swiper_data = (payload: []): SwiperData => ({
   type: types.SET_SWIPER_DATA,
-  payload: payload
+  payload
 })
 
 export const get_swiper_data = () => {
   return async (dispatch: any) => {
     let rs: any = await req_swiper_data()
-    dispatch(set_swiper_data(rs.swiperData))
+    dispatch(set_swiper_data(rs))
   }
 }
 
@@ -145,14 +116,24 @@ const set_rest_data = (data: any): RestData => ({
   payload: data
 })
 
-export const get_resturant = (latitude: number, longitude: number, offset: number, limit: number) => {
-  return async (dispatch: any) => {
-    let rs = await req_resturant(latitude, longitude, offset, limit)
-    console.log(rs)
-    // console.l
-    dispatch(set_rest_data(rs))
+export const get_resturant =
+  (
+    latitude: number,
+    longitude: number,
+    offset: number,
+    limit: number,
+    currentSorType: string,
+    support_ids: string [],
+    activity_types: string
+  ) => {
+    return async (dispatch: any) => {
+      // 先清空原有数据
+      if (offset === 0) dispatch(clear_all_rests())
+      
+      let rs = await req_resturant(latitude, longitude, offset, limit, currentSorType, support_ids, activity_types)
+      dispatch(set_rest_data(rs))
+    }
   }
-}
 const set_filter_data = (data: any): FilterData => ({
   type: types.REQ_FILTER_DATA,
   payload: data
@@ -160,22 +141,38 @@ const set_filter_data = (data: any): FilterData => ({
 export const get_filter_data = () => {
   return async (dispatch: any) => {
     let rs = await req_filter_data()
+    console.log(rs)
     dispatch(set_filter_data(rs))
   }
 }
 
-export const set_choose_type = (part: number, item: number, flag: boolean): ChooseType => ({
-  type: types.SET_TYPE_SELECT,
-  payload: {
-    part,
-    item,
-    flag
-  }
-})
+
 export const clear_all_select = (): clearSlect => ({
   type: types.CLEAR_ALL_SELECT
 })
+export const clear_all_rests = (): ClearRests => ({
+  type: types.CLEAR_ALL_RESTS
+})
 
-export type Action = Location | Address | ShowLoading | HideLoading
-  | SelectAddress | CityList | CurrentCity | SwiperData | RestData
-  | FilterData | ChooseType | clearSlect
+export const set_support_ids = (payload: String): DeliverMode => ({
+  type: types.SET_DELIVER,
+  payload
+})
+
+
+export const set_activity_mode = (code: String): ActivityMode => ({
+  type: types.SET_ACTIVITY,
+  payload: code
+})
+
+export const set_current_sort_type = (type: String): CurrentSortType => ({
+  type: types.SET_CURRENT_SORT_TYPE,
+  payload: type
+})
+
+export const set_current_offset = (payload: number): CurrentOffset  => ({
+  type: types.SET_CURRENT_OFFSET,
+  payload
+})
+
+

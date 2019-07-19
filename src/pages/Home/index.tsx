@@ -1,4 +1,4 @@
-import React, { useEffect, memo, useState, useCallback, useMemo } from 'react'
+import React, { useEffect, memo, useState, useCallback, useMemo, useRef } from 'react'
 import './home.scss'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -110,17 +110,23 @@ interface IProps {
   address: any,
   show_loading: any,
   swiper: any,
-  get_swiper_data: any
+  get_swiper_data: Function,
 }
 
 const Home = (props: IProps) => {
-  const { address, show_loading, get_swiper_data, swiper } = props
+  const {
+    address,
+    show_loading,
+    get_swiper_data,
+    swiper,
+  } = props
   const [showAdd, setShowAddModel] = useState(false)
   const [showCity, setShowCitySelect] = useState(false)
   const swiperData = useMemo(() => swiper, [swiper])
   // 用于控制input和筛选条件是否贴着顶部
   const [inputTopClass, setInputTopClass] = useState('')
   const [filterTopClass, setFilterTopClass] = useState('')
+  const homeRef = useRef(null)
   const showAddressModel = useCallback(() => {
     setShowAddModel(true)
   }, [setShowAddModel])
@@ -141,12 +147,14 @@ const Home = (props: IProps) => {
       autoplay: false,
     });
   }, [])
-
+  // 监听页面滚动 加载更多
+ 
+ 
   return (
-    <div className="home">
+    <div className="home" ref={homeRef}>
 
       <HomeHeaderTop address={address} showAddressModel={showAddressModel} />
-      <HomeHeaderBottom inputTopClass={inputTopClass}/>
+      <HomeHeaderBottom inputTopClass={inputTopClass} />
       {
         !address
           ? <PreRenderSwiper />
@@ -166,8 +174,8 @@ const Home = (props: IProps) => {
         </div>
       </div>
       {/* 推荐餐厅 */}
-      <Resaurant 
-        setInputTopClass={setInputTopClass} 
+      <Resaurant
+        setInputTopClass={setInputTopClass}
         setFilterTopClass={setFilterTopClass}
         filterTopClass={filterTopClass}
       />
@@ -184,7 +192,7 @@ const Home = (props: IProps) => {
 
 const mapStateToProps = (state: any) => ({
   address: state.getIn(['home', 'address']),
-  swiper: state.getIn(['home', 'swiper'])
+  swiper: state.getIn(['home', 'swiper']),
 })
 
 export default connect(mapStateToProps, actions)(Home)

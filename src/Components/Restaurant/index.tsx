@@ -9,15 +9,19 @@ import RestauList from '../RestauList'
 export const ResaurantCounter = createContext({})
 
 interface IProps {
-  setInputTopClass: any,
-  setFilterTopClass: any,
+  setInputTopClass: Function,
+  setFilterTopClass: Function,
   filterTopClass: string,
-  get_filter_data: any,
-  navTab: any
+  get_filter_data: Function,
+  navTab: any,
+  get_resturant: Function,
+  lng: number,
+  lat: number,
+  set_current_sort_type: Function,
+  support_ids: string [],
+  activity_types: string,
+  set_current_offset: any
 }
-
-
-
 
 
 const Restaurant = memo((props: IProps) => {
@@ -27,9 +31,16 @@ const Restaurant = memo((props: IProps) => {
     setFilterTopClass,
     filterTopClass,
     get_filter_data,
-    navTab
+    navTab,
+    get_resturant,
+    lng,
+    lat,
+    set_current_sort_type,
+    activity_types,
+    support_ids,
+    set_current_offset
   } = props
-  const [current, setCurrent] = useState(-1)
+  const [current, setCurrent] = useState(0)
   // 用于标记是否显示黑色蒙版
   const [showMsk, setShowMsk] = useState(false)
   // 用于标记是否显示排序下拉面板
@@ -38,7 +49,9 @@ const Restaurant = memo((props: IProps) => {
   const [showChoose, setChooseSort] = useState(false)
   // 用于标记当前排序类型
   const [currentType, setType] = useState('综合排序')
-  const handleClick = (index: number) => {
+  // 用于标记筛选那一栏是否被选中
+
+  const handleUpdate = (index: number) => {
     switch (index) {
       case 0:
         setShowMsk(true)
@@ -46,14 +59,35 @@ const Restaurant = memo((props: IProps) => {
         setChooseSort(false)
         setInputTopClass('home-input-top')
         setFilterTopClass('filter-top')
+        set_current_offset(1)
+      document.body.scrollTop = 0
+
+        break
+      case 1:
+        set_current_sort_type('5')
+        get_resturant(lat, lng, 0, 8, '5', support_ids, activity_types)
+        set_current_offset(1)
+      document.body.scrollTop = 0
+
+        break
+      case 2:
+        set_current_sort_type('666')
+        get_resturant(lat, lng, 0, 8, '666', support_ids, activity_types)
+        document.body.scrollTop = 0
+        set_current_offset(1)
+
         break
       case 3:
         setShowMsk(true)
         setChooseSort(true)
         setShowSort(false)
         setInputTopClass('home-input-top')
+        set_current_offset(1)
+
         setFilterTopClass('filter-top')
-        break
+      document.body.scrollTop = 0
+
+        return
     }
     setCurrent(index)
   }
@@ -64,6 +98,7 @@ const Restaurant = memo((props: IProps) => {
     setShowSort(false)
     // 隐藏筛选面板
     setChooseSort(false)
+
     setInputTopClass('')
     setFilterTopClass('')
   }
@@ -87,7 +122,8 @@ const Restaurant = memo((props: IProps) => {
           {navTab && navTab.map((item: any, index: number) => (
             <li
               className={`restaurant-filter-item ${current === index ? 'filter-weight' : ''}`}
-              key={item.get('name')} onClick={() => handleClick(index)}
+              key={item.get('name')} onClick={() => handleUpdate(index)}
+
             >
               < span > {index === 0 ? currentType : item.get('name')}</span>
               {
@@ -105,6 +141,7 @@ const Restaurant = memo((props: IProps) => {
           className={`filter-mask ${showMsk ? '' : 'mask-hide'}`}
           onClick={handleMaskClick}
         ></div>
+        {/* 左边下拉 */}
         <CSSTransition
           timeout={200}
           classNames='down1'
@@ -112,13 +149,17 @@ const Restaurant = memo((props: IProps) => {
         >
           <DownModel />
         </CSSTransition>
-
+        {/* 右边下拉 */}
         <CSSTransition
           timeout={200}
           classNames='down2'
           in={showMsk && showChoose}
         >
-          <ChooseModel />
+          <ChooseModel 
+            setShowMsk={setShowMsk}
+            setInputTopClass={setInputTopClass}
+            setFilterTopClass={setFilterTopClass}
+          />
         </CSSTransition>
       </ResaurantCounter.Provider>
 
@@ -126,7 +167,12 @@ const Restaurant = memo((props: IProps) => {
   )
 })
 const mapState = (state: any) => ({
-  navTab: state.getIn(['home', 'filterNavTab', 'navTab'])
+  navTab: state.getIn(['home', 'filterNavTab', 'navTab']),
+  lng: state.getIn(['home', 'lng']),
+  lat: state.getIn(['home', 'lat']),
+  support_ids: state.getIn(['home', 'support_ids']),
+  activity_types: state.getIn(['home', 'activity_types']),
+  set_current_offset: state.getIn(['home', 'set_current_offset'])
 })
 
 export default connect(mapState, actions)(Restaurant)

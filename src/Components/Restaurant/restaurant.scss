@@ -1,5 +1,6 @@
 @import "assets/style/common.scss";
 .restaurant {
+  position: relative;
   margin: px2rem(20) 0 px2rem(10) 0;
   .restaurant-title {
     display: flex;
@@ -31,7 +32,7 @@
 
   .restaurant-filter {
     background: #fff;
-    z-index: 111;
+    z-index: 50;
     display: flex;
     position: sticky;
     top: px2rem(47);
@@ -124,7 +125,7 @@
   .down1-exit-done {
     height: 0;
   }
-  $down2height: px2rem(440);
+  $down2height: px2rem(340);
   .down2-enter {
     height: 0;
   }
