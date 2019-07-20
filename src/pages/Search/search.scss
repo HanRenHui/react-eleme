@@ -1,0 +1,71 @@
+@import "assets/style/common.scss";
+.search {
+  position: relative;
+  z-index: 999;
+  width: 100%;
+  min-height: 100%;
+  background: #fff;
+  .search-sticky {
+    padding: 0 px2rem(15);
+    position: sticky;
+    background: #fff;
+    z-index: 999;
+    top: 0;
+  }
+  .search-header {
+    height: px2rem(30);
+    i {
+      color: #999;
+      font-size: px2rem(26);
+    }
+  }
+  .search-box {
+    display: flex;
+    margin-top: px2rem(20);
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: px2rem(20);
+    border-bottom: 1px solid hsla(0,0%,89%,.5);
+    .search-box-left {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 85%;
+      height: px2rem(28);
+      background-color: #f8f8f8;
+
+      input {
+        border: none;
+        outline: none;
+        width: 90%;
+        height: 100%;
+        margin-left: px2rem(30);
+        // background: red;
+        background: green;
+        color: rgb(153, 153, 153);
+        background-color: #f8f8f8;
+
+        font-size: 0.346667rem;
+      }
+      i {
+        position: absolute;
+        left: px2rem(8);
+        color: rgb(153, 153, 153);
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+    .search-box-right {
+      width: 15%;
+      margin-left: px2rem(5);
+      outline: none;
+      color: #333;
+      font-size: 0.426667rem;
+      background: transparent;
+      border-style: none;
+      font-weight: 700;
+    }
+  }
+  
+
+}

@@ -1,5 +1,5 @@
 import { List, fromJS } from 'immutable'
-import { Action } from './../interface'
+import { Action } from '../interface/Home'
 import * as types from './../action-types'
 const defaultState = fromJS({
   location: null,
@@ -12,7 +12,7 @@ const defaultState = fromJS({
   resturants: {
     items: [],
     isNull: false,
-    hasNext: false,
+    hasNext: undefined,
   },
   filterNavTab: {},
   lng: 0,
@@ -35,10 +35,7 @@ export default function reducer(state: any = defaultState, action: Action) {
     case types.SHOW_LOADING:
       return state.set('showLoading', true)
     case types.HIDE_LOADING:
-      // if (state.get('location') || state.get('address')) {
-        return state.set('showLoading', false)
-      // }
-      return state
+      return state.set('showLoading', false)
     case types.SELECT_ADDRESS:
       return state.setIn(['address', 'formattedAddress'], action.payload)
     case types.SET_CITY_LIST:
@@ -48,16 +45,16 @@ export default function reducer(state: any = defaultState, action: Action) {
     case types.SET_SWIPER_DATA:
       return state.set('swiper', fromJS(action.payload))
     case types.REQ_RESTURANT:
- 
+
       if (!action.payload.items.length) {
         return state.setIn(['resturants', 'isNull'], true)
       } else {
-        let current = state.getIn(['resturants', 'items']) 
-        let newData = List.isList(current) 
+        let current = state.getIn(['resturants', 'items'])
+        let newData = List.isList(current)
           ? current.concat(fromJS(action.payload.items))
           : current.concat(action.payload.items)
         let allRests = List.isList(newData) ? newData : fromJS(newData)
-        
+
         return state
           .setIn(['resturants', 'items'], allRests)
           .setIn(['resturants', 'hasNext'], action.payload.has_next)
@@ -81,7 +78,7 @@ export default function reducer(state: any = defaultState, action: Action) {
       const code = action.payload
       let support_ids = state.get('support_ids')
       if (support_ids.includes(code)) {
-        // 已经有了选中了该服务 则剔除
+        // 已经选中了该服务 则剔除
         let newSupport = support_ids.filter((item: String) => item !== code)
         return state.set('support_ids', newSupport)
       } else {
@@ -100,9 +97,9 @@ export default function reducer(state: any = defaultState, action: Action) {
       return state
         .set('activity_types', "-1")
         .set('support_ids', fromJS([]))
-    case types.SET_CURRENT_SORT_TYPE: 
+    case types.SET_CURRENT_SORT_TYPE:
       return state.set('currentSorType', action.payload)
-    case types.SET_CURRENT_OFFSET: 
+    case types.SET_CURRENT_OFFSET:
       return state.set('currentOffset', action.payload)
     default:
       return state

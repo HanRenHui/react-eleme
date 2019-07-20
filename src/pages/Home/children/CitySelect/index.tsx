@@ -1,9 +1,9 @@
 import React, { memo, useEffect, useCallback, useState, useRef } from 'react'
 import { connect } from 'react-redux'
-import CityList from '../../pages/Home/children/CityList'
-import Header from '../Header'
-import * as actions from '../../store/actions/homeAction'
-import CitySearch from '../../pages/Home/children/CitySearch'
+import CityList from '../CityList'
+import Header from '../../../../Components/Header'
+import * as actions from '../../../../store/actions/homeAction'
+import CitySearch from '../CitySearch'
 import './cityselect.scss'
 import { Icon } from 'antd-mobile'
 
@@ -44,6 +44,9 @@ const CitySelect = (props: SelectProps) => {
   const clearkey = useCallback(() => {
     setKey('')
   }, [])
+  const cb = useCallback(() => {
+    setShowCitySelect(false)
+  }, [])
   useEffect(() => {
     if (show && !cityList.length) {
       req_city_list()
@@ -57,7 +60,7 @@ const CitySelect = (props: SelectProps) => {
   return (
     <div className={`cityselect city-model`}>
       <div className="cityselect-tab" >
-        <Header title='城市选择' cb={() => setShowCitySelect(false)} />
+        <Header title='城市选择' cb={cb} />
         <div className="cityselect-input">
           <div className='cityselect-input-inner'>
             <Icon type="search" className="citys-input-icon" size="xs" />

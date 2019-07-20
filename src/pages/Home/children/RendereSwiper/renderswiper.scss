@@ -1,0 +1,42 @@
+@import "assets/style/common.scss";
+.swiper-container {
+  width: 100%;
+}
+.swiper-wrapper {
+  width: 200%;
+  display: flex;
+}
+.container-first {
+  flex: 1;
+
+  // width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.container-sec {
+  flex: 1;
+  // width: 50%;
+  display: flex;
+}
+.s-item {
+  @include flexcolcenter("center");
+  width: 20%;
+  height: px2rem(80);
+  .s-i-top {
+    border-radius: 50%;
+    width: 12vw;
+    height: 11vw;
+    background-size: 12vw 12vw;
+    img {
+      width: 100%;
+    }
+  }
+  .s-i-bottom {
+    text-align: center;
+    color: #666;
+    font-size: 0.32rem;
+    width: 80%;
+    margin-top: px2rem(10);
+    height: px2rem(10);
+  }
+}

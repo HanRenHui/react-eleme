@@ -1,0 +1,116 @@
+@import "assets/style/common.scss";
+.rest-list-li {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 px2rem(20);
+  justify-content: space-around;
+  .rest-list-left {
+    width: px2rem(78);
+    // width: 30%;
+    margin-right: px2rem(10);
+    img {
+      width: 100%;
+    }
+  }
+  .rest-list-right {
+    min-width: 0;
+    width: 100%;
+    h4 {
+      display: flex;
+      justify-content: space-between;
+      color: #333;
+
+      .isbrand {
+        background-image: linear-gradient(-139deg, #fff100, #ffe339);
+        // padding: 0.533333vw 1.333333vw;
+        color: #6f3f15;
+        font-weight: 700;
+        font-size: px2rem(11);
+        padding: px2rem(2) px2rem(3);
+        margin-right: px2rem(5);
+        border-radius: px2rem(3);
+      }
+
+      .list-right-name {
+        height: px2rem(20);
+        line-height: px2rem(20);
+        // background: red;
+        display: flex;
+        align-items: center;
+        width: 75%;
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      i {
+        color: #666;
+        font-size: px2rem(20);
+      }
+      font-weight: 700;
+      font-size: 0.4rem;
+    }
+  }
+  .rest-list-right-foods {
+    margin-top: px2rem(-20);
+    display: flex;
+    justify-content: flex-start;
+    .rest-list-right-foods-item-big {
+      height: px2rem(140);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      margin-bottom: px2rem(20);
+      img {
+        width: px2rem(90);
+      }
+      .rest-list-right-foods-item-big-name {
+        width: px2rem(75);
+        font-size: px2rem(13);
+        color: #999;
+        @include ellipsis;
+      }
+
+      .rest-list-right-foods-item-big-price {
+        color: #ff5339;
+        font-size: 0.4rem;
+      }
+    }
+  }
+  .rest-list-right-foods-sm {
+    margin-top: px2rem(10);
+    margin-bottom: px2rem(10);
+    .control-btn {
+      // margin-top: px2rem(20);
+      margin-bottom: px2rem(30);
+      text-align: center;
+      font-size: px2rem(12);
+    }
+    .rest-list-right-foods-item-small {
+      display: flex;
+      justify-content: space-between;
+      .rest-list-right-foods-item-small-left {
+        height: px2rem(50);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
+        .rest-list-right-foods-item-small-left-name {
+          font-size: px2rem(13);
+          color: #999;
+        }
+        .rest-list-right-foods-item-small-left-price {
+          color: #ff5339;
+          font-size: 0.4rem;
+        }
+      }
+      .rest-list-right-foods-item-small-right {
+        font-size: px2rem(12);
+        color: #999;
+      }
+    }
+    .list-hide {
+      display: none;
+    }
+  }
+}

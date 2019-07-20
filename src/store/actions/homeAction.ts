@@ -25,7 +25,7 @@ import {
   ActivityMode,
   CurrentSortType,
   CurrentOffset
-} from './../interface'
+} from '../interface/Home'
 
 export const set_location = (location: any): Location => ({
   type: types.SET_LOCATION,
@@ -123,14 +123,16 @@ export const get_resturant =
     offset: number,
     limit: number,
     currentSorType: string,
-    support_ids: string [],
+    support_ids: any,
     activity_types: string
   ) => {
-    return async (dispatch: any) => {
+    return async (dispatch: any, getState: any) => {
+      support_ids = getState().get('home').get('support_ids')
+      // console.log(support_ids.size)
       // 先清空原有数据
       if (offset === 0) dispatch(clear_all_rests())
-      
       let rs = await req_resturant(latitude, longitude, offset, limit, currentSorType, support_ids, activity_types)
+      console.log(rs)
       dispatch(set_rest_data(rs))
     }
   }
@@ -141,7 +143,6 @@ const set_filter_data = (data: any): FilterData => ({
 export const get_filter_data = () => {
   return async (dispatch: any) => {
     let rs = await req_filter_data()
-    console.log(rs)
     dispatch(set_filter_data(rs))
   }
 }

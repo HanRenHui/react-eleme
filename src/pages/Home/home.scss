@@ -3,76 +3,6 @@
   width: 100%;
   min-height: 100%;
   background: #fff;
-  .home-header {
-    background-image: linear-gradient(90deg, #0af, #0085ff);
-    height: px2rem(50);
-    // font-size: 0;
-    margin-bottom: px2rem(-1);
-    .home-header-content {
-      height: 100%;
-    }
-    .home-header-top {
-      display: flex;
-      height: 100%;
-      align-items: center;
-      // @include flexcenter;
-      height: 100%;
-      i {
-        color: #fff;
-      }
-      .icon-loc {
-        font-size: px2rem(20);
-        margin-right: px2rem(2);
-      }
-      .home-header-t-address {
-        // width: 60%;
-        max-width: 70%;
-        overflow: hidden;
-        white-space: nowrap;
-
-        text-overflow: ellipsis;
-        font-weight: bold;
-        color: #fff;
-        font-size: px2rem(17);
-      }
-      .icon-down {
-        color: #fff;
-        font-size: px2rem(10);
-        margin-left: px2rem(3);
-      }
-    }
-  }
-
-  .home-header-input {
-    position: sticky; top: 0;
-    z-index: 999;
-    @include flexcenter;
-    background-image: linear-gradient(90deg, #0af, #0085ff);
-    height: px2rem(48);
-    margin-bottom: px2rem(8);
-    .home-h-input-content {
-      width: 90%;
-      // margin: 0 px2rem(18);
-      margin-top: px2rem(4);
-      height: 76%;
-      background: #fff;
-      @include flexcenter;
-      .home-h-in-cont-search {
-        color: #999;
-        margin-right: px2rem(4);
-      }
-      span {
-        font-family: "simsun";
-        color: #999;
-        font-size: 0.373333rem;
-      }
-    }
-  }
-  .home-input-top {
-    position: fixed;
-    top: 0;
-    width: 100%;
-  }
   .home-ads {
     width: 100%;
     height: px2rem(115);
@@ -118,70 +48,8 @@
     }
   }
 
-  .prerender-swiper {
-    display: flex;
-    flex-wrap: wrap;
-    .pre-s-item {
-      width: 20%;
-      height: px2rem(80);
-      @include flexcolcenter("center");
-      .pre-s-i-top {
-        @include preloader;
-        border-radius: 50%;
-        width: 11vw;
-        height: 11vw;
-        background-size: 12vw 12vw;
-      }
-      .pre-s-i-bottom {
-        @include preloader;
-        width: 9vw;
-        margin-top: px2rem(10);
-        height: px2rem(10);
-      }
-    }
-  }
+ 
 
-  .swiper-container {
-    width: 100%;
-  }
-  .swiper-wrapper {
-    width: 200%;
-    display: flex;
-  }
-  .container-first {
-    flex: 1;
-
-    // width: 50%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .container-sec {
-    flex: 1;
-    // width: 50%;
-    display: flex;
-  }
-  .s-item {
-    @include flexcolcenter("center");
-    width: 20%;
-    height: px2rem(80);
-    .s-i-top {
-      border-radius: 50%;
-      width: 12vw;
-      height: 11vw;
-      background-size: 12vw 12vw;
-      img {
-        width: 100%;
-      }
-    }
-    .s-i-bottom {
-      text-align: center;
-      color: #666;
-      font-size: 0.32rem;
-      width: 80%;
-      margin-top: px2rem(10);
-      height: px2rem(10);
-    }
-  }
   // }
 }
 

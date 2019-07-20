@@ -1,0 +1,68 @@
+@import "assets/style/common.scss";
+.search-lianxiang-list {
+  margin-top: px2rem(10);
+  padding: 0 px2rem(15);
+  .search-lx-list-item {
+    line-height: 11.733333vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    img {
+      width: 0.64rem;
+      height: 0.64rem;
+      vertical-align: middle;
+      // margin-right: px2rem(10);
+    }
+    .search-lx-list-item-left-content {
+      display: flex;
+      justify-content: space-between;
+      width: 83%;
+      border-bottom: 1px solid #f5f5f5;
+      .search-lx-list-item-name {
+        display: inline-block;
+        width: 100%;
+        font-size: px2rem(14);
+        color: #999;
+      }
+    }
+    i {
+      font-size: px2rem(13);
+      margin-right: px2rem(10);
+    }
+
+    .search-lx-list-item-rating {
+      width: 20%;
+      color: #999;
+      font-size: 0.32rem;
+    }
+    .search-lx-list-item-word {
+      width: 100%;
+      border-bottom: 1px solid #f5f5f5;
+      font-size: px2rem(14);
+      color: #999;
+    }
+    i {
+      margin-left: px2rem(10);
+    }
+  }
+  .more-height {
+    line-height: px2rem(55);
+  }
+}
+
+.search-follow {
+  padding: 0 px2rem(15);
+  i {
+    color: #666;
+    font-size: px2rem(13);
+    margin-right: px2rem(6);
+  }
+  span {
+    color: #999;
+    font-size: 0.373333rem;
+    &.kw {
+      color: #000;
+    }
+  }
+}

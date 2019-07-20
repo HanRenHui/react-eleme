@@ -1,0 +1,18 @@
+@import 'assets/style/common.scss';
+.rest-list-right-rating {
+  display: flex;
+  justify-content: space-between;
+  margin: px2rem(10) 0;
+
+  color: #666;
+  font-size: 0.293333rem;
+}
+.rest-l-r-r-rating {
+  margin: 0 px2rem(6);
+}
+.rest-list-right-rating-right {
+  background-image: linear-gradient(45deg, #0085ff, #0af);
+  color: #fff;
+  padding: px2rem(2) px2rem(3);
+  border-radius: px2rem(2);
+}

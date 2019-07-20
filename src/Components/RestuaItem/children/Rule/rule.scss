@@ -1,0 +1,33 @@
+@import "assets/style/common.scss";
+.rest-list-right-rules {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  color: #666;
+  font-size: 0.293333rem;
+  @mixin beforeContent {
+    margin: 0 0.8vw;
+    color: #ddd;
+    content: "|";
+  }
+  .rest-l-r-r-left {
+    width: 60%;
+    .l-r-r-left-agent-fee {
+      &::before {
+        @include beforeContent;
+      }
+    }
+  }
+  .rest-l-r-r-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 40%;
+    // background: red;
+    .rest-l-r-r-order-time {
+      &::before {
+        @include beforeContent;
+      }
+    }
+  }
+}

@@ -33,6 +33,11 @@ $main: #0085ff;
   background: #f4f4f4;
   animation: skeleton1 1.2s ease-out infinite;
 }
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 @keyframes skeleton1 {
   0% {
     opacity: 1;

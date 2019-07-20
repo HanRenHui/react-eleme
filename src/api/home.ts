@@ -24,7 +24,7 @@ export const req_resturant =
       latitude,
       longitude,
       offset,
-      limit,
+      limit: 7,
       code,
       support_ids,
       activity_types

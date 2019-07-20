@@ -1,0 +1,31 @@
+@import "assets/style/common.scss";
+.rest-list-right-acti {
+  padding-bottom: px2rem(20);
+  margin-bottom: px2rem(20);
+  border-bottom: 0.133333vw solid #eee;
+  .rest-list-right-act-item {
+    // height: px2rem(20);
+    line-height: px2rem(12);
+    // height: px2rem(20);
+    // background: red;
+
+    span {
+      color: #666;
+      font-size: 0.293333rem;
+    }
+    .rest-l-right-act-icon-name {
+      padding: px2rem(2);
+      color: #fff;
+      margin-right: px2rem(5);
+      // font-weight: bold;
+      border-radius: px2rem(2);
+    }
+    .rest-l-right-act-icon-des {
+      width: 70%;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

@@ -4,6 +4,7 @@ import Order from '../pages/Order'
 import Search from '../pages/Search'
 import Login from '../pages/Login'
 import UserDetail from '../pages/UserDetail'
+import RestDetail from '../pages/RestDetail'
 export default [
   {
     path: '/',
@@ -22,6 +23,12 @@ export default [
     key: 'order',
     exact: true,
     component: Order
+  },
+  {
+    path: '/restdetail/:id',
+    key: 'restdetail',
+    exact: true, 
+    component: RestDetail
   },
   {
     path: '/search',

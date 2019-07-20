@@ -1,0 +1,10 @@
+@import "assets/style/common.scss";
+.rest-search-list {
+  background: #fff;
+  padding-top: px2rem(20);
+  .loadmore-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

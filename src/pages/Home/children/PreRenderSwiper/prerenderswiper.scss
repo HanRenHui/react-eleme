@@ -1,0 +1,24 @@
+@import "assets/style/common.scss";
+.prerender-swiper {
+  display: flex;
+  flex-wrap: wrap;
+  .pre-s-item {
+    width: 20%;
+    height: px2rem(80);
+    @include flexcolcenter("center");
+    .pre-s-i-top {
+      @include preloader;
+      border-radius: 50%;
+      width: 11vw;
+      height: 11vw;
+      background-size: 12vw 12vw;
+    }
+    .pre-s-i-bottom {
+      @include preloader;
+      width: 9vw;
+      margin-top: px2rem(10);
+      height: px2rem(10);
+    }
+  }
+}
+

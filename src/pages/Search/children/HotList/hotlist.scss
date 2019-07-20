@@ -1,0 +1,26 @@
+@import "assets/style/common.scss";
+.search-hot-wrapper {
+  padding: 0 px2rem(15);
+  .search-recommond {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    .search-recomond-li {
+      border-radius: 0.666667vw;
+      padding: 2vw 2.666667vw;
+      font-size: 0.373333rem;
+      margin-right: 0.333333rem;
+      margin-top: 3.333333vw;
+      color: #666;
+      background-color: #f7f7f7;
+    }
+  }
+  .search-hot {
+    margin-top: px2rem(30);
+    display: flex;
+    font-size: 0.426667rem;
+    padding: 0.2rem 0;
+    color: #666;
+    font-weight: 700;
+  }
+}

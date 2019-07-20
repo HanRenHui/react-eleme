@@ -1,0 +1,31 @@
+@import "assets/style/common.scss";
+.home-header-input {
+  position: sticky; top: 0;
+  z-index: 999;
+  @include flexcenter;
+  background-image: linear-gradient(90deg, #0af, #0085ff);
+  height: px2rem(48);
+  margin-bottom: px2rem(8);
+  .home-h-input-content {
+    width: 90%;
+    // margin: 0 px2rem(18);
+    margin-top: px2rem(4);
+    height: 76%;
+    background: #fff;
+    @include flexcenter;
+    .home-h-in-cont-search {
+      color: #999;
+      margin-right: px2rem(4);
+    }
+    span {
+      font-family: "simsun";
+      color: #999;
+      font-size: 0.373333rem;
+    }
+  }
+}
+.home-input-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
