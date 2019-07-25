@@ -20,12 +20,16 @@ export const getImgPath = (img_path: string, flag: number) => {
       return `//fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/750x/`
     case 4:
       return `//fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/150x/`
-    case 5: 
+    case 5:
       return `//fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/686x/`
-    case 6: 
+    case 6:
       return `https://cube.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?x-oss-process=image/resize,m_lfit,w_361/watermark,g_se,x_4,y_4,image_YS8xYS82OGRlYzVjYTE0YjU1ZjJlZmFhYmIxMjM4Y2ZkZXBuZy5wbmc_eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsUF8yOA%3D%3D/quality,q_90/format,webp`
-    case 7: 
+    case 7:
       return `//fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/26x/`
+    case 8:
+      return `//fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/!99.45600585937501x99.45600585937501r/gravity/Center/crop/99.45600585937501x99.45600585937501/`
+    case 9:
+      return `//fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/300x/`
   }
 
 }

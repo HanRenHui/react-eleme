@@ -33,3 +33,7 @@ export const SET_DETAIL = 'detail/set_detail'
 export const ADD_SELECT = 'detail/add_select'
 export const REMOVE_SELECT = 'detail/remove_select'
 export const CLEAR_SELECT = 'detail/cleawr-select'
+
+// rating page 
+export const GET_RATING = 'rating/get_rating'
+export const CLEAR_COMMENTS = 'rating/clear_comenet'
