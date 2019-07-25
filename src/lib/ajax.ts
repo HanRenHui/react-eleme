@@ -5,10 +5,16 @@ class Ajax {
   baseURL: string
   queue: object
   withCredentials: boolean
+  whiteSpace: string []
   constructor() {
     this.baseURL = 'http://localhost:1888'
     this.queue = {}
     this.withCredentials = true
+    // 白名单中的url 加载没有loading显示
+    this.whiteSpace = [
+      '/proxy/restapi/shopping/v1/typeahead',
+      '/proxy/detail',
+    ]
   }
   mergeConfig(option: object) {
     return {
@@ -19,11 +25,10 @@ class Ajax {
   }
   setInterceptors(instance: any, url: string) {
     instance.interceptors.request.use((config: any) => {
-      if (url !== '/proxy/restapi/shopping/v1/typeahead') {
+      if (!this.whiteSpace.includes(url)) {
         (this.queue as any)[url] = true
         store.dispatch(actions.show_loading())
       }
-
       return config
     })
     instance.interceptors.response.use((res: any) => {

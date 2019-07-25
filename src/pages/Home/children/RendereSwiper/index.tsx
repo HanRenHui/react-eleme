@@ -1,10 +1,11 @@
 import React, { memo, useEffect } from 'react'
 import './renderswiper.scss'
 import Swiper from 'swiper'
+import { Immutable } from '@babel/types';
 // import 'swiper/dist/css/swiper.min.css'
 
 interface SwiperProps {
-  swiperData: Array<any>
+  swiperData: Array<Immutable>
 }
 // 骨架屏对应的内容
 const RendereSwiper = memo((props: SwiperProps) => {
@@ -12,11 +13,13 @@ const RendereSwiper = memo((props: SwiperProps) => {
   let firstPart = swiperData.slice(0, 10)
   let secPart = swiperData.slice(-2)
   useEffect(() => {
-    new Swiper('.swiper-container', {
-      autoplay: false,
-      // loop: true
-    });
-  }, [])
+    if (swiperData) {
+      new Swiper('.swiper-container', {
+        autoplay: false,
+      });
+    }
+
+  }, [swiperData])
   return (
     <div className="swiper-container" >
       <ul className="swiper-wrapper">

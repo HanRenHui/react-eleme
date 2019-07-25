@@ -1,0 +1,58 @@
+@import "assets/style/common.scss";
+.order-recomm {
+  // font-size:
+  // margin-bottom: 100vh;
+  margin-bottom: px2rem(4);
+  font-size: 0;
+  h3 {
+    margin-left: px2rem(15);
+    color: #333;
+    font-size: 0.426667rem;
+    font-weight: 700;
+    margin-bottom: 0.266667rem;
+  }
+.swiper-container2 {
+  padding-left: px2rem(15);
+  width: auto !important;
+}
+  .swiper-item {
+    margin-right: px2rem(10);
+    display: flex;
+    width: 3.2rem !important;
+    flex-direction: column;
+    justify-content: center;
+    // display: inline-block;
+    img {
+      width: 3.2rem;
+      height: 3.2rem;
+    }
+    .recomm-name {
+      color: #333;
+      font-size: 0.373333rem;
+      width: px2rem(130);
+      @include ellipsis;
+    }
+    .recomm-info {
+      // margin-top: px2rem(-20);
+      margin-top: px2rem(5);
+      color: #999;
+      .recomm-info-month {
+        margin-right: px2rem(10);
+      }
+      span {
+        font-size: px2rem(10);
+      }
+    }
+    .recomm-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: px2rem(8);
+      .recomm-bottom-price {
+        color: rgb(255, 83, 57);
+        font-size: .48rem;
+      }
+    
+    }
+  }
+}

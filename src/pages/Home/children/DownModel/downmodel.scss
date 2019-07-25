@@ -1,6 +1,8 @@
 @import "assets/style/common.scss";
 .down-model {
   overflow: hidden;
+  position: relative;
+  z-index: 888;
   .down-list {
     width: 100%;
     height: 100%;

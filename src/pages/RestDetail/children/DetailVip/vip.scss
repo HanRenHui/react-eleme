@@ -1,0 +1,51 @@
+@import "assets/style/common.scss";
+.vip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 92%;
+  margin: 0 auto;
+  margin-top: px2rem(13);
+  background-color: #bc0b0b;
+  height: px2rem(42);
+  border-top-right-radius: 1.6vw;
+  border-top-left-radius: 1.6vw;
+  color: #fff;
+  box-sizing: border-box;
+  padding: px2rem(5) px2rem(10);
+  .vip-left {
+    display: flex;
+    align-items: center;
+    img {
+      width: px2rem(30);
+      height: px2rem(30);
+    }
+    p {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      height: px2rem(40);
+      span {
+        &:first-child {
+          font-size: .373333rem;
+          margin-bottom: px2rem(2);
+          font-weight: 500;
+        }
+        &:nth-child(2) {
+          font-size: .266667rem;
+        }
+      }
+    }
+  }
+  .vip-right {
+    width: 18.133333vw;
+    font-size: .32rem;
+    font-weight: 500;
+    border: 1px solid hsla(0,0%,100%,.6);
+    border-radius: 3.2vw;
+    height: 6.4vw;
+    text-align: center;
+    line-height: 6.4vw;
+  }
+}

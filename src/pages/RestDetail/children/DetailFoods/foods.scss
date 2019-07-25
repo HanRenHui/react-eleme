@@ -1,0 +1,33 @@
+@import "assets/style/common.scss";
+
+.detail-foods {
+  position: relative;
+
+}
+.foods-ads {
+  width: 9.146667rem;
+  height: 2.346667rem;
+  border-radius: .08rem;
+  display: block;
+  margin: px2rem(8) auto px2rem(20) auto;
+}
+.detail-enter {
+  top: 100%;
+}
+.detail-enter-active {
+  top: 0;
+  transition: all .2s;
+}
+.detail-enter-done {
+  top: 0;
+}
+.detail-exit {
+  top: 0
+}
+.detail-exit-active {
+  top: 100%;
+  transition: all .2s;
+}
+.detail-exit-done {
+  top: 100%;
+}

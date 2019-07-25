@@ -1,0 +1,84 @@
+@import "assets/style/common.scss";
+.car-contro {
+  position: fixed;
+  width: 100%;
+  // bottom: top(0);
+  z-index: 666;
+  // bottom: px2rem(48);
+  bottom: -18.133333vw;
+  transform: translate3d(0,100%,0);
+  left: 0;
+  // height: px2rem(40);
+  .car-contro-header {
+    border-bottom: 0.133333vw solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.4rem;
+    border-bottom: 0.013333rem solid #ddd;
+    background-color: #eceff1;
+    color: #666;
+    height: 1.066667rem;
+    .car-contro-header-left {
+      display: flex;
+      align-items: center;
+      font-size: px2rem(15);
+    }
+    .car-contro-header-right {
+      display: flex;
+      align-items: center;
+      font-size: 0.346667rem;
+      i {
+        color: #999;
+        font-size: px2rem(15);
+        margin-right: px2rem(5);
+      }
+      span {
+        color: #999;
+      }
+    }
+  }
+  .car-contro-foods-wrapper {
+    max-height: px2rem(300);
+    background: #fff;
+    overflow: hidden;
+  }
+  .car-contro-foods {
+    
+    background: #fff;
+    box-sizing: border-box;
+    padding: 0 px2rem(15);
+    font-size: 0;
+    li {
+      display: flex;
+      justify-content: space-between;
+      padding: px2rem(15) 0;
+      border-bottom: .133333vw solid #eee;
+      
+      .car-contro-foods-name {
+        font-size: px2rem(15);
+        width: px2rem(150);
+        color: #333;
+        @include ellipsis;
+      }
+      .car-contro-foods-price {
+      
+        width: px2rem(100);
+        // background: red;
+        .price-current {
+          float: left;
+          color: rgb(255, 83, 57);
+          font-size: .48rem;
+          margin-right: px2rem(10);
+
+        }
+        .price-origin {
+          float: right;
+          font-size: .35rem;
+          color: #999;
+          font-weight: 400;
+          text-decoration: line-through;
+        }
+      }
+    }
+  }
+}

@@ -24,10 +24,6 @@ interface IProps {
 const getRestData = (list: any) => {
   return list.get('restaurant')
 }
-const useScroll = () => {
-
-}
-
 
 const RestauList = memo((props: IProps) => {
   const {

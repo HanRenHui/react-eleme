@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, ReactElement } from 'react'
 import routes from './util/routes'
 import BottomTab from './Components/BottomTab'
 import ProtectRoute from './Components/ProtectRoute'
@@ -16,6 +16,13 @@ interface IProps {
   set_user_info: any,
   showLoading: boolean
 }
+interface IRoute {
+  exact: boolean, 
+  path: string, 
+  key: string, 
+  component: any,
+  routes?: any 
+}
 const App = (props: IProps) => {
   const { set_user_info, showLoading } = props
 
@@ -27,11 +34,12 @@ const App = (props: IProps) => {
   }, [set_user_info])
   return (
     <Router>
-      {routes.map((route) => (
+      {routes.map((route: IRoute) => (
         <Route
           path={route.path}
           exact={route.exact}
-          component={route.component}
+          // component={route.component}
+          render={(props) => (<route.component routes={route.routes} {...props}/>)} 
           key={route.key}
         />
       ))}

@@ -27,3 +27,9 @@ export const SET_CURRENT_OFFSET = 'home/set_current_offset'
 export const SET_SORT = 'select/set_sort'
 export const SET_REST_LIST = 'select/set_rest_list'
 export const CLEAR_LIST = 'select/clear_list'
+
+// detail page 
+export const SET_DETAIL = 'detail/set_detail'
+export const ADD_SELECT = 'detail/add_select'
+export const REMOVE_SELECT = 'detail/remove_select'
+export const CLEAR_SELECT = 'detail/cleawr-select'

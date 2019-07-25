@@ -2,6 +2,7 @@
 .choose-model {
   overflow: hidden;
   position: relative;
+  z-index: 999;
   .choose-model-part {
     box-sizing: border-box;
     padding: px2rem(10) px2rem(20);

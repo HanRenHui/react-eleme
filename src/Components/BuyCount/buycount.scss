@@ -1,0 +1,59 @@
+@import "assets/style/common.scss";
+.buycount {
+  width: px2rem(65);
+  // height: px2rem(100%);
+  height: px2rem(20);
+  line-height: px2rem(20);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  span {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 0.373333rem;
+  }
+  i {
+    color: rgb(35, 149, 255);
+  }
+  .icon {
+    position: relative;
+    z-index: 2;
+    font-size: px2rem(25);
+    right: px2rem(0);
+  
+  }
+  .icon-left {
+    font-size: px2rem(24);
+    line-height: px2rem(20);
+    height: px2rem(20);
+    transform: translate3d(px2rem(38), 0, 0);
+    opacity: 0;
+  }
+  .icon-left-car {
+    transform: translate3d(0, 0, 0) !important;
+    opacity: 1 !important;
+  }
+}
+
+.fade3-enter, .fade3-exit-done  {
+  transform:  translate3d(px2rem(38), 0, 0) !important;
+  opacity: 0 !important;
+ 
+}
+.fade3-enter-active {
+  transform:  translate3d(0, 0, 0) !important;
+  opacity: 1 !important;
+  transition: all 0.4s;
+}
+.fade3-enter-done, .fade3-exit {
+  transform: translate3d(0, 0, 0) !important;
+  opacity: 1 !important;
+}
+
+.fade3-exit-active {
+  transform: translate3d(px2rem(38), 0, 0) !important;
+
+  opacity: 0 !important;
+  transition: all 0.4s;
+
+}
+

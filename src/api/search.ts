@@ -1,4 +1,5 @@
 import ajax from './../lib/ajax'
+
 // 获取热门搜索
 export const req_hot_search = (latitude: number, longitude: number) => ajax.request({
   method: 'GET', 
@@ -8,6 +9,7 @@ export const req_hot_search = (latitude: number, longitude: number) => ajax.requ
   },
   url: '/proxy/restapi/swarm/v2/hot_search_words'
 })
+
 // 获取搜索联想关键词
 export const req_hot_search_wd = (latitude: number, longitude: number, kw: string) => ajax.request({
   method: 'GET', 
@@ -18,6 +20,7 @@ export const req_hot_search_wd = (latitude: number, longitude: number, kw: strin
   },
   url: '/proxy/restapi/shopping/v1/typeahead'
 })
+
 // 获取搜索结果
 export const req_search_result = (offset: number, keyword: string, latitude: number, longitude: number ) => ajax.request({
   method: 'GET',
@@ -29,4 +32,13 @@ export const req_search_result = (offset: number, keyword: string, latitude: num
     longitude
   },
   url: '/proxy/restapi/shopping/v2/restaurants/search'
+})
+
+// 获取商铺详情
+export const req_rest_detail = (id: number) => ajax.request({
+  method: 'GET',
+  params: {
+    id
+  },
+  url: '/proxy/detail'
 })

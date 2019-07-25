@@ -168,6 +168,7 @@
   },
   "devDependencies": {
     "@types/better-scroll": "^1.12.1",
+    "@types/react-sticky": "^6.0.3",
     "@types/react-transition-group": "^2.9.2",
     "@types/swiper": "^4.4.3"
   }

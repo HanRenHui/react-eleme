@@ -1,21 +1,16 @@
 @import "assets/style/common.scss";
 .swiper-container {
   width: 100%;
+  display: flex;
 }
 .swiper-wrapper {
-  width: 200%;
   display: flex;
 }
 .container-first {
-  flex: 1;
-
-  // width: 50%;
   display: flex;
   flex-wrap: wrap;
 }
 .container-sec {
-  flex: 1;
-  // width: 50%;
   display: flex;
 }
 .s-item {

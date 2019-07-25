@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import './order.scss'
+interface IProps {
 
-const Order: React.FC = () => {
+}
+const Order = (props: IProps) => {
   return (
-    <div>Order page</div>
+    <div className="shop">
+     
+    </div>
+
   )
 }
 
-export default Order
+const mapStateToProps = (state: any) => ({
+})
+export default connect(mapStateToProps)(Order)
