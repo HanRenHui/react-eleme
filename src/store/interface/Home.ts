@@ -55,8 +55,8 @@ export interface Location {
 export interface Address {
   type: typeof types.SET_ADDRESS,
   payload: any
-
 }
+
 export interface LntLat {
   type: typeof types.SET_LAT_LNT,
   payload: {

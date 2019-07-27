@@ -1,17 +1,18 @@
 import * as types from '../action-types'
+import { 
+  add_address, 
+  get_address, 
+  remove_address,  
+  upda_address
+} from './../../api/user'
+import {
+  UserInfo, 
+  UpdateAddress, 
+  LogOut, 
+  EditName,
+} from './../interface/user'
 
 
-interface UserInfo {
-  type: typeof types.SET_USER_INFO,
-  payload: any
-}
-interface LogOut {
-  type: typeof types.LOG_OUT
-}
-interface EditName {
-  type: typeof types.EDIT_NAME,
-  payload: string
-}
 
 export const set_user_info = (user: any): UserInfo => ({
   type: types.SET_USER_INFO,
@@ -32,5 +33,43 @@ export const edit_name_action = (payload: string): EditName => ({
   type: types.EDIT_NAME,
   payload
 })
-
-export type Action = UserInfo | LogOut | EditName 
+export const set_address = (payload: any): UpdateAddress => ({
+  type: types.UPDATE_ADDRESS,
+  payload
+})
+export const incre_address = (userId: string, address: any) => {
+  return async (dispatch: any) => {
+    let rs: any = await add_address(userId, address)
+    if (rs.err_code === 0) {
+      let doc: any = await get_address(userId) 
+      // 修改成功 重新获取新的地址
+      dispatch(set_address(doc.address))
+    }
+  }
+}
+export const req_address = (userId: string) => {
+  return async (dispatch: any) => {
+    let doc: any = await get_address(userId) 
+    dispatch(set_address(doc.address))
+  }
+}
+export const del_address = (userId: string, addressId: string) => {
+  return async (dispatch: any) => {
+    let rs: any = await remove_address(userId, addressId)
+    if (rs.err_code === 0) {
+      let doc: any = await get_address(userId) 
+      // 删除成功重新获取新的地址
+      dispatch(set_address(doc.address))
+    }
+  }
+}
+export const update_address = (userId: string, addressId: string, newAddress: any) => {
+  return async (dispatch: any) => {
+    let rs: any = await upda_address(userId, addressId, newAddress)
+    if (rs.err_code === 0) {
+      let doc: any = await get_address(userId) 
+      // 删除成功重新获取新的地址
+      dispatch(set_address(doc.address))
+    }
+  }
+}

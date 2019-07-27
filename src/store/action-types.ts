@@ -22,6 +22,7 @@ export const SET_DELIVER = 'home/set_deliver'
 export const SET_ACTIVITY = 'home/set_activity'
 export const SET_CURRENT_SORT_TYPE = 'home/set_current_sort_type'
 export const SET_CURRENT_OFFSET = 'home/set_current_offset'
+export const UPDATE_ADDRESS = 'home/update_address'
 
 // select page 
 export const SET_SORT = 'select/set_sort'

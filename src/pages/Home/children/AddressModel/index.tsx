@@ -6,6 +6,7 @@ import { getSearchTips } from '../../../../util/gaodeAPI'
 import * as actions from '../../../../store/actions/homeAction'
 import NoResult from '../../../../Components/NoResult/index'
 import './addressmodel.scss'
+import SearchItem from './../../../../Components/AddSearchItem'
 interface IProps {
   hide: any,
   city: string,
@@ -84,35 +85,6 @@ const AddressInput = memo((props: AddressInputProps) => {
   )
 })
 
-interface searchItemProps {
-  name: string,
-  district: string,
-  address: string,
-  select_address: any,
-  hide: any,
-  clearStatus: any
-}
-
-// 搜索提示item组件
-const SearchItem = memo((props: searchItemProps) => {
-  const { name, district, address, select_address, hide, clearStatus } = props
-  const handleSelectAddress = () => {
-    select_address(district + address + name)
-    // 回到首页主面板
-    hide(false)
-    // 清空状态
-    clearStatus()
-  }
-  return (
-    <li className='search-item' onClick={handleSelectAddress}>
-      <div className='container'>
-        <h4 className="search-item-title">{name}</h4>
-        <p className="search-item-desc">{district}{address}</p>
-      </div>
-    </li>
-  )
-})
-
 
 
 
@@ -184,9 +156,9 @@ const AddressModel = memo((props: IProps) => {
   )
 })
 
-const mapStateToProps = (action: any) => ({
-  city: action.getIn(['home', 'location', 'addressComponent', 'city']),
-  currentCity: action.getIn(['home', 'currentCity'])
+const mapStateToProps = (state: any) => ({
+  city: state.getIn(['home', 'location', 'addressComponent', 'city']),
+  currentCity: state.getIn(['home', 'currentCity'])
 })
 
 

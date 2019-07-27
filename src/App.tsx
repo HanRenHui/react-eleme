@@ -3,6 +3,7 @@ import routes from './util/routes'
 import BottomTab from './Components/BottomTab'
 import ProtectRoute from './Components/ProtectRoute'
 import UserDetail from './pages/UserDetail'
+import AddAdress from './pages/AddAdress'
 import { connect } from 'react-redux'
 import * as actions from './store/actions/userAction'
 import MyAddress from './pages/MyAddress'
@@ -44,6 +45,7 @@ const App = (props: IProps) => {
         />
       ))}
       <ProtectRoute to="/userdetail" component={UserDetail} />
+      <ProtectRoute to="/addaddress" component={AddAdress} />
       <ProtectRoute to="/myaddress" component={MyAddress} />
       <BottomTab />
       {

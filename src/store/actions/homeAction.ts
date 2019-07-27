@@ -24,7 +24,7 @@ import {
   DeliverMode,
   ActivityMode,
   CurrentSortType,
-  CurrentOffset
+  CurrentOffset,
 } from '../interface/Home'
 
 export const set_location = (location: any): Location => ({
@@ -42,9 +42,9 @@ export const show_loading = (): ShowLoading => ({
 export const hide_loading = (): HideLoading => ({
   type: types.HIDE_LOADING
 })
-export const select_address = (selectAddress: string): SelectAddress => ({
+export const select_address = (district: string, address: string, name: string): SelectAddress => ({
   type: types.SELECT_ADDRESS,
-  payload: selectAddress
+  payload: district + address + name
 })
 
 

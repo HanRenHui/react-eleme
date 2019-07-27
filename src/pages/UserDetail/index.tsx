@@ -20,7 +20,6 @@ interface IProps {
 
 const UserDetail = (props: IProps) => {
   const { log_out, history, userinfo, edit_name_action } = props
-  console.log(userinfo)
   const phoneNum = userinfo && userinfo.get('phone') && userinfo.get('phone').split('').map((item: string, index: number) => {
     if (index > 2 && index < 7) {
       return '*'

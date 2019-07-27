@@ -1,0 +1,21 @@
+@import "assets/style/common.scss";
+.address-tags {
+  display: flex;
+  width: 100%;
+  .address-tag {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: .106667rem;
+    font-size: .373333rem;
+    color: #666;
+    line-height: .746667rem;
+    width: 1.813333rem;
+    margin-right: .266667rem;
+    text-align: center;
+  }
+  .tag-selected {
+    color: #2395ff;
+    background: #eef7ff;
+    border-color: rgba(35,149,255,.18);
+  }
+}
