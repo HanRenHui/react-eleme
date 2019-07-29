@@ -6,11 +6,12 @@
   position: sticky;
   top: 0;
   z-index: 999;
-  $headerHeight: px2rem(46);
+  $headerHeight: px2rem(45);
   height: $headerHeight;
   width: 100%;
   background-image: linear-gradient(90deg,#0af,#0085ff);
   // background: $main;
+  // background: #2395ff;
   .header-left {
     line-height: $headerHeight;
     color: #fff;

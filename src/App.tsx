@@ -7,6 +7,7 @@ import AddAdress from './pages/AddAdress'
 import { connect } from 'react-redux'
 import * as actions from './store/actions/userAction'
 import MyAddress from './pages/MyAddress'
+import Settlement from './pages/Settlement'
 import './App.scss'
 import {
   BrowserRouter as Router,
@@ -47,6 +48,7 @@ const App = (props: IProps) => {
       <ProtectRoute to="/userdetail" component={UserDetail} />
       <ProtectRoute to="/addaddress" component={AddAdress} />
       <ProtectRoute to="/myaddress" component={MyAddress} />
+      <ProtectRoute to="/settlement" component={Settlement} />
       <BottomTab />
       {
         showLoading

@@ -19,6 +19,7 @@
   padding-left: 2.106667rem;
   z-index: 777;
   background-color: rgba(61, 61, 63, 0.9);
+  
   .buy-car-icon {
     background-image: radial-gradient(circle, #363636 6.266667vw, #444 0);
     position: absolute;
@@ -99,6 +100,10 @@
     font-size: .4rem;
     font-weight: 700;
     text-align: center;
+    .car-pay {
+      display: inline-block;
+      width: 100%;
+    }
   } 
   .btn-useful {
     color: #fff;

@@ -1,0 +1,53 @@
+@import "assets/style/common.scss";
+$itemHeight: px2rem(60);
+@mixin foodborder {
+  border-bottom: 1px dotted #eee;
+}
+.settlement-foods-item {
+  height: $itemHeight;
+  @include foodborder;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .settlement-foods-item-left {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    font-size: px2rem(14);
+    // @include ellipsis;
+    @include ellipsis;
+    img {
+      vertical-align: middle;
+      width: px2rem(40);
+      margin-right: px2rem(10);
+    }
+  }
+  .settlement-foods-item-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: px2rem(14);
+    width: 20%;
+    height: 100%;
+  }
+  .settlement-foods-item-right {
+    line-height: $itemHeight;
+    font-size: 0.426667rem;
+    width: 30%;
+    height: 100%;
+    color: #333;
+    .hascount {
+      color: #ff4a07;
+    }
+    .settlement-foods-item-origin {
+      float: left;
+      color: #bbb;
+      font-size: px2rem(14);
+      text-decoration: line-through;
+    }
+    .settlement-foods-item-current {
+      float: right;
+    }
+  }
+}

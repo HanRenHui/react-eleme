@@ -20,7 +20,8 @@ interface IProps {
   set_current_sort_type: Function,
   support_ids: string [],
   activity_types: string,
-  set_current_offset: any
+  set_current_offset: any,
+  history: any
 }
 
 
@@ -38,7 +39,8 @@ const Restaurant = memo((props: IProps) => {
     set_current_sort_type,
     activity_types,
     support_ids,
-    set_current_offset
+    set_current_offset,
+    history
   } = props
   const [current, setCurrent] = useState(0)
   // 用于标记是否显示黑色蒙版
@@ -135,7 +137,7 @@ const Restaurant = memo((props: IProps) => {
           ))}
         </ul>
         {/* 餐厅 */}
-        <RestauList />
+        <RestauList history={history}/>
         {/* 蒙版 */}
         <div
           className={`filter-mask ${showMsk ? '' : 'mask-hide'}`}

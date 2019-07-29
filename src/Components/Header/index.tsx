@@ -4,11 +4,12 @@ import './header.scss'
 interface IProps {
   title: any,
   cb?: any,
+  style?: any
 }
 const Header = memo((props: IProps) => {
-  const { title, cb } = props
+  const { title, cb, style } = props
   return (
-    <header className='header container'>
+    <header style={style} className='header container'>
       <i className="header-left iconfont icon-zuojiantou" onClick={cb}></i>
       <div className="header-center" >{title}</div>
     </header>

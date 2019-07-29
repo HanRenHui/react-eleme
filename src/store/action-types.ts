@@ -38,3 +38,14 @@ export const CLEAR_SELECT = 'detail/cleawr-select'
 // rating page 
 export const GET_RATING = 'rating/get_rating'
 export const CLEAR_COMMENTS = 'rating/clear_comenet'
+
+// settlement page 
+export const SET_BUY_CAR = 'settlement/set_buy_car'
+export const SET_ADD = 'settlement/set_add'
+export const SET_FLAG = 'settlement/set_flag'
+
+// remark page 
+export const SET_REMARK_MUL_DATA = 'remark/set_remark_mul_data'
+export const SET_REMARK_SINGLE_DATA = 'remark/set_remark_single_data'
+export const SET_MARK_TEXT = 'remark/set_mark_text'
+export const GET_REMARK_INFO = 'remark/get_remark_info'

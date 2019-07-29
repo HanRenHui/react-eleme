@@ -1,0 +1,91 @@
+@import "assets/style/common.scss";
+.pay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #f5f5f5;
+  z-index: 555;
+  .pay-top-wrapper {
+    height: px2rem(155);
+    background: #fff;
+    box-sizing: border-box;
+    padding: 0 px2rem(15);
+    .pay-time {
+      width: 100%;
+      height: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      .pay-time-title {
+        font-size: 0.346667rem;
+        color: #999;
+        margin-bottom: px2rem(10);
+      }
+    }
+    .pay-shop-info {
+      display: flex;
+      height: 30%;
+      align-items: center;
+      justify-content: space-between;
+      .pay-shop-info-left {
+        @include ellipsis;
+        width: px2rem(200);
+        font-size: px2rem(16);
+        color: #333;
+      }
+      .pay-shop-info-right {
+        color: #ff6000;
+        font-size: px2rem(18);
+      }
+    }
+  }
+  .pay-way-title {
+    font-size: 0.346667rem;
+    padding: 0.4rem 0.4rem 0.266667rem;
+    line-height: 0.32rem;
+    color: #999;
+  }
+  .pay-way {
+    background: #fff;
+    .pay-way-wechat {
+      height: px2rem(50);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: px2rem(15);
+      .pay-way-wechat-left {
+        line-height: px2rem(50);
+        i {
+          color: rgb(65, 176, 53);
+          font-size: px2rem(30);
+          margin-right: px2rem(15);
+        }
+        span {
+          color: #333;
+          font-size: px2rem(17);
+          vertical-align: middle;
+        }
+      }
+      .pay-way-wechat-right {
+        line-height: px2rem(50);
+        margin-right: px2rem(15);
+       img {
+         width: px2rem(20);
+         vertical-align: middle;
+       }
+      }
+    }
+  }
+  .surbtn {
+    background-color: #4cd964;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: px2rem(20);
+    color: #fff;
+  }
+  .unuseful {
+    background-color: #bbb!important;
+  }
+}

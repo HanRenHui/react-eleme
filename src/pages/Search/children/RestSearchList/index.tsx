@@ -1,7 +1,7 @@
 import React, { memo, useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getImgPath, formatDistance } from './../../../../util/getImgPath'
-import RestuaItem from './../../../../Components/RestuaItem'
+import RestuaItem from '../../../Home/children/RestuaItem'
 import './restsearchlist.scss'
 import { Icon } from 'antd-mobile'
 import * as actions from './../../../../store/actions/searchActions'
@@ -16,7 +16,8 @@ interface IProps {
   kw: string,
   lat: number, 
   lng: number,
-  isNull: boolean
+  isNull: boolean,
+  history: any
 }
 const getRestData = (list: any) => {
   return list.get('restaurant')
@@ -34,7 +35,8 @@ const RestSearchList = memo((props: IProps) => {
     kw,
     lat,
     lng,
-    isNull
+    isNull,
+    history
   } = props
   let [isLoading, setIsLoading] = useState(false)
   let loadmoreBtn
@@ -58,6 +60,7 @@ const RestSearchList = memo((props: IProps) => {
         const restList = getRestData(list)
         let distance = formatDistance(restList.get('distance'), restList)
         return <RestuaItem
+          history={history}
           restList={restList}
           allPath={allPath}
           distance={distance}

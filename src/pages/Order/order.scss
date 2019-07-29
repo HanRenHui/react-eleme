@@ -1,1 +1,99 @@
 @import "assets/style/common.scss";
+.order {
+  background: #f5f5f5;
+  .order-item {
+    box-sizing: border-box;
+    padding: px2rem(10) px2rem(15);
+    background: #fff;
+    margin-top: px2rem(10);
+    .order-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      img {
+        width: px2rem(32);
+      }
+      .order-header-right {
+        width: 87%;
+        border-bottom: 1px solid #eee;
+        .order-header-right-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .order-header-right-top-left {
+            font-size: 0.426667rem;
+            line-height: 1.5em;
+            color: #333;
+            i {
+              color: #666;
+              font-size: px2rem(10);
+              margin-left: px2rem(6);
+            }
+          }
+          .order-header-right-top-right {
+            font-size: 0.346667rem;
+            text-align: right;
+            color: #333;
+          }
+        }
+        .order-header-right-bottom {
+          font-size: 0.293333rem;
+          margin-top: px2rem(1);
+          margin-bottom: px2rem(8);
+          margin-left: px2rem(2);
+          color: #999;
+        }
+      }
+    }
+    .order-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      padding-left: px2rem(48);
+      margin-top: px2rem(15);
+      .order-content-left {
+        font-size: 0.346667rem;
+        color: #666;
+      }
+      .order-content-right {
+        font-size: 0.346667rem;
+        color: #333;
+        font-weight: 700;
+      }
+    }
+    .order-content-btn {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: px2rem(30);
+      button {
+        
+        padding: 0.133333rem 0.266667rem;
+        border: 1px solid #2395ff;
+        border-radius: 0.053333rem;
+        background-color: transparent;
+        outline: none;
+        font-size: 0.346667rem;
+        color: #2395ff;
+      }
+    }
+  }
+}
+.order-ske {
+  li {
+    margin-top: px2rem(10);
+    animation: ske .6s infinite alternate;
+  }
+}
+
+@keyframes ske {
+  0% {
+    opacity: 1;
+  }
+  30% {
+    opacity: .9;
+  }
+  100% {
+    opacity: .6;
+  }
+}

@@ -12,12 +12,12 @@ interface IProps {
   fee: number,
   price: number,
   menu: any,
-  recommend: any,
   seShowMask: Function,
-  showMask: boolean
+  showMask: boolean,
+  history: any
 }
 const DetailFoods = memo((props: IProps) => {
-  const { rst, menu, recommend, price, fee } = props
+  const { rst, menu, price, fee,  history } = props
   // 由于标记是否显示详情页
   const [ showFoodDetail, setShowFoodDetail] = useState(false)
   // 存放详情页要展示的数据
@@ -66,6 +66,7 @@ const DetailFoods = memo((props: IProps) => {
         originTotal={originTotal}
         fee={fee}
         price={price}
+        history={history}
       />
       <CSSTransition timeout={200} classNames="detail" in={showFoodDetail}>
         <DetailUp setShowFoodDetail={setShowFoodDetail} detailFood={detailFood}/>
@@ -79,6 +80,5 @@ const mapStateToProps = (state: any) => ({
   fee: state.getIn(['detail', 'rst', 'piecewise_agent_fee', 'rules', '0', 'fee']),
   price: state.getIn(['detail', 'rst', 'piecewise_agent_fee', 'rules', '0', 'price']),
   menu: state.getIn(['detail', 'menu']),
-  recommend: state.getIn(['detail', 'recommend']),
 })
 export default connect(mapStateToProps, null)(DetailFoods)

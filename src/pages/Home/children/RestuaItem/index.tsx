@@ -1,6 +1,6 @@
 import React, { memo, useState } from 'react'
 import './restuaitem.scss'
-import { getImgPath } from './../../util/getImgPath'
+import { getImgPath } from '../../../../util/getImgPath'
 import RestRating from './children/RestRating'
 import Activity from './children/Activity'
 import Rule from './children/Rule'
@@ -10,7 +10,8 @@ interface IProps {
   allPath: string,
   isBrand?: boolean,
   distance: string,
-  foods?: any
+  foods?: any,
+  history: any
 }
 const RestuaItem = memo((props: IProps) => {
   const {
@@ -18,7 +19,8 @@ const RestuaItem = memo((props: IProps) => {
     allPath,
     isBrand,
     distance,
-    foods
+    foods,
+    history
   } = props
   const [show, setShow] = useState(false)
   let foodArr = foods && foods.map((food: any, index: number) => {
@@ -63,7 +65,7 @@ const RestuaItem = memo((props: IProps) => {
   }) || null
 
   return (
-    <li key={restList.get('name')} className="rest-list-li">
+    <li key={restList.get('name')} className="rest-list-li" onClick={() => history.push('/detail/123/foods')}>
       <div className="rest-list-left">
         <img src={allPath} alt="" />
       </div>

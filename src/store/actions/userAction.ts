@@ -11,7 +11,7 @@ import {
   LogOut, 
   EditName,
 } from './../interface/user'
-
+import { Address } from './../interface/settlement'
 
 
 export const set_user_info = (user: any): UserInfo => ({
@@ -73,3 +73,9 @@ export const update_address = (userId: string, addressId: string, newAddress: an
     }
   }
 }
+
+export const set_select_address = (address: any): Address => ({
+  payload: address, 
+  type: types.SET_ADD
+})
+

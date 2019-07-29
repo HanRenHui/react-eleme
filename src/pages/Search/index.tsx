@@ -101,7 +101,7 @@ const Search = (props: IProps) => {
       {/* 未搜索的时候显示 */}
       {
         showSeachList
-          ? <RestSearchList kw={kw} />
+          ? <RestSearchList kw={kw} history={history}/>
           : <>
             {!kw ?
               (

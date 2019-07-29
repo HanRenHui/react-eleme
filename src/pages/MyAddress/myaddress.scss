@@ -8,11 +8,23 @@
   z-index: 444;
   .myaddress-list {
     .myaddress-item {
+      display: flex;
+      justify-content: flex-start;
       margin-bottom: px2rem(2);
       box-sizing: border-box;
       background: #fff;
       position: relative;
-      padding: px2rem(15) px2rem(15);
+      padding: px2rem(15) px2rem(5);
+      .myaddress-item-left {
+        width: px2rem(20);
+        // margin-right: px2rem(5);
+        img {
+          width: px2rem(20);
+        }
+      }
+      .myaddress-item-right {
+        margin-left: px2rem(10);
+      }
       .myaddress-up {
         display: flex;
         align-items: center;

@@ -4,10 +4,15 @@ import HomeReducer from './home'
 import SearchReducer from './search'
 import DetailReducer from './detail'
 import RatingReducer from './rating'
+import SettlementReducer from './settlement'
+import RemarkReducer from './remark'
+
 export default combineReducers({
   user: UserReducer,
   home: HomeReducer,
   search: SearchReducer,
   detail: DetailReducer,
-  rating: RatingReducer 
+  rating: RatingReducer ,
+  settlement: SettlementReducer,
+  remark: RemarkReducer
 })

@@ -19,6 +19,7 @@ interface IProps {
   show_loading: any,
   swiper: any,
   get_swiper_data: Function,
+  history: any
 }
 
 const Home = (props: IProps) => {
@@ -27,6 +28,7 @@ const Home = (props: IProps) => {
     show_loading,
     get_swiper_data,
     swiper,
+    history
   } = props
   const [showAdd, setShowAddModel] = useState(false)
   const [showCity, setShowCitySelect] = useState(false)
@@ -83,6 +85,7 @@ const Home = (props: IProps) => {
       </div>
       {/* 推荐餐厅 */}
       <Resaurant
+        history={history}
         setInputTopClass={setInputTopClass}
         setFilterTopClass={setFilterTopClass}
         filterTopClass={filterTopClass}

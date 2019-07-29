@@ -30,6 +30,10 @@ export const getImgPath = (img_path: string, flag: number) => {
       return `//fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/!99.45600585937501x99.45600585937501r/gravity/Center/crop/99.45600585937501x99.45600585937501/`
     case 9:
       return `//fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/300x/`
+    case 10: 
+      return `https://fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/!72x72r/gravity/Center/crop/72x72/`
+    case 11:
+      return `https://fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/!64x64r/gravity/Center/crop/64x64/`
   }
 
 }

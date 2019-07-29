@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import * as actions from '../../../../store/actions/homeAction'
 import NoResult from '../../../../Components/NoResult'
 import './restauList.scss'
-import RestuaItem from '../../../../Components/RestuaItem'
+import RestuaItem from '../RestuaItem'
 import { getImgPath, formatDistance } from '../../../../util/getImgPath'
 import { Icon } from 'antd-mobile'
 interface IProps {
@@ -18,7 +18,8 @@ interface IProps {
   currentSorType: string,
   showLoading: Boolean,
   currentOffset: number,
-  set_current_offset: any
+  set_current_offset: any,
+  history: any
 }
 
 const getRestData = (list: any) => {
@@ -38,9 +39,9 @@ const RestauList = memo((props: IProps) => {
     currentSorType,
     showLoading,
     currentOffset,
-    set_current_offset
+    set_current_offset,
+    history
   } = props
-
   useEffect(() => {
     // 请求餐厅列表
     if (lat !== 0 && lng !== 0) {
@@ -49,16 +50,16 @@ const RestauList = memo((props: IProps) => {
     }
   }, [lat, lng])
 
-  
+
   let [isLoading, setIsLoading] = useState(false)
   let loadmoreBtn
 
- 
+
   const moveRef = useRef(null)
   if (isLoading) {
     loadmoreBtn = (
       <span className='loadmore-content'>
-        <Icon type="loading"/> 正在加载中
+        <Icon type="loading" /> 正在加载中
       </span>
     )
   } else {
@@ -126,6 +127,7 @@ const RestauList = memo((props: IProps) => {
 
           return (
             <RestuaItem
+              history={history}
               restList={restList}
               allPath={allPath}
               isBrand={isBrand}
@@ -141,7 +143,7 @@ const RestauList = memo((props: IProps) => {
             <p className="loadmore">
               {
                 hasNext
-                  ?  loadmoreBtn 
+                  ? loadmoreBtn
                   : '没有更多了'
               }
             </p>

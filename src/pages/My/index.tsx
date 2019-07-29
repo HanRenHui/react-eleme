@@ -28,7 +28,7 @@ const MyHeader = memo((props: Header) => {
     <header>
       <Link to={to} className='nav-header'>
         <div className="container header">
-          <img src={`http://localhost:1888/public/images/${avatar ? avatar : 'default.png'}`} alt="" />
+          <img src={`/images/${avatar ? avatar : 'default.png'}`} alt="" />
           <div className="header-userinfo">
             <h1>{nameInfo}</h1>
             <p><i className="iconfont icon-44"></i> {phoneInfo}</p>

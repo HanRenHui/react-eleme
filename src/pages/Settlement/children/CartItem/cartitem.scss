@@ -1,0 +1,23 @@
+@import "assets/style/common.scss";
+.settlement-cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: px2rem(50);
+  border-bottom: 1px solid #f2f2f2;
+  .settlement-cart-item-left {
+    font-weight: 500;
+    font-size: px2rem(15);
+    color: #333;
+    width: 70%;
+    @include ellipsis;
+  }
+  .remark {
+    font-size: px2rem(13);
+  }
+  .settlement-cart-item-right {
+    color: #bbb;
+    // font-size: .346667rem;
+    font-size: px2rem(14);
+  }
+}

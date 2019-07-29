@@ -1,0 +1,82 @@
+@import "assets/style/common.scss";
+.ramark {
+  position: relative;
+  z-index: 334;
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+  .remark-wrapper {
+    background: #fff;
+    box-sizing: border-box;
+    padding: px2rem(15);
+    textarea {
+      width: 90%;
+      height: 2rem;
+      padding: 0.426667rem;
+      border: 1px solid #ccc;
+      border-radius: 0.066667rem;
+      font-size: 0.373333rem;
+      background-color: #f9f9f9;
+      color: #666;
+      resize: none;
+     
+    }
+    .data-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: space-between;
+      height: px2rem(90);
+      margin-top: px2rem(10);
+
+    }
+    @mixin itemStyle {
+      border: 1px solid #ddd;
+      font-size: 0.346667rem;
+      font-weight: 500;
+      padding: 0 .213333rem;
+      height: .8rem;
+      line-height: .8rem;
+      text-align: center;
+      color: #666;
+    }
+    .remark-muti-data {
+      display: flex;
+
+      width: 50%;
+      margin-right: px2rem(10);
+      .remark-muti-item {
+       @include itemStyle;
+        &:nth-child(1) {
+          border-radius: none;
+          border-top-left-radius: .106667rem;
+          border-bottom-left-radius: .106667rem;
+        }
+        &:nth-child(3) {
+          border-top-right-radius: .106667rem;
+          border-bottom-right-radius: .106667rem
+        }
+      }
+     
+    }
+    
+    .remark-single-item {
+      @include itemStyle;
+      margin-right: px2rem(10);
+      border-radius: .106667rem;
+    }
+    .select {
+      background: #0186ff;
+      color: #fff !important;
+    }
+  }
+  .surbtn {
+    color:  #fff;
+    font-size: .426667rem;
+    background-color: #00e067;
+    opacity: .98;
+    width: 90%;
+    margin: px2rem(20) auto;
+    
+  }
+}

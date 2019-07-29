@@ -1,0 +1,187 @@
+@import "assets/style/common.scss";
+.settlement {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  z-index: 666;
+  background: #fff;
+  padding-bottom: px2rem(45);
+  box-shadow: 0 0.013333rem 0.026667rem 0 rgba(0, 0, 0, 0.05);
+
+  .settlement-wrapper {
+    width: 100%;
+    
+    background-image: linear-gradient(0deg, #f5f5f5, #f5f5f5 65%, hsla(0, 0%, 96%, 0.3) 75%, hsla(0, 0%, 96%, 0)),
+      linear-gradient(270deg, #0085ff, #0af);
+    height: 100%;
+    padding: px2rem(15) px2rem(6);
+    box-sizing: border-box;
+    .settelment-address {
+      .settelment-address-title {
+        font-size: 0.373333rem;
+        line-height: 1.21;
+        color: hsla(0, 0%, 100%, 0.8);
+        margin-left: px2rem(9);
+        .settelment-address-title-tag{
+          border: 1px solid #fff;
+          font-size: px2rem(11);
+          margin-left: px2rem(5);
+        }
+      }
+      .settelment-address-select {
+        font-weight: 800;
+        margin-left: px2rem(9);
+        @include ellipsis;
+        font-size: 0.586667rem;
+        width: px2rem(350);
+        margin-top: px2rem(10);
+        color:#fff;
+        .settelment-address-link {
+          color: #fff;
+        }
+        i {
+          font-size: px2rem(15);
+          margin-left: px2rem(10);
+        }
+      }
+      .settelment-address-person {
+        color: #fff;
+        // font-size: px2rem(14);
+        font-size: .373333rem;
+        margin-left: px2rem(10);
+        margin-top: px2rem(10);
+        .person-name {
+          margin-right: px2rem(10);
+        }
+      }
+      .settlement-address-run {
+        margin-top: px2rem(20);
+        background: #fff;
+        .settlement-address-run-time {
+          box-sizing: border-box;
+          height: px2rem(50);
+          padding: 0 px2rem(20);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-bottom: 1px dotted #eee;
+          .settlement-address-run-time-left {
+            font-size: px2rem(16);
+            color: #333;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            .fengniao {
+              font-weight: normal;
+              color: #fff;
+              font-size: px2rem(12);
+              margin-top: px2rem(5);
+              border-radius: px2rem(2);
+              padding: px2rem(2) px2rem(3);
+              background-image: linear-gradient(45deg,#0085ff,#0af);
+            }
+          }
+          .settlement-address-run-time-right {
+            font-size: px2rem(14);
+            color: #2395ff;
+            i {
+              margin-left: px2rem(5);
+              color: #e0e0e0;
+            }
+          }
+        }
+        .settlement-address-run-payway {
+          @extend .settlement-address-run-time;
+        }
+        .settlement-address-run-payway-left {
+          @extend .settlement-address-run-time-left;
+        }
+        .settlement-address-run-payway-right {
+          @extend .settlement-address-run-time-right;
+          font-size: px2rem(15) !important;
+        }
+      }
+    }
+    @mixin foodborder {
+      border-bottom: 1px dotted #eee;
+    }
+    .settlement-foods {
+      box-shadow: 0 0.013333rem 0.026667rem 0 rgba(0, 0, 0, 0.05);
+
+      background: #fff;
+      margin-top: px2rem(10);
+      $titleHeight: px2rem(50);
+      .settlement-foods-wrapper {
+        padding: 0 px2rem(15);
+        box-sizing: border-box;
+      }
+      .settlement-foods-title {
+        height: $titleHeight;
+        line-height: $titleHeight;
+        font-size: 0.453333rem;
+        font-weight: 700;
+        @include foodborder;
+        
+      }
+      .settlement-foods-list {
+        $itemHeight: px2rem(60);
+        li {
+          color: #333;
+        }
+    
+        .fee {
+          display: flex;
+          border-bottom: 1px dotted #eee;
+          line-height: $itemHeight;
+          justify-content: space-between;
+          font-size: px2rem(14);
+          .fee-left {
+            width: 30%;
+            line-height: $itemHeight;
+            .fee-left-tag {
+              padding: px2rem(2) px2rem(3);
+              margin-right: px2rem(10);
+              color: #fff;
+              font-size: px2rem(10);
+              background-color: #60acf4;
+              // font-size: .533333rem;
+            }
+          }
+          .fee-right {
+            font-size: 0.426667rem;
+            color: #333;
+          }
+        }
+        .tips {
+          line-height: $itemHeight;
+          color: #bbb;
+          font-size: px2rem(14);
+          border-bottom: 1px dotted #eee;
+        }
+        .total {
+          @extend .tips;
+          display: flex;
+          justify-content: space-between;
+          .total-right {
+            color: #333;
+            font-size: px2rem(14);
+            .total-right-price {
+              color: #ff4a07;
+              font-size: px2rem(20);
+            }
+          }
+        }
+      }
+    }
+    .settlement-cart {
+      background: #fff;
+      margin-top: px2rem(15);
+      box-shadow: 0 0.013333rem 0.026667rem 0 rgba(0, 0, 0, 0.05);
+      padding: 0 px2rem(15);
+      box-sizing: border-box;
+    }
+  }
+
+}

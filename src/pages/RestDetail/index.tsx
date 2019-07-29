@@ -38,8 +38,10 @@ const RestDetail = (props: IProps) => {
   let id = match.params.id
   useEffect(() => {
     setShowSke(true)
-    get_detail()
-  }, [])
+    if (!menu.size) {
+      get_detail()
+    }
+  }, [menu])
   useEffect(() => {
     if (menu.size) {
       setShowSke(false)

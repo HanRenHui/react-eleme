@@ -9,8 +9,6 @@ let defaultState = fromJS({
   rst: {},
   // 标记左侧导航
   leftMark: {},
-  // 记录购物车中的数据
-  foodCar: []
 })
 
 function reducer(state = defaultState, action: any): Action {

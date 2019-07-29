@@ -8,7 +8,8 @@ import RestDetail from '../pages/RestDetail'
 import DetailFoods from '../pages/RestDetail/children/DetailFoods'
 import DetailRating from '../pages/RestDetail/children/DetailRating'
 import DetailInfo from '../pages/RestDetail/children/DetailInfo'
-
+import Remark from '../pages/Settlement/children/Remark'
+import Pay from './../pages/Pay'
 export default [
   {
     path: '/',
@@ -72,7 +73,17 @@ export default [
     key: 'userdetail',
     exact: true,
     component: UserDetail,
-
-
+  },
+  {
+    path: '/Remark',
+    key: 'Remark',
+    exact: true,
+    component: Remark
+  },
+  {
+    path: '/pay',
+    key: 'pay',
+    exact: true, 
+    component: Pay
   }
 ]
