@@ -39,18 +39,7 @@ const RestSearchList = memo((props: IProps) => {
     history
   } = props
   let [isLoading, setIsLoading] = useState(false)
-  let loadmoreBtn
-  if (isLoading) {
-    loadmoreBtn = (
-      <span className='loadmore-content'>
-        <Icon type="loading" /> 正在加载中
-      </span>
-    )
-  } else {
-    loadmoreBtn = (
-      <span className='loadmore-content'>下拉加载更多</span>
-    )
-  }
+ 
   let hasResult
   if (!isNull) {
     hasResult = (
@@ -81,20 +70,7 @@ const RestSearchList = memo((props: IProps) => {
       </div>
     )
   }
-  useEffect(() => {
-    const cb = () => {
-      let { clientHeight, scrollTop, scrollHeight } = (document.body as any)
-      if (scrollTop + clientHeight >= scrollHeight - 40 && !isLoading &&!isNull) {
-        req_search_list(offset, kw, lat, lng)
-        set_offset(offset + 1)
-        setIsLoading(true)
-      }
-    }
-    window.addEventListener('touchmove', cb)
-    return () => {
-      window.removeEventListener('touchmove', cb)
-    }
-  }, [ isLoading, offset])
+
 
   useEffect(() => {
     if (!showLoading) {
@@ -109,7 +85,7 @@ const RestSearchList = memo((props: IProps) => {
         restaurant_with_foods.size && !isNull
           ? (
             <p className="loadmore">
-              {loadmoreBtn}
+              <span className='loadmore-content'>没有更多了</span>
             </p>
           )
           : null
