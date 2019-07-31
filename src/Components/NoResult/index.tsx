@@ -2,7 +2,7 @@ import './noresult.scss'
 import React, { memo } from 'react'
 interface IProps {
   title: string, 
-  des: string,
+  des?: string,
   img?: string,
   style?: object
 }

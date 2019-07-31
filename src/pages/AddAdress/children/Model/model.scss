@@ -2,10 +2,12 @@
 
 .add-address-model {
   position: fixed;
-  width: 100%;
-  min-height: 100%;
   top: 0;
   left: 100%;
+
+  width: 100%;
+  bottom: 0;
+  // overflow: scroll;
   z-index: 999;
   background: #fff;
   .address-model-input-section {

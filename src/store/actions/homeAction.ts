@@ -4,7 +4,8 @@ import {
   req_citylist,
   req_swiper_data,
   req_resturant,
-  req_filter_data
+  req_filter_data,
+  req_location
 } from '../../api/home'
 
 import {
@@ -27,6 +28,19 @@ import {
   CurrentOffset,
 } from '../interface/Home'
 
+
+export const set_current_city = (city: string): CurrentCity => ({
+  type: types.SET_CURRENT_CITY,
+  payload: city
+})
+export const setLatLnt = (lat: number, lng: number): LntLat => ({
+  type: types.SET_LAT_LNT,
+  payload: {
+    lat,
+    lng
+  }
+})
+
 export const set_location = (location: any): Location => ({
   type: types.SET_LOCATION,
   payload: location
@@ -36,15 +50,34 @@ export const set_address = (address: any): Address => ({
   payload: address
 })
 
+
+export const get_location = () => {
+  return async (dispatch: any) => {
+    // console.log((window).IP)
+    let ip = (window as any).IP
+    let rs: any = await req_location(ip)
+
+    if (rs.status === 0) {
+      let { lat, lng} = rs.result.location 
+
+      // 设置经纬度
+      dispatch(setLatLnt(lat, lng))
+      // 设置位置
+      dispatch(set_address(rs.result))
+    }
+    // console.log(rs)
+  }
+}
+
 export const show_loading = (): ShowLoading => ({
   type: types.SHOW_LOADING
 })
 export const hide_loading = (): HideLoading => ({
   type: types.HIDE_LOADING
 })
-export const select_address = (district: string, address: string, name: string): SelectAddress => ({
+export const select_address = (address: string, name: string): SelectAddress => ({
   type: types.SELECT_ADDRESS,
-  payload: district + address + name
+  payload: address + name
 })
 
 
@@ -87,17 +120,6 @@ export const req_city_list = () => {
   }
 }
 
-export const set_current_city = (city: string): CurrentCity => ({
-  type: types.SET_CURRENT_CITY,
-  payload: city
-})
-export const setLatLnt = (lat: number, lng: number): LntLat => ({
-  type: types.SET_LAT_LNT,
-  payload: {
-    lat,
-    lng
-  }
-})
 
 const set_swiper_data = (payload: []): SwiperData => ({
   type: types.SET_SWIPER_DATA,
@@ -128,7 +150,6 @@ export const get_resturant =
   ) => {
     return async (dispatch: any, getState: any) => {
       support_ids = getState().get('home').get('support_ids')
-      // console.log(support_ids.size)
       // 先清空原有数据
       if (offset === 0) dispatch(clear_all_rests())
       let rs = await req_resturant(latitude, longitude, offset, limit, currentSorType, support_ids, activity_types)
@@ -171,7 +192,7 @@ export const set_current_sort_type = (type: String): CurrentSortType => ({
   payload: type
 })
 
-export const set_current_offset = (payload: number): CurrentOffset  => ({
+export const set_current_offset = (payload: number): CurrentOffset => ({
   type: types.SET_CURRENT_OFFSET,
   payload
 })

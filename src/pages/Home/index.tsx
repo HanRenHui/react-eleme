@@ -1,7 +1,5 @@
 import React, { useEffect, memo, useState, useCallback, useMemo, useRef } from 'react'
-import './home.scss'
 import { connect } from 'react-redux'
-import { getLocation } from '../../util/gaodeAPI'
 import * as actions from './../../store/actions/homeAction'
 import { CSSTransition } from 'react-transition-group'
 import AddressModel from './children/AddressModel'
@@ -12,6 +10,7 @@ import Swiper from 'swiper'
 import HomeHeaderTop from './children/HomeHeaderTop'
 import PreRenderSwiper from './children/PreRenderSwiper'
 import RendereSwiper from './children/RendereSwiper'
+import './home.scss'
 
 
 interface IProps {
@@ -19,7 +18,8 @@ interface IProps {
   show_loading: any,
   swiper: any,
   get_swiper_data: Function,
-  history: any
+  history: History,
+  get_location(): void 
 }
 
 const Home = (props: IProps) => {
@@ -28,7 +28,8 @@ const Home = (props: IProps) => {
     show_loading,
     get_swiper_data,
     swiper,
-    history
+    history,
+    get_location
   } = props
   const [showAdd, setShowAddModel] = useState(false)
   const [showCity, setShowCitySelect] = useState(false)
@@ -43,7 +44,7 @@ const Home = (props: IProps) => {
   // 获取定位
   useEffect(() => {
     if (!address) {
-      getLocation()
+      get_location()
       show_loading()
     }
   }, [address, show_loading])

@@ -65,7 +65,7 @@ const RestuaItem = memo((props: IProps) => {
   }) || null
 
   return (
-    <li key={restList.get('name')} className="rest-list-li" onClick={() => history.push('/detail/123/foods')}>
+    <li key={restList.get('name')} className="rest-list-li" >
       <div className="rest-list-left">
         <img src={allPath} alt="" />
       </div>
@@ -80,7 +80,7 @@ const RestuaItem = memo((props: IProps) => {
             }
             {restList.get('name')}
           </span>
-          <i className="iconfont icon-icon_more"></i>
+          <i className="iconfont icon-icon_more" onClick={() => history.push('/detail/123/foods')}></i>
         </h4>
         {/* 餐厅评价 */}
         <RestRating restList={restList} />

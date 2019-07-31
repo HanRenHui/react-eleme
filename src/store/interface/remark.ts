@@ -1,15 +1,15 @@
 import * as types from './../action-types'
 export interface SetrRemarkMulData {
-  type: typeof types.SET_REMARK_MUL_DATA,
+  type: typeof types.SET_REMARK_MUL_DATA
   payload: number,
 }
 export interface SetrRemarkSingleData {
-  type: typeof types.SET_REMARK_SINGLE_DATA,
+  type: typeof types.SET_REMARK_SINGLE_DATA
   payload: number,
 
 }
 export interface Text {
-  type: typeof types.SET_MARK_TEXT,
+  type: typeof types.SET_MARK_TEXT
   payload: string
 }
 export interface RemarkInfo {

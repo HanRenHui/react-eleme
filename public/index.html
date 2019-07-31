@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#000000" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   <link rel="stylesheet" href="//at.alicdn.com/t/font_1284985_yxjuzpzx4ym.css">
-  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=63120d2dcdb4e5b09fff2229a8b2b435"></script>
+
   <!-- 引入组件库 -->
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -22,11 +22,13 @@
     -->
   <title>Eleme</title>
   <style>
-    html, body {
+    html,
+    body {
       /* position: relative; */
       overflow-x: hidden;
       width: 100%;
     }
+
     #root {
       height: 100%;
     }
@@ -36,17 +38,18 @@
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
-  
+  <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const html = document.querySelector('html')
       // 设置根节点的font-size
       html.style.fontSize = document.documentElement.clientWidth / 10 + 'px'
+      window.IP = returnCitySN["cip"]
+      // console.log( + ',' + returnCitySN["cname"])
+
     })
-
-
   </script>
 </body>
 
 </html>
-

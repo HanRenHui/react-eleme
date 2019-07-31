@@ -67,7 +67,6 @@
       justify-content: flex-end;
       margin-top: px2rem(30);
       button {
-        
         padding: 0.133333rem 0.266667rem;
         border: 1px solid #2395ff;
         border-radius: 0.053333rem;
@@ -82,7 +81,27 @@
 .order-ske {
   li {
     margin-top: px2rem(10);
-    animation: ske .6s infinite alternate;
+    animation: ske 0.6s infinite alternate;
+  }
+}
+
+.need-login {
+  position: relative;
+  width: 100%;
+  height: px2rem(300);
+  top: 10%;
+  .login-btn {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: px2rem(10) px2rem(30);
+    border: none;
+    border-radius: 0.053333rem;
+    background-color: #56d176;
+    color: #fff;
+    text-align: center;
+    font-size: px2rem(15);
   }
 }
 
@@ -91,9 +110,9 @@
     opacity: 1;
   }
   30% {
-    opacity: .9;
+    opacity: 0.9;
   }
   100% {
-    opacity: .6;
+    opacity: 0.6;
   }
 }

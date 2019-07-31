@@ -178,7 +178,6 @@ export default connect(mapStateToProp, actions)(RestauList)
 
 
 
-// http://localhost:1888/proxy/restapi/shopping/v3/restaurants?latitude=37.24478929&longitude=117.7531064&offset=0&limit=7&code=0&support_ids=[]&activity_types=-1
 
 
 

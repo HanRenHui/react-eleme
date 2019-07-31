@@ -64,6 +64,25 @@
       font-weight: bolder;
     }
   }
+  .login-tip {
+    position: relative;
+    // background: red;
+    height: px2rem(280);
+    margin-bottom: px2rem(50);
+    .log-btn {
+      position: absolute;
+      bottom: px2rem(10);
+      left: 50%;
+      transform: translateX(-50%);
+      padding: px2rem(10) px2rem(45);
+      border: none;
+      border-radius: .053333rem;
+      background-color: #56d176;
+      color: #fff;
+      text-align: center;
+      font-size: px2rem(15);
+    }
+  }
   
   .filter-top {
     width: 100%;

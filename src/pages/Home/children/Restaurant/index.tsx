@@ -6,6 +6,7 @@ import ChooseModel from '../ChooseModel'
 import { CSSTransition } from 'react-transition-group'
 import './restaurant.scss'
 import RestauList from '../RestauList'
+import NoResult from './../../../../Components/NoResult'
 export const ResaurantCounter = createContext({})
 
 interface IProps {
@@ -18,10 +19,11 @@ interface IProps {
   lng: number,
   lat: number,
   set_current_sort_type: Function,
-  support_ids: string [],
+  support_ids: string[],
   activity_types: string,
   set_current_offset: any,
-  history: any
+  history: History,
+  userInfo: any
 }
 
 
@@ -40,7 +42,8 @@ const Restaurant = memo((props: IProps) => {
     activity_types,
     support_ids,
     set_current_offset,
-    history
+    history,
+    userInfo
   } = props
   const [current, setCurrent] = useState(0)
   // 用于标记是否显示黑色蒙版
@@ -62,14 +65,14 @@ const Restaurant = memo((props: IProps) => {
         setInputTopClass('home-input-top')
         setFilterTopClass('filter-top')
         set_current_offset(1)
-      document.body.scrollTop = 0
+        document.body.scrollTop = 0
 
         break
       case 1:
         set_current_sort_type('5')
         get_resturant(lat, lng, 0, 7, '5', support_ids, activity_types)
         set_current_offset(1)
-      document.body.scrollTop = 0
+        document.body.scrollTop = 0
 
         break
       case 2:
@@ -87,7 +90,7 @@ const Restaurant = memo((props: IProps) => {
         set_current_offset(1)
 
         setFilterTopClass('filter-top')
-      document.body.scrollTop = 0
+        document.body.scrollTop = 0
 
         return
     }
@@ -137,7 +140,22 @@ const Restaurant = memo((props: IProps) => {
           ))}
         </ul>
         {/* 餐厅 */}
-        <RestauList history={history}/>
+        {
+          userInfo
+            ? <RestauList history={history} />
+            : (
+              <div className="login-tip">
+                <NoResult
+                  img="//fuss10.elemecdn.com/d/60/70008646170d1f654e926a2aaa3afpng.png"
+                  title="没有结果"
+                  style={{ top: '38%' }}
+                  des="登陆后查看更多商家"
+                />
+                <a className="log-btn" href='/login'>登录</a>
+              </div>
+            )
+        }
+
         {/* 蒙版 */}
         <div
           className={`filter-mask ${showMsk ? '' : 'mask-hide'}`}
@@ -157,7 +175,7 @@ const Restaurant = memo((props: IProps) => {
           classNames='down2'
           in={showMsk && showChoose}
         >
-          <ChooseModel 
+          <ChooseModel
             setShowMsk={setShowMsk}
             setInputTopClass={setInputTopClass}
             setFilterTopClass={setFilterTopClass}
@@ -174,7 +192,8 @@ const mapState = (state: any) => ({
   lat: state.getIn(['home', 'lat']),
   support_ids: state.getIn(['home', 'support_ids']),
   activity_types: state.getIn(['home', 'activity_types']),
-  set_current_offset: state.getIn(['home', 'set_current_offset'])
+  set_current_offset: state.getIn(['home', 'set_current_offset']),
+  userInfo: state.getIn(['user', 'userinfo'])
 })
 
 export default connect(mapState, actions)(Restaurant)

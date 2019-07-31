@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useState } from 'react'
 import CarContro from './CarContro'
 import { CSSTransition } from 'react-transition-group'
 import * as actions from './../../store/actions/settlementAction'

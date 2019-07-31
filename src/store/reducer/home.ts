@@ -37,7 +37,7 @@ export default function reducer(state: any = defaultState, action: Action) {
     case types.HIDE_LOADING:
       return state.set('showLoading', false)
     case types.SELECT_ADDRESS:
-      return state.setIn(['address', 'formattedAddress'], action.payload)
+      return state.setIn(['address', 'address'], action.payload)
     case types.SET_CITY_LIST:
       return state.set('cityList', action.payload.cityList)
     case types.SET_CURRENT_CITY:

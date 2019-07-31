@@ -43,9 +43,9 @@ const AddAdress = (props: IProps) => {
   const [show, setShow] = useState(false)
   const [addressName, setAddressName] = useState(address.address)
   const [addressDetail, setAddressDetail] = useState(address.address_detail)
-  const setSelect = useCallback((district: string, address: string, name: string) => {
+  const setSelect = useCallback(( address: string, name: string) => {
 
-    setAddressDetail(district + address)
+    setAddressDetail(address)
     setAddressName(name)
   }, [])
   const add = async () => {

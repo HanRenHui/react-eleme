@@ -1,13 +1,15 @@
 import axios from 'axios'
 import store from './../store'
 import * as actions from './../store/actions/homeAction'
+
 class Ajax {
   baseURL: string
   queue: object
   withCredentials: boolean
   whiteSpace: string []
   constructor() {
-    this.baseURL = 'http://localhost:1888'
+    this.baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:1888' : '/'
+    // this.baseURL = '/'
     this.queue = {}
     this.withCredentials = true
     // 白名单中的url 加载没有loading显示
@@ -41,6 +43,7 @@ class Ajax {
 
   }
   request(option: any) {
+    console.log()
     let config = this.mergeConfig(option)
     let instance = axios.create()
     this.setInterceptors(instance, option.url)

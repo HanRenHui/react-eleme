@@ -2,7 +2,7 @@ import React, { memo, useCallback, useState, useEffect } from 'react'
 import Header from './../../../../Components/Header'
 import { Icon } from 'antd-mobile'
 import { connect } from 'react-redux'
-import { getSearchTips } from '../../../../util/gaodeAPI'
+import { req_local_suggestion } from './../../../../api/home'
 import * as actions from '../../../../store/actions/homeAction'
 import NoResult from '../../../../Components/NoResult/index'
 import './addressmodel.scss'
@@ -12,7 +12,9 @@ interface IProps {
   city: string,
   select_address: any,
   setShowCityModel: any
-  currentCity: string
+  currentCity: string,
+  setLatLnt: any
+
 }
 
 interface AddressInputProps {
@@ -77,7 +79,6 @@ const AddressInput = memo((props: AddressInputProps) => {
             onCompositionStart={handleStart}
             onCompositionEnd={handleEnd}
           />
-          {/* <input type="text" placeholder="请输入地址" value={inputMsg} onChange={(e: any) => handleChange(e)} /> */}
         </div>
       </div>
 
@@ -95,7 +96,8 @@ const AddressModel = memo((props: IProps) => {
     hide,
     select_address,
     setShowCityModel,
-    currentCity
+    currentCity,
+    setLatLnt
   } = props
   const [tips, setTips] = useState([])
   // 用来标记是否有结果
@@ -109,15 +111,14 @@ const AddressModel = memo((props: IProps) => {
    setTips([])
   }, [hide])
   const adressSearch = useCallback((keyword) => {
-    getSearchTips(city, keyword, (status: string, result: any) => {
-      // 获取搜索提示
+    ; (async () => {
       setnoRs(false)
-      if (!Object.keys(result).length) {
-        setnoRs(true)
-      }
-      setTips(result.tips)
-    })
-  }, [city])
+      let region = currentCity || city
+      let rs: any = await req_local_suggestion(keyword, region)
+      if (rs.data && !rs.data.length) setnoRs(true)
+      setTips(rs.data)
+    })()
+  }, [city, currentCity])
   // 地址选中以后清除状态
   const clearStatus = useCallback(() => {
     setInputMsg('')
@@ -139,11 +140,13 @@ const AddressModel = memo((props: IProps) => {
           <SearchItem
             clearStatus={clearStatus}
             select_address={select_address}
-            name={item.name}
+            name={item.title}
             hide={hide}
             district={item.district}
             address={item.address}
             key={index}
+            setLatLnt={setLatLnt}
+            location={item.location}
           />
         ))}
       </ul>
@@ -157,7 +160,7 @@ const AddressModel = memo((props: IProps) => {
 })
 
 const mapStateToProps = (state: any) => ({
-  city: state.getIn(['home', 'location', 'addressComponent', 'city']),
+  city: state.getIn(['home', 'address', 'address_component', 'city']),
   currentCity: state.getIn(['home', 'currentCity'])
 })
 

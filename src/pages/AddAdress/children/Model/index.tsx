@@ -3,15 +3,17 @@ import "./model.scss"
 import Header from './../../../../Components/Header'
 import SearchItem from './../../../../Components/AddSearchItem'
 import { connect } from 'react-redux'
-import { getSearchTips } from './../../../../util/gaodeAPI'
 import NoResult from './../../../../Components/NoResult'
+import { req_local_suggestion } from './../../../../api/home'
+
 interface IProps {
   setShow: Function,
   city: string,
-  setAddress: Function
+  setAddress: Function,
+  currentCity: string
 }
 const Model = memo((props: IProps) => {
-  const { setShow, city, setAddress } = props
+  const { setShow, city, setAddress, currentCity } = props
   const [tips, setTips] = useState([])
   // 用来标记是否有结果
   const [noRs, setnoRs] = useState(false)
@@ -19,15 +21,14 @@ const Model = memo((props: IProps) => {
   const [inputMsg, setInputMsg] = useState('')
 
   const adressSearch = useCallback((keyword) => {
-    getSearchTips(city, keyword, (status: string, result: any) => {
-      // 获取搜索提示
+    ; (async () => {
       setnoRs(false)
-      if (!Object.keys(result).length) {
-        setnoRs(true)
-      }
-      setTips(result.tips)
-    })
-  }, [city])
+      let region = currentCity || city
+      let rs: any = await req_local_suggestion(keyword, region)
+      if (rs.data && !rs.data.length) setnoRs(true)
+      setTips(rs.data)
+    })()
+  }, [city, currentCity])
   // 地址选中以后清除状态
   const clearStatus = useCallback(() => {
     setInputMsg('')
@@ -70,14 +71,17 @@ const Model = memo((props: IProps) => {
       </section>
       <ul className="searchList">
         {tips && tips.map((item: any, index: number) => (
+
           <SearchItem
             clearStatus={clearStatus}
             select_address={setAddress}
-            name={item.name}
+            name={item.title}
             hide={() => setShow(false)}
             district={item.district}
             address={item.address}
             key={index}
+           location={item.location}
+
           />
         ))}
       </ul>
@@ -92,5 +96,6 @@ const Model = memo((props: IProps) => {
 })
 const mapStateToProps = (state: any) => ({
   city: state.getIn(['home', 'location', 'addressComponent', 'city']),
+  currentCity: state.getIn(['home', 'currentCity'])
 })
 export default connect(mapStateToProps, null)(Model)

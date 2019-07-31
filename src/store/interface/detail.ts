@@ -1,6 +1,6 @@
 import * as types from './../action-types'
 export interface Detail {
-  payload: any,
+  payload: any
   type: typeof types.SET_DETAIL
 }
 export interface AddSelect {
@@ -8,7 +8,7 @@ export interface AddSelect {
     idx: number, 
     part: number, 
     sec: number
-  },
+  }
   type: typeof types.ADD_SELECT
 }
 export interface DecreSelect {
@@ -16,7 +16,7 @@ export interface DecreSelect {
     idx: number, 
     part: number, 
     sec: number
-  },
+  }
   type: typeof types.REMOVE_SELECT
 }
 export interface ClearSelect {

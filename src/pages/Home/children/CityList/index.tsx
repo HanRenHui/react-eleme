@@ -21,7 +21,6 @@ interface SectionProps {
 
 }
 
-
 interface ItemProps {
   name: string,
   set_current_city: any,
@@ -101,7 +100,7 @@ const CityList = memo((props: ListProps) => {
   )
 })
 const mapStateToProps = (state: any) => ({
-  city: state.getIn(['home', 'location', 'addressComponent', 'city']),
+  city: state.getIn(['home', 'address', 'address_component', 'city']),
   currentCity: state.getIn(['home', 'currentCity'])
 })
 
