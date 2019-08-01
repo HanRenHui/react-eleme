@@ -7,6 +7,7 @@ import { CSSTransition } from 'react-transition-group'
 import './restaurant.scss'
 import RestauList from '../RestauList'
 import NoResult from './../../../../Components/NoResult'
+import { Link } from 'react-router-dom'
 export const ResaurantCounter = createContext({})
 
 interface IProps {
@@ -151,7 +152,9 @@ const Restaurant = memo((props: IProps) => {
                   style={{ top: '38%' }}
                   des="登陆后查看更多商家"
                 />
-                <a className="log-btn" href='/login'>登录</a>
+                <Link to='/login'>
+                  <span className="log-btn">登录</span>
+                </Link>
               </div>
             )
         }

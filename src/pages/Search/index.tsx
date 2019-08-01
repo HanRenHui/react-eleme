@@ -69,7 +69,6 @@ const Search = (props: IProps) => {
     ; (async () => {
       if (!kw) return
       let rs: any = await req_hot_search_wd(lat, lng, encodeURI(kw))
-      console.log(rs)
       setLiangxiang(rs)
     })()
   }, [kw])

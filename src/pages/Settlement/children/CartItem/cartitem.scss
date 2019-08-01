@@ -16,8 +16,13 @@
     font-size: px2rem(13);
   }
   .settlement-cart-item-right {
+    // width: 30%;
+    text-align: right;
+    flex: 1;
     color: #bbb;
-    // font-size: .346667rem;
     font-size: px2rem(14);
+    i {
+      font-size: px2rem(10);
+    }
   }
 }

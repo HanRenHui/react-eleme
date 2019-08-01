@@ -79,11 +79,7 @@
     }
   }
   .surbtn {
-    background-color: #4cd964;
-    width: 90%;
-    margin: 0 auto;
-    margin-top: px2rem(20);
-    color: #fff;
+    @include surebtn;
   }
   .unuseful {
     background-color: #bbb!important;

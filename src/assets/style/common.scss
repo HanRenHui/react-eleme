@@ -15,7 +15,7 @@ $main: #0085ff;
 }
 .padding {
   box-sizing: border-box;
-  padding: 0 px2rem(12);  
+  padding: 0 px2rem(12);
 }
 @mixin flexcenter {
   display: flex;
@@ -38,15 +38,28 @@ $main: #0085ff;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+@mixin surebtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  margin: px2rem(20) auto;
+  background: #00d762;
+  border-radius: 0.053333rem;
+  font-size: 0.48rem;
+  color: #fff;
+  padding: px2rem(12) 0;
+  border: none;
+  font-weight: 700;
+}
 @keyframes skeleton1 {
   0% {
     opacity: 1;
   }
- 30% {
-  opacity: 0.6;
- }
+  30% {
+    opacity: 0.6;
+  }
   100% {
     opacity: 1;
   }
 }
-

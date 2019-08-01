@@ -90,9 +90,9 @@
   width: 100%;
   height: px2rem(300);
   top: 10%;
-  .login-btn {
+  .log-btn {
     position: absolute;
-    bottom: 0;
+    bottom: px2rem(-10);
     left: 50%;
     transform: translateX(-50%);
     padding: px2rem(10) px2rem(30);
@@ -102,6 +102,7 @@
     color: #fff;
     text-align: center;
     font-size: px2rem(15);
+    text-decoration: none;
   }
 }
 

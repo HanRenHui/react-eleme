@@ -15,7 +15,7 @@
     display: flex;
     border-top: 0.266667vw solid #eee;
     & > span {
-      width: 20%;
+      // width: px2rem(180);
       flex-basis: 1.733333rem;
       padding: 0.373333rem 0;
       font-size: 0.4rem;
@@ -26,11 +26,12 @@
     }
 
     .address-right {
-
-      width: 100%;
+      // background: red;
+      flex: 1;
       padding: 0.373333rem 0;
       display: flex;
       align-items: center;
+      justify-content: flex-start;
 
       input {
         outline: none;
@@ -52,28 +53,30 @@
         border: none;
       }
     }
+
     .address-location-right {
       
       position: relative;
       @include flexcolcenter(center);
       align-items: flex-start;
-      width: 100%;
+      // width: 100%;
       .location-input {
-        width: px2rem(300);
-        width: 100%;
+        // width: px2rem(300);
+        // width: 100%;
         font-size: 0.4rem;
         line-height: 0.48rem;
         margin-bottom: px2rem(10);
         color: #333;
         @include ellipsis;
       }
-      span {
+      p {
         font-size: 0.32rem;
         color: #666;
         margin-bottom: 0.373333rem;
         padding-right: 0.4rem;
         @include ellipsis;  
-        width: 80%;
+        width: px2rem(250);
+        // width: 100%;
       }
     }
     i {
@@ -119,18 +122,8 @@
       font-size: px2rem(25);
     }
   }
-  .surebtn {
-    width: 95%;
-    margin: px2rem(20) auto;
-    background: #00d762;
-    text-align: center;
-    border-radius: .053333rem;
-    font-size: .48rem;
-    line-height: .506667rem;
-    color: #fff;
-    padding: .333333rem 0;
-    border: none;
-    font-weight: 700;
+  .address-btn {
+    @include surebtn;
   }
 }
 .showAdd-enter{

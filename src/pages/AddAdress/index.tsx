@@ -3,7 +3,6 @@ import Header from './../../Components/Header'
 import './addadress.scss'
 import { CSSTransition } from 'react-transition-group'
 import Tag from './children/Tag'
-import { Button } from 'antd-mobile'
 import Model from './children/Model'
 import { Toast } from 'antd-mobile'
 import * as actions from './../../store/actions/userAction'
@@ -108,7 +107,7 @@ const AddAdress = (props: IProps) => {
           {
             Object.keys(address).length > 0
               ? null
-              : <span>{addressDetail}</span>
+              : <p>{addressDetail}</p>
           }
 
           <i className="iconfont icon-youjiantou"></i>
@@ -133,7 +132,7 @@ const AddAdress = (props: IProps) => {
           <Tag tags={['家', '学校', '公司']} tag={localTag} setTag={setLocalTag} />
         </div>
       </div>
-      <Button className="surebtn" onClick={add}>确定</Button>
+      <button className="address-btn" onClick={add}>确定</button>
       {/* 添加地址面板 */}
       <CSSTransition timeout={200} classNames="showAdd" in={show}>
         <Model setShow={setShow} setAddress={setSelect} />

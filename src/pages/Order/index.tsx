@@ -5,6 +5,8 @@ import { get_order } from './../../api/user'
 import { getImgPath } from './../../util/getImgPath'
 import dateFormat from './../../util/dateFormat'
 import NoResult from './../../Components/NoResult'
+import { Link } from 'react-router-dom'
+
 interface IProps {
   userId: string,
   history: any
@@ -23,50 +25,65 @@ const Order = (props: IProps) => {
   }, [userId])
   let content
   if (userId) {
-    content = (
-      <div className="order">
-        {orderList.map((order: any) => {
-          let firstName = order.group[0].name
-          let totalCount = order.group.reduce((pre: number, next: any) => {
-            return pre + next.quantity
-          }, 0)
-          return (
-            <div className="order-item" key={order._id}>
-              <section className="order-header">
-                <img src={getImgPath(order.restaurant_image_hash, 11)} />
-                <div className="order-header-right">
-                  <p className="order-header-right-top">
-                    <span className="order-header-right-top-left">
-                      {order.restaurant_name}<i className="iconfont icon-youjiantou"></i>
-                    </span>
-                    <span className="order-header-right-top-right">订单已完成</span>
-                  </p>
-                  <p className="order-header-right-bottom">{dateFormat(order.formatted_created_at)}</p>
+    if ((orderList as any).size) {
+      content = (
+        <div className="order">
+          {
+            orderList.map((order: any) => {
+              let firstName = order.group[0].name
+              let totalCount = order.group.reduce((pre: number, next: any) => {
+                return pre + next.quantity
+              }, 0)
+              return (
+                <div className="order-item" key={order._id}>
+                  <section className="order-header">
+                    <img src={getImgPath(order.restaurant_image_hash, 11)} />
+                    <div className="order-header-right">
+                      <p className="order-header-right-top">
+                        <span className="order-header-right-top-left">
+                          {order.restaurant_name}<i className="iconfont icon-youjiantou"></i>
+                        </span>
+                        <span className="order-header-right-top-right">订单已完成</span>
+                      </p>
+                      <p className="order-header-right-bottom">{dateFormat(order.formatted_created_at)}</p>
 
+                    </div>
+                  </section>
+                  <section className="order-content">
+                    <p className="order-content-left">
+                      <span>{firstName}</span>
+                      {
+                        totalCount > 1
+                          ? <span>等{totalCount}件商品</span>
+                          : null
+                      }
+                    </p>
+                    <p className="order-content-right">￥{order.total_amount.toFixed(2)}</p>
+                  </section>
+                  <section className="order-content-btn">
+                    <button onClick={() => history.push('/detail/123/food')}>查看详情</button>
+
+                  </section>
                 </div>
-              </section>
-              <section className="order-content">
-                <p className="order-content-left">
-                  <span>{firstName}</span>
-                  {
-                    totalCount > 1
-                      ? <span>等{totalCount}件商品</span>
-                      : null
-                  }
-                </p>
-                <p className="order-content-right">￥{order.total_amount.toFixed(2)}</p>
-              </section>
-              <section className="order-content-btn">
-                <button onClick={() => history.push('/detail/123/food')}>查看详情</button>
 
-              </section>
-            </div>
+              )
+            })
+          }
 
-          )
-        })}
+        </div>
 
-      </div>
-    )
+      )
+    } else {
+      content = (
+        <div className="order">
+          <NoResult
+            img="//fuss10.elemecdn.com/d/60/70008646170d1f654e926a2aaa3afpng.png"
+            title="最近没有外卖订单"
+            des="快去下单吧"
+          />
+        </div>
+      )
+    }
   } else {
     content = (
       <div className="need-login">
@@ -74,7 +91,10 @@ const Order = (props: IProps) => {
           img="//fuss10.elemecdn.com/d/60/70008646170d1f654e926a2aaa3afpng.png"
           title="登录后查看外卖订单"
         />
-        <a href="/login" className="login-btn">立即登陆</a>
+
+        <Link to='/login' className="log-btn">
+          登录
+        </Link>
       </div>
     )
   }
@@ -103,47 +123,3 @@ const mapStateToProps = (state: any) => ({
   userId: state.getIn(['user', 'userinfo', '_id']),
 })
 export default connect(mapStateToProps)(Order)
-
-{/* <div className="order">
-{orderList.map((order: any) => {
-  let firstName = order.group[0].name
-  let totalCount = order.group.reduce((pre: number, next: any) => {
-    return pre + next.quantity
-  }, 0)
-  return (
-    <div className="order-item" key={order._id}>
-      <section className="order-header">
-        <img src={getImgPath(order.restaurant_image_hash, 11)} />
-        <div className="order-header-right">
-          <p className="order-header-right-top">
-            <span className="order-header-right-top-left">
-              {order.restaurant_name}<i className="iconfont icon-youjiantou"></i>
-            </span>
-            <span className="order-header-right-top-right">订单已完成</span>
-          </p>
-          <p className="order-header-right-bottom">{dateFormat(order.formatted_created_at)}</p>
-
-        </div>
-      </section>
-      <section className="order-content">
-        <p className="order-content-left">
-          <span>{firstName}</span>
-          {
-            totalCount > 1
-              ? <span>等{totalCount}件商品</span>
-              : null
-          }
-        </p>
-        <p className="order-content-right">￥{order.total_amount.toFixed(2)}</p>
-      </section>
-      <section className="order-content-btn">
-        <button onClick={() => history.push('/detail/123/food')}>查看详情</button>
-
-      </section>
-    </div>
-
-  )
-})}
-
-</div>
- */}

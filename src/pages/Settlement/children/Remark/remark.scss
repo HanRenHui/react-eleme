@@ -77,6 +77,6 @@
     opacity: .98;
     width: 90%;
     margin: px2rem(20) auto;
-    
+    @include surebtn;
   }
 }

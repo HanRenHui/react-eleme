@@ -148,7 +148,7 @@ const DetailRating = (props: IProps) => {
                   {
                     comment.get('avatar')
                       ? <img src={getImgPath(comment.get('avatar'), 8)} className="avatar" />
-                      : <img src="http://localhost:8080/images/default.png" className="avatar" />
+                      : <img src="/images/default.png" className="avatar" />
                   }
 
                   <p className="com-item-header-center">

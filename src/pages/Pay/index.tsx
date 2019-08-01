@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './pay.scss'
 import Header from './../../Components/Header'
-import { Button } from 'antd-mobile'
 import { connect } from 'react-redux'
 import { add_order } from './.../../../../api/user'
 interface IProps {
@@ -140,7 +139,7 @@ const Pay = (props: IProps) => {
           </p>
         </div>
       </section>
-      <Button onClick={() => handlePay()} className={`surbtn ${useful ? '' : 'unuseful'}`}>确认支付</Button>
+      <button onClick={() => handlePay()} className={`surbtn ${useful ? '' : 'unuseful'}`}>确认支付</button>
 
     </div>
   )

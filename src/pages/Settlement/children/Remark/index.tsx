@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import './remark.scss'
 import Header from './../../../../Components/Header'
 import { connect } from 'react-redux'
-import { Button } from 'antd-mobile'
 import * as actions from './../../../../store/actions/RemarkActions'
 interface IProps {
   history: any,
@@ -57,7 +56,7 @@ const Remark = (props: IProps) => {
 
 
       </section>
-      <Button className="surbtn" onClick={() => handleSure()}>确定</Button>
+      <button className="surbtn" onClick={() => handleSure()}>确定</button>
     </div>
   )
 }
