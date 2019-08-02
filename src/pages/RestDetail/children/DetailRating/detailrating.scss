@@ -80,7 +80,8 @@
     }
   }
   .comments-box {
-    height: px2rem(600);
+    height: 95vh;
+    // height: calc(100vh - px2rem(15));
     overflow: hidden;
   }
   .comments-wrapper {
@@ -148,7 +149,6 @@
                 color: rgb(255, 96, 0);
                 font-size: px2rem(15);
                 margin-left: px2rem(5);
-                
               }
             }
           }
@@ -159,7 +159,7 @@
         }
         .comments-item-text {
           color: #333;
-          font-size: .373333rem;
+          font-size: 0.373333rem;
           word-break: break-word;
           margin-top: px2rem(15);
         }
@@ -182,10 +182,10 @@
           .comments-items-tag {
             color: #6d7885;
             @include ellipsis;
-            font-size: .293333rem;
+            font-size: 0.293333rem;
             background-color: #ebf5ff;
-            padding: px2rem(4) .16rem;
-            border-radius: .053333rem;
+            padding: px2rem(4) 0.16rem;
+            border-radius: 0.053333rem;
             margin-bottom: px2rem(5);
             margin-right: px2rem(5);
           }

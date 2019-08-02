@@ -1,7 +1,7 @@
 @import "assets/style/common.scss";
 
 .address-model {
-  
+  overflow: auto;
   .model-address-input {
     width: 100%;
     height: px2rem(50);
@@ -52,7 +52,7 @@
     }
   }
   .searchList {
-   
+  //  overflow: auto;
   }
 
 }

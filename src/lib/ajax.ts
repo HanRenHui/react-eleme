@@ -8,8 +8,8 @@ class Ajax {
   withCredentials: boolean
   whiteSpace: string []
   constructor() {
-    this.baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:1888' : '/'
-    // this.baseURL = '/'
+    // this.baseURL = process.env.NODE_ENV === 'development' ? 'http://192.168.184.1:1888/' : '/'
+    this.baseURL = 'http://192.168.0.106:1888'
     this.queue = {}
     this.withCredentials = true
     // 白名单中的url 加载没有loading显示
@@ -43,7 +43,6 @@ class Ajax {
 
   }
   request(option: any) {
-    console.log()
     let config = this.mergeConfig(option)
     let instance = axios.create()
     this.setInterceptors(instance, option.url)

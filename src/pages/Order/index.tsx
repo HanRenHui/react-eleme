@@ -25,7 +25,7 @@ const Order = (props: IProps) => {
   }, [userId])
   let content
   if (userId) {
-    if ((orderList as any).size) {
+    if (orderList.length) {
       content = (
         <div className="order">
           {
@@ -61,8 +61,7 @@ const Order = (props: IProps) => {
                     <p className="order-content-right">￥{order.total_amount.toFixed(2)}</p>
                   </section>
                   <section className="order-content-btn">
-                    <button onClick={() => history.push('/detail/123/food')}>查看详情</button>
-
+                    <button onClick={() => history.push('/detail/123/foods')}>再来一单</button>
                   </section>
                 </div>
 

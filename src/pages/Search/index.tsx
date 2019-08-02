@@ -87,6 +87,7 @@ const Search = (props: IProps) => {
           <div className="search-box-left">
             <i className="iconfont icon-sousuo"></i>
             <input
+              className="search-input"
               type="text"
               onInput={handleChange}
               onCompositionStart={handleStart}

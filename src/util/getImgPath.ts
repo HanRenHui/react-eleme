@@ -9,27 +9,29 @@ export const getImgPath = (img_path: string, flag: number) => {
   } else {
     postFix = img_path.slice(-3)
   }
+  let option = 0
+  // const BaseURL = flag ?  
   switch (flag) {
     case 0:
       return `https://fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/`
     case 1:
-      return `//fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/48x/`
+      return `https://fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/48x/`
     case 2:
-      return `//fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/176x/`
+      return `https://fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/176x/`
     case 3:
-      return `//fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/750x/`
+      return `https://fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/750x/`
     case 4:
-      return `//fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/150x/`
+      return `https://fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/150x/`
     case 5:
-      return `//fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/686x/`
+      return `https://fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/686x/`
     case 6:
       return `https://cube.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?x-oss-process=image/resize,m_lfit,w_361/watermark,g_se,x_4,y_4,image_YS8xYS82OGRlYzVjYTE0YjU1ZjJlZmFhYmIxMjM4Y2ZkZXBuZy5wbmc_eC1vc3MtcHJvY2Vzcz1pbWFnZS9yZXNpemUsUF8yOA%3D%3D/quality,q_90/format,webp`
     case 7:
-      return `//fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/26x/`
+      return `https://fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/26x/`
     case 8:
-      return `//fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/!99.45600585937501x99.45600585937501r/gravity/Center/crop/99.45600585937501x99.45600585937501/`
+      return `https://fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/!99.45600585937501x99.45600585937501r/gravity/Center/crop/99.45600585937501x99.45600585937501/`
     case 9:
-      return `//fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/300x/`
+      return `https://fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/300x/`
     case 10: 
       return `https://fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/!72x72r/gravity/Center/crop/72x72/`
     case 11:

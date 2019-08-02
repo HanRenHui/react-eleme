@@ -19,7 +19,8 @@ interface IProps {
   showLoading: Boolean,
   currentOffset: number,
   set_current_offset: any,
-  history: any
+  history: History,
+  homeRef: { current: HTMLDivElement }
 }
 
 const getRestData = (list: any) => {
@@ -40,7 +41,8 @@ const RestauList = memo((props: IProps) => {
     showLoading,
     currentOffset,
     set_current_offset,
-    history
+    history,
+    homeRef
   } = props
   useEffect(() => {
     // 请求餐厅列表
@@ -50,12 +52,12 @@ const RestauList = memo((props: IProps) => {
     }
   }, [lat, lng])
 
-
   let [isLoading, setIsLoading] = useState(false)
   let loadmoreBtn
 
-
   const moveRef = useRef(null)
+  // 用于标记是否已经添加滚动事件
+  let [ flag, setFlag] = useState(false)
   if (isLoading) {
     loadmoreBtn = (
       <span className='loadmore-content'>
@@ -67,22 +69,27 @@ const RestauList = memo((props: IProps) => {
       <span className='loadmore-content'>下拉加载更多</span>
     )
   }
-
   useEffect(() => {
     const cb = () => {
-      let { clientHeight, scrollTop, scrollHeight } = (document.body as any)
-      if (scrollTop + clientHeight >= scrollHeight - 40 && !isLoading && hasNext && !isNull) {
+      console.log(0)
+      let { clientHeight, scrollHeight } = document.body
+      let scrollTop = document.body.scrollTop ? document.body.scrollTop:  document.documentElement.scrollTop
+      
+      console.log(isLoading, hasNext, isNull)
+      if (scrollTop + clientHeight >= scrollHeight && !isLoading && hasNext && !isNull) {
+        console.log('触发')
         get_resturant(lat, lng, currentOffset, 7, currentSorType, support_ids, activity_types)
         set_current_offset(currentOffset + 1)
         setIsLoading(true)
+
       }
     }
-    window.addEventListener('touchmove', cb)
+    let Home = homeRef.current 
+    Home.addEventListener('touchmove', cb)
     return () => {
-      window.removeEventListener('touchmove', cb)
+      Home.removeEventListener('touchmove', cb)
     }
-  }, [hasNext, isLoading, currentOffset, currentSorType, support_ids, activity_types])
-
+  }, [ flag, isNull, isLoading, currentOffset, currentSorType, support_ids, activity_types, homeRef, hasNext])
   useEffect(() => {
     if (!showLoading) {
       setIsLoading(false)
@@ -107,15 +114,12 @@ const RestauList = memo((props: IProps) => {
     <ul ref={parentRef} className="resturant-list">
       {
         rests && rests.map((list: any, index: number) => {
-          // console.log('list 666',list)
           // 店铺图片地址
           let img_path: string = getRestData(list).get('image_path')
           const allPath = getImgPath(img_path, 0) || ''
           const restList = getRestData(list)
           // 配送距离format
           let distance = formatDistance(restList.get('distance'), restList)
-
-
           // 判断是不是品牌店铺
           let isBrand = false
           let supports = restList.get('supports')

@@ -11,20 +11,21 @@ import { Link } from 'react-router-dom'
 export const ResaurantCounter = createContext({})
 
 interface IProps {
-  setInputTopClass: Function,
-  setFilterTopClass: Function,
-  filterTopClass: string,
-  get_filter_data: Function,
-  navTab: any,
-  get_resturant: Function,
-  lng: number,
-  lat: number,
-  set_current_sort_type: Function,
-  support_ids: string[],
-  activity_types: string,
-  set_current_offset: any,
-  history: History,
+  setInputTopClass: Function
+  setFilterTopClass: Function
+  filterTopClass: string
+  get_filter_data: Function
+  navTab: any
+  get_resturant: Function
+  lng: number
+  lat: number
+  set_current_sort_type: Function
+  support_ids: string[]
+  activity_types: string
+  set_current_offset: any
+  history: History
   userInfo: any
+  homeRef: any
 }
 
 
@@ -44,7 +45,8 @@ const Restaurant = memo((props: IProps) => {
     support_ids,
     set_current_offset,
     history,
-    userInfo
+    userInfo,
+    homeRef
   } = props
   const [current, setCurrent] = useState(0)
   // 用于标记是否显示黑色蒙版
@@ -143,7 +145,7 @@ const Restaurant = memo((props: IProps) => {
         {/* 餐厅 */}
         {
           userInfo
-            ? <RestauList history={history} />
+            ? <RestauList history={history} homeRef={homeRef}/>
             : (
               <div className="login-tip">
                 <NoResult

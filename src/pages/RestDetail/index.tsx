@@ -51,33 +51,40 @@ const RestDetail = (props: IProps) => {
 
   return (
     <>
-      <div className="detail">
-        <DetailHeader rst={rst} history={history} />
-        {/* 麦当劳会员 */}
-        <DetailVip />
-        {/* 二级路由导航 */}
-        <nav className="nav">
-          {tabs(id).map((item: any) => (
-            <Link
-              to={item.path}
-              key={item.path}
-              className={`nav-item ${location.pathname === item.path ? 'nav-select' : ''}`}
-            >
-              {item.title}
-            </Link>
-          ))}
-        </nav>
-        {/* 二级路由的内容 */}
-        {routes.map((route) => (
-          <Route
-            key={route.key}
-            exact={route.exact}
-            path={route.path}
-            render={(props) => (<route.component routes={route.routes} {...props} />)}
-          />
-        ))}
-      </div>
-      <Skeleton show={showSke} />
+      {
+        menu.size
+          ? (
+            <div className="detail">
+              <DetailHeader rst={rst} history={history} />
+              {/* 麦当劳会员 */}
+              <DetailVip />
+              {/* 二级路由导航 */}
+              <nav className="nav">
+                {tabs(id).map((item: any) => (
+                  <Link
+                    to={item.path}
+                    key={item.path}
+                    className={`nav-item ${location.pathname === item.path ? 'nav-select' : ''}`}
+                  >
+                    {item.title}
+                  </Link>
+                ))}
+              </nav>
+              {/* 二级路由的内容 */}
+              {routes.map((route) => (
+                <Route
+                  key={route.key}
+                  exact={route.exact}
+                  path={route.path}
+                  render={(props) => (<route.component routes={route.routes} {...props} />)}
+                />
+              ))}
+            </div>
+          )
+          :  <Skeleton show={showSke} />
+    }
+
+     
     </>
   )
 }

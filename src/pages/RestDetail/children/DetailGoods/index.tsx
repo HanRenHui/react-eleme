@@ -39,6 +39,7 @@ const DetailGoods = memo((props: IProps) => {
         <ul className="goods-nav-list" >
           {menu && menu.map((m: any, index: number) => {
             let category_id = m.get('id')
+            console.log(index, leftMark.get(category_id))
             return (
               <li
                 key={m.get('id')}
@@ -46,7 +47,7 @@ const DetailGoods = memo((props: IProps) => {
                 className={`goods-nav-item ${idx === index ? 'goods-nav-select' : ''}`}
               >
                 {
-                  leftMark && leftMark.get(category_id)
+                  leftMark && leftMark.get(category_id) > 0
                     ? (
                       <span className='goods-nav-tag'>
                         {leftMark.get(category_id)}
@@ -55,7 +56,7 @@ const DetailGoods = memo((props: IProps) => {
                     : null
                 }
 
-                <span>
+                <span className="goods-nav-span">
                   {m.get('icon_url')
                     ? <img src={getImgPath(m.get('icon_url'), 7)} />
                     : null
@@ -69,7 +70,7 @@ const DetailGoods = memo((props: IProps) => {
       </div>
       {/* 右侧滑动 */}
       <GoodsMenu
-      setShowFoodDetail={setShowFoodDetail}
+        setShowFoodDetail={setShowFoodDetail}
         menu={menu}
         ScrollLRef={ScrollLRef}
         ScrollRRef={ScrollRRef}

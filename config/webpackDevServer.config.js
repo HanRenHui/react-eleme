@@ -8,9 +8,11 @@ const paths = require('./paths');
 const fs = require('fs');
 
 const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
-const host = process.env.HOST || '0.0.0.0';
+// const host = process.env.HOST || '0.0.0.0';
+const host = '0.0.0.0'
 
-module.exports = function(proxy, allowedHost) {
+
+module.exports = function (proxy, allowedHost) {
   return {
     // WebpackDevServer 2.4.3 introduced a security fix that prevents remote
     // websites from potentially accessing local content through DNS rebinding:
@@ -80,8 +82,18 @@ module.exports = function(proxy, allowedHost) {
       // See https://github.com/facebook/create-react-app/issues/387.
       disableDotRule: true,
     },
+    useLocalIp: true,
     public: allowedHost,
     proxy,
+    port: 8080,
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://www.baidu.com/',
+    //     pathRewrite: { '^/api': '' },
+    //     changeOrigin: true,     // target是域名的话，需要这个参数，
+    //     secure: false,          // 设置支持https协议的代理
+    //   },
+    // },
     before(app, server) {
       if (fs.existsSync(paths.proxySetup)) {
         // This registers user provided middleware for proxy reasons

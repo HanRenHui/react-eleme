@@ -3,11 +3,9 @@
   position: relative;
   z-index: 999;
   width: 100%;
-  min-height: 100%;
-  bottom: 0;
+  min-height: 100vh;
   top: 0;
   left: 0;
-  right: 0;
   background: #fff;
   .search-sticky {
     padding: 0 px2rem(15);
@@ -28,24 +26,21 @@
     margin-top: px2rem(20);
     justify-content: space-between;
     align-items: center;
-    padding-bottom: px2rem(20);
-    border-bottom: 1px solid hsla(0,0%,89%,.5);
+    // padding-bottom: px2rem(20);
+    margin-bottom: px2rem(20);
     .search-box-left {
       display: flex;
       align-items: center;
       position: relative;
-      width: 85%;
+      width: 81%;
       height: px2rem(28);
       background-color: #f8f8f8;
-
-      input {
+      .search-input {
         border: none;
         outline: none;
         width: 90%;
-        height: 100%;
+        height: 70%;
         margin-left: px2rem(30);
-        // background: red;
-        background: green;
         color: rgb(153, 153, 153);
         background-color: #f8f8f8;
 
@@ -60,8 +55,8 @@
       }
     }
     .search-box-right {
-      width: 15%;
-      margin-left: px2rem(5);
+      // width: 15%;
+      flex: 1;
       outline: none;
       color: #333;
       font-size: 0.426667rem;

@@ -11,11 +11,12 @@ interface SwiperProps {
 const RendereSwiper = memo((props: SwiperProps) => {
   const { swiperData } = props
   let firstPart = swiperData.slice(0, 10)
+  // console.log(firstPart.toJS())
   let secPart = swiperData.slice(-2)
   useEffect(() => {
     if (swiperData) {
       new Swiper('.swiper-container', {
-        autoplay: false,
+        autoplay: false
       });
     }
 
@@ -33,6 +34,7 @@ const RendereSwiper = memo((props: SwiperProps) => {
         </li>
         <li className="container-sec swiper-slide">
           {secPart.map((item: any, index: number) => {
+            console.log(item.get('src'))
             return <div className="s-item" key={index}>
               <img src={item.get('src')} className="s-i-top" alt={item.get('title')} />
               <div className="s-i-bottom">{item.get('title')}</div>

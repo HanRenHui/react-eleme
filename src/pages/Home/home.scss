@@ -1,9 +1,7 @@
 @import "assets/style/common.scss";
 .home {
   width: 100%;
-  min-height: 100%;
   background: #fff;
-  overflow: hidden;
   .home-ads {
     width: 100%;
     height: px2rem(115);
@@ -17,6 +15,7 @@
       box-sizing: border-box;
       padding: px2rem(20) px2rem(10);
       .home-ads-c-left {
+        font-size: 0;
         // display: flex;
         // flex-direction: column;
         // justify-content: center;
@@ -43,7 +42,9 @@
         @include flexcenter;
         width: 50%;
         img {
-          width: 37.6vw;
+          width: px2rem(130);
+          height: 90%;
+
         }
       }
     }
@@ -53,14 +54,20 @@
 
   // }
 }
-
+.alpha {
+  height: 100%;
+  overflow: hidden;
+}
 @mixin model {
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   top: 0;
   left: 100%;
+  // bottom: 0;
+  display: none;
   width: 100%;
-  min-height: 100%;
+  // min-height: 100%;
+  height: 100%;
   background: #f4f4f4;
 }
 
@@ -70,23 +77,29 @@
 
 .fade1-enter {
   left: 100%;
+  display: block;
 }
 .fade1-enter-active {
   transition: all 0.3s;
+  display: block;
   left: 0;
 }
 .fade1-enter-done {
   left: 0;
+  display: block;
 }
 .fade1-exit {
   left: 0;
+  display: block;
 }
 .fade1-exit-active {
   transition: all 0.4s;
+  display: block;
   left: 100%;
 }
 .fade1-exit-done {
   left: 100%;
+  display: none;
 }
 
 .cityselect {
@@ -96,21 +109,27 @@
 
 .fade2-enter {
   left: 100%;
+  display: block;
 }
 .fade2-enter-active {
   transition: all 0.3s;
+  display: block;
   left: 0;
 }
 .fade2-enter-done {
   left: 0;
+  display: block;
 }
 .fade2-exit {
   left: 0;
+  display: block;
 }
 .fade2-exit-active {
   transition: all 0.4s;
+  display: block;
   left: 100%;
 }
 .fade2-exit-done {
   left: 100%;
+  display: none;
 }

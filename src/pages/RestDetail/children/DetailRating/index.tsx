@@ -69,7 +69,7 @@ const DetailRating = (props: IProps) => {
         startY,
         probeType: 3,
         pullUpLoad: {
-          threshold: -100
+          threshold: -60
         }
       })
       bscroll.on('pullingUp', () => {

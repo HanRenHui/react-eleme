@@ -1,6 +1,7 @@
 @import "assets/style/common.scss";
 .goods-menu {
-  width: 100%;
+  // width: 100%;
+  flex: 1;
   height: 95vh;
 
   overflow-y: hidden;

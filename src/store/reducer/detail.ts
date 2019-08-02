@@ -79,7 +79,7 @@ function toggleCount(idx: string, state: any, flag: number) {
     item.get('foods').forEach((food: any, index: number) => {
       if (food.get('item_id') === idx) {
         // 设置左侧导航的数据
-        let category_id = newState.getIn(['menu', num, 'foods', index, 'category_id'])
+        let category_id = newState.getIn(['menu', num, 'foods', index, "category_id"])
         let count = state.getIn(['menu', num, 'foods', index, 'count'])
         if (count === undefined) count = 0
         if (!flag) {
