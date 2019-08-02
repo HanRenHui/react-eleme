@@ -53,19 +53,16 @@ export const set_address = (address: any): Address => ({
 
 export const get_location = () => {
   return async (dispatch: any) => {
-    // console.log((window).IP)
     let ip = (window as any).IP
     let rs: any = await req_location(ip)
 
     if (rs.status === 0) {
       let { lat, lng} = rs.result.location 
-
       // 设置经纬度
       dispatch(setLatLnt(lat, lng))
       // 设置位置
       dispatch(set_address(rs.result))
     }
-    // console.log(rs)
   }
 }
 
@@ -153,7 +150,6 @@ export const get_resturant =
       // 先清空原有数据
       if (offset === 0) dispatch(clear_all_rests())
       let rs = await req_resturant(latitude, longitude, offset, limit, currentSorType, support_ids, activity_types)
-      console.log(rs)
       dispatch(set_rest_data(rs))
     }
   }
@@ -180,7 +176,6 @@ export const set_support_ids = (payload: String): DeliverMode => ({
   type: types.SET_DELIVER,
   payload
 })
-
 
 export const set_activity_mode = (code: String): ActivityMode => ({
   type: types.SET_ACTIVITY,

@@ -43,14 +43,14 @@ export const incre_address = (userId: string, address: any) => {
     if (rs.err_code === 0) {
       let doc: any = await get_address(userId) 
       // 修改成功 重新获取新的地址
-      dispatch(set_address(doc.address))
+      dispatch(set_address(doc))
     }
   }
 }
 export const req_address = (userId: string) => {
   return async (dispatch: any) => {
     let doc: any = await get_address(userId) 
-    dispatch(set_address(doc.address))
+    dispatch(set_address(doc))
   }
 }
 export const del_address = (userId: string, addressId: string) => {
@@ -59,7 +59,7 @@ export const del_address = (userId: string, addressId: string) => {
     if (rs.err_code === 0) {
       let doc: any = await get_address(userId) 
       // 删除成功重新获取新的地址
-      dispatch(set_address(doc.address))
+      dispatch(set_address(doc))
     }
   }
 }
@@ -69,7 +69,7 @@ export const update_address = (userId: string, addressId: string, newAddress: an
     if (rs.err_code === 0) {
       let doc: any = await get_address(userId) 
       // 删除成功重新获取新的地址
-      dispatch(set_address(doc.address))
+      dispatch(set_address(doc))
     }
   }
 }

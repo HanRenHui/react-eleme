@@ -58,7 +58,7 @@ const Home = (props: IProps) => {
       autoplay: false,
     });
   }, [])
-  // 蒙版出现则禁止body滚动
+  // 蒙版出现则禁止body滚动 防止页面穿透
   useEffect(() => {
     if (showAdd || showCity) {
       document.getElementsByClassName('home')[0].classList.add('alpha')

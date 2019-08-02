@@ -71,17 +71,12 @@ const RestauList = memo((props: IProps) => {
   }
   useEffect(() => {
     const cb = () => {
-      console.log(0)
       let { clientHeight, scrollHeight } = document.body
       let scrollTop = document.body.scrollTop ? document.body.scrollTop:  document.documentElement.scrollTop
-      
-      console.log(isLoading, hasNext, isNull)
-      if (scrollTop + clientHeight >= scrollHeight && !isLoading && hasNext && !isNull) {
-        console.log('触发')
+      if (scrollTop + clientHeight >= scrollHeight - 5 && !isLoading && hasNext && !isNull) {
         get_resturant(lat, lng, currentOffset, 7, currentSorType, support_ids, activity_types)
         set_current_offset(currentOffset + 1)
         setIsLoading(true)
-
       }
     }
     let Home = homeRef.current 

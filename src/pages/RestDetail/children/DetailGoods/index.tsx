@@ -39,7 +39,6 @@ const DetailGoods = memo((props: IProps) => {
         <ul className="goods-nav-list" >
           {menu && menu.map((m: any, index: number) => {
             let category_id = m.get('id')
-            console.log(index, leftMark.get(category_id))
             return (
               <li
                 key={m.get('id')}
