@@ -9,8 +9,27 @@
     width: px2rem(78);
     // width: 30%;
     margin-right: px2rem(10);
+    position: relative;
     img {
       width: 100%;
+    }
+    .new {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 50;
+      width: px2rem(30);
+      height: px2rem(30);
+      background-image: linear-gradient(135deg, #26ce61, #26ce61 50%, transparent 0);
+      span {
+        color: #fff;
+        position: absolute;
+        top: 1.333333vw;
+        left: 0.25vw;
+        font-size: px2rem(8);
+        transform: rotate(-45deg);
+        display: block;
+      }
     }
   }
   .rest-list-right {

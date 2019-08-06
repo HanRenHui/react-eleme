@@ -23,12 +23,12 @@ const Search = (props: IProps) => {
   let [hostList, setHostList] = useState<object>([])
   let [lianxiang, setLiangxiang] = useState<object>([])
   // 标记是输入拼音还是汉字中
-  let [flag, setFlag] = useState(false)
+  let [flag, setFlag] = useState(true)
   let [kw, setKw] = useState('')
   // 标记是否显示搜索的列表
   let [showSeachList, setShowSearchList] = useState(false)
 
-  const handleChange = (e: any) => {
+  const handleInput = (e: any) => {
     if (flag) {
       setKw(e.target.value)
       setShowSearchList(false)
@@ -39,6 +39,7 @@ const Search = (props: IProps) => {
     setFlag(false)
   }
   const handleEnd = (e: any) => {
+    console.log('end')
     setFlag(true)
     setKw(kw + e.data)
     setShowSearchList(false)
@@ -47,7 +48,6 @@ const Search = (props: IProps) => {
   const handleSearch = () => {
     if (!kw) return
     const kwList = ['hanbao', 'han', 'bao', '汉', '堡', '汉堡', '麦当劳', '肯德基', '炸鸡', '鸡腿']
-    // console.log(kw.includes('汉堡'))
     if (!(kwList.includes(kw))) return Toast.info('该关键字数据还未补全, 输入汉堡试试', 1)
     setShowSearchList(true)
     req_search_list(0, kw, lat, lng)
@@ -69,6 +69,7 @@ const Search = (props: IProps) => {
     ; (async () => {
       if (!kw) return
       let rs: any = await req_hot_search_wd(lat, lng, encodeURI(kw))
+      // console.log(rs)
       setLiangxiang(rs)
     })()
   }, [kw])
@@ -89,7 +90,7 @@ const Search = (props: IProps) => {
             <input
               className="search-input"
               type="text"
-              onInput={handleChange}
+              onInput={handleInput}
               onCompositionStart={handleStart}
               onCompositionEnd={handleEnd}
               placeholder="输入商家丶商品名称"

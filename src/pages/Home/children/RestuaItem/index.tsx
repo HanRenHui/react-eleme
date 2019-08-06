@@ -6,11 +6,12 @@ import Activity from './children/Activity'
 import Rule from './children/Rule'
 import Tags from './children/Tags'
 interface IProps {
-  restList: any,
-  allPath: string,
-  isBrand?: boolean,
-  distance: string,
-  foods?: any,
+  restList: any
+  allPath: string
+  isBrand?: boolean
+  distance: string
+  isNew?: boolean 
+  foods?: any
   history: any
 }
 const RestuaItem = memo((props: IProps) => {
@@ -20,7 +21,8 @@ const RestuaItem = memo((props: IProps) => {
     isBrand,
     distance,
     foods,
-    history
+    history,
+    isNew
   } = props
   const [show, setShow] = useState(false)
   let foodArr = foods && foods.map((food: any, index: number) => {
@@ -68,6 +70,12 @@ const RestuaItem = memo((props: IProps) => {
     <li key={restList.get('name')} className="rest-list-li" >
       <div className="rest-list-left">
         <img src={allPath} alt="" />
+        {
+          isNew 
+          ? <div className="new"><span>新店</span> </div>
+          : null 
+        }
+        
       </div>
       <div className='rest-list-right'>
         {/* 餐厅名字 */}

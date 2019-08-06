@@ -12,6 +12,7 @@ import {
 import {
   CurrentOffset
 } from './../../../../interface/Home'
+
 interface IProps {
   show: boolean
   hide(): void
@@ -21,6 +22,7 @@ interface IProps {
   lat: number
   lng: number
   support_ids: any
+  currentSorType: string 
   activity_types: string
   set_current_offset: (payload: number) => CurrentOffset
   set_current_category: (payload: string) => CurrentCate
@@ -37,9 +39,10 @@ const MsiteDownModel = memo((props: IProps) => {
     get_resturant,
     set_current_offset,
     set_current_category,
-    activity_types 
+    activity_types,
+    currentSorType
   } = props
-  const [categorys, setCate] = useState<Category[]>([])
+  const [categorys, setCate] = useState<Category []>([])
   // 控制左侧样式
   const [currentCate, setCurrentCate] = useState(0)
   const [currentSubCate, setCurrentSubCate] = useState(0)
@@ -54,7 +57,6 @@ const MsiteDownModel = memo((props: IProps) => {
           // 去除第一条
           data.shift()
           setCate(createCategory(data))
-          console.log(data)
         }
       })()
     }
@@ -81,9 +83,8 @@ const MsiteDownModel = memo((props: IProps) => {
     hide()
     // 请求数据
     set_current_offset(1)
-    console.log(name)
     set_current_category(encodeURI(name))
-    get_resturant(lat, lng, 0, 8, '0', support_ids, activity_types, encodeURI(name))
+    get_resturant(lat, lng, 0, 8, currentSorType, support_ids, activity_types, encodeURI(name))
 
   }
 
@@ -113,7 +114,7 @@ const MsiteDownModel = memo((props: IProps) => {
         </div>
         <div className="msite-downmodel-content-right">
           <ul className="msite-downmodel-content-right-list">
-            {categorys.length && categorys[currentCate].sub_categories.map((item: SubCateGory, index: number) => {
+            {categorys.length > 0 && categorys[currentCate].sub_categories.map((item: SubCateGory, index: number) => {
 
               return (
                 <li

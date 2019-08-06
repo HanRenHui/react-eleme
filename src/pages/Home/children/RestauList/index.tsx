@@ -129,13 +129,8 @@ const RestauList = memo((props: IProps) => {
           // 配送距离format
           let distance = formatDistance(restList.get('distance'), restList)
           // 判断是不是品牌店铺
-          let isBrand = false
-          let supports = restList.get('supports')
-          supports.forEach((item: any) => {
-            if (item.get('name') === '开发票') {
-              isBrand = true
-            }
-          })
+          let isBrand = restList.get('is_premium')
+          let isNew = restList.get('is_new')
 
           return (
             <RestuaItem
@@ -143,6 +138,7 @@ const RestauList = memo((props: IProps) => {
               restList={restList}
               allPath={allPath}
               isBrand={isBrand}
+              isNew={isNew}
               distance={distance}
               key={restList.get('name')}
             />
