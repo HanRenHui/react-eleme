@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable'
-import { Action } from './../interface/remark'
+import { Action } from '../../interface/remark'
 import * as types from './../action-types'
 const defaultState = fromJS({
   singleData: [

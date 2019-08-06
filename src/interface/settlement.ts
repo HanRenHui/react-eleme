@@ -1,4 +1,4 @@
-import * as types from './../action-types'
+import * as types from '../store/action-types'
 export interface BuyCar {
   type: typeof types.SET_BUY_CAR
   payload: any []

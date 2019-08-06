@@ -5,7 +5,7 @@ import { getImgPath } from '../../../../util/getImgPath';
 import BuyCount from '../../../../Components/BuyCount'
 
 interface IProps {
-  heightArr: number [],
+  heightArr: number[],
   menu: any,
   ScrollLRef: any,
   ScrollRRef: any,
@@ -16,12 +16,12 @@ interface IProps {
 }
 const GoodsMenu = memo((props: IProps) => {
   const { menu, setIdx, setShowFoodDetail, setDetailFood } = props
-  const { ScrollRRef, ScrollLRef,heightArr,  setHeightArr } = props
+  const { ScrollRRef, heightArr, setHeightArr } = props
   const hookRef = useRef(null)
   // 绑定滚动
   useEffect(() => {
     if (menu.size && !Object.keys(ScrollRRef.current).length) {
-      
+
       ScrollRRef.current = new BScroll('.goods-menu', {
         scrollY: true,
         click: true,
@@ -29,16 +29,21 @@ const GoodsMenu = memo((props: IProps) => {
       })
     }
 
+  }, [menu, ScrollRRef.current])
+  useEffect(() => {
+    if (Object.keys(ScrollRRef.current).length) {
+      ScrollRRef.current.refresh()
+    }
   }, [menu])
   // 获取高度
   useEffect(() => {
     if (menu.size && !heightArr.length && hookRef.current) {
       let height = 0
       let arr = [height]
-        ;[...(hookRef.current as any).children].forEach((c: any) => {
-          height += c.offsetHeight
-          arr.push(height)
-        })
+      ;[...(hookRef.current as any).children].forEach((c: any) => {
+        height += c.offsetHeight
+        arr.push(height)
+      })
       setHeightArr(arr)
     }
   }, [menu, hookRef])
@@ -49,7 +54,7 @@ const GoodsMenu = memo((props: IProps) => {
         const { y } = pos
         let posY = Math.abs(y)
         heightArr.forEach((h: number, index: number) => {
-          if ( posY >= h && posY < heightArr[index+1]) {
+          if (posY >= h && posY < heightArr[index + 1]) {
             setIdx(index)
           }
         })
@@ -74,10 +79,10 @@ const GoodsMenu = memo((props: IProps) => {
                   let discount = (((currentPrice / originPrice) as any) * 10).toFixed(1)
                   return (
                     <li className="menu-s-foods-item" key={food.get('item_id')} >
-                      <img 
-                        src={getImgPath(food.getIn(['photos', '0']), 6)} 
-                        className="menu-s-foods-item-left" alt="" 
-                        onClick={() => {setShowFoodDetail(true); setDetailFood(food.toJS())}}
+                      <img
+                        src={getImgPath(food.getIn(['photos', '0']), 6)}
+                        className="menu-s-foods-item-left" alt=""
+                        onClick={() => { setShowFoodDetail(true); setDetailFood(food.toJS()) }}
                       />
                       <div className="menu-s-foods-item-right">
                         <h3 className="menu-s-foods-i-r-name">
@@ -110,7 +115,7 @@ const GoodsMenu = memo((props: IProps) => {
                                 : null
                             }
                           </span>
-                         <BuyCount food={food}  />
+                          <BuyCount food={food} />
                         </div>
                       </div>
                     </li>

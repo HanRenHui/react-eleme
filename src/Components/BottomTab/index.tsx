@@ -13,7 +13,7 @@ interface ItemProps {
   path: string,
   title: string,
   icon: string,
-  currentPath: string
+  currentPath: string,
 }
 
 const TabItem = memo((props: ItemProps) => {
@@ -28,12 +28,13 @@ const TabItem = memo((props: ItemProps) => {
   )
 })
 
+const whiteList = ['/', '/order', '/my']
 
 
-const BottomTab: React.FC = memo((props: any) => {
+const BottomTab = memo((props: any) => {
   const currentPath = props.location.pathname
   return (
-    <div className="bottom-nav">
+    <div className={`bottom-nav ${whiteList.includes(currentPath)? '' : 'hiden'}`}>
       {routes.map(item => (
         <TabItem
           path={item.path}

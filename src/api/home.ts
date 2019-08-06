@@ -36,7 +36,8 @@ export const req_resturant =
     limit: number,
     code: string,
     support_ids: string[],
-    activity_types: string
+    activity_types: string,
+    category?: string
   ) => ajax.request({
     url: '/proxy/restapi/shopping/v3/restaurants',
     method: 'GET',
@@ -47,7 +48,8 @@ export const req_resturant =
       limit: 7,
       code,
       support_ids,
-      activity_types
+      activity_types,
+      category
     }
   })
 

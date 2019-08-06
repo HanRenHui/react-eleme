@@ -1,13 +1,11 @@
 @import "assets/style/common.scss";
 .goods-menu {
-  // width: 100%;
   flex: 1;
-  height: 95vh;
-
-  overflow-y: hidden;
+  height: 100%;
   background: #fff;
-  // background: red;
-  // padding-bottom: px2rem(60);
+  overflow: hidden;
+  //  -webkit-overflow-scrolling:touch;
+  //  overflow-scrolling: touch;
   .goods-menu-content {
     padding-bottom: px2rem(70);
     font-size: 0;

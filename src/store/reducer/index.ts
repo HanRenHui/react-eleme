@@ -6,7 +6,7 @@ import DetailReducer from './detail'
 import RatingReducer from './rating'
 import SettlementReducer from './settlement'
 import RemarkReducer from './remark'
-
+import MsiteReducer from './msite'
 export default combineReducers({
   user: UserReducer,
   home: HomeReducer,
@@ -14,5 +14,6 @@ export default combineReducers({
   detail: DetailReducer,
   rating: RatingReducer ,
   settlement: SettlementReducer,
-  remark: RemarkReducer
+  remark: RemarkReducer, 
+  msite: MsiteReducer
 })

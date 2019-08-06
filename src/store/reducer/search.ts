@@ -1,11 +1,10 @@
 import { fromJS } from 'immutable' 
-import { Action } from './../interface/Select'
+import { Action } from '../../interface/Select'
 import * as types from './../action-types'
 const defaultState = fromJS({
   restsSearchList: [],
   offset: 1, 
   isNull:false
-
 })
 export default function reducer(state = defaultState, action: Action) {
   switch(action.type) {

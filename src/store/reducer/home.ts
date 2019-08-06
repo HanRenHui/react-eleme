@@ -1,5 +1,5 @@
 import { List, fromJS } from 'immutable'
-import { Action } from '../interface/Home'
+import { Action } from '../../interface/Home'
 import * as types from './../action-types'
 const defaultState = fromJS({
   location: null,
@@ -23,7 +23,7 @@ const defaultState = fromJS({
   activity_types: "-1",
   // 标记当前排序类型  默认: 综合排序
   currentSorType: '0',
-  currentOffset: 0,
+  currentOffset: 1,
 })
 
 export default function reducer(state: any = defaultState, action: Action) {

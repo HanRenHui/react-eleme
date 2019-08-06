@@ -48,7 +48,7 @@ const Search = (props: IProps) => {
     if (!kw) return
     const kwList = ['hanbao', 'han', 'bao', '汉', '堡', '汉堡', '麦当劳', '肯德基', '炸鸡', '鸡腿']
     // console.log(kw.includes('汉堡'))
-    if (!kwList.includes(kw)) return Toast.info('该关键字数据还未补全, 输入汉堡试试', 1)
+    if (!(kwList.includes(kw))) return Toast.info('该关键字数据还未补全, 输入汉堡试试', 1)
     setShowSearchList(true)
     req_search_list(0, kw, lat, lng)
     document.body.scrollTop = 0

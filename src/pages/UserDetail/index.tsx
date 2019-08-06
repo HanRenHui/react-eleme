@@ -30,7 +30,7 @@ const UserDetail = (props: IProps) => {
     <img
       className="extra"
       alt="头像"
-      src={`http://localhost:1888/images/${userinfo && userinfo.get('avatar') ? userinfo.get('avatar') : 'default.png'}`}
+      src={`/images/${userinfo && userinfo.get('avatar') ? userinfo.get('avatar') : 'default.png'}`}
     ></img>
 
   const checkValue = useCallback((newName: string) => {

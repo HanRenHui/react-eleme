@@ -49,7 +49,7 @@ const App = (props: IProps) => {
       <ProtectRoute to="/addaddress" component={AddAdress} />
       <ProtectRoute to="/myaddress" component={MyAddress} />
       <ProtectRoute to="/settlement" component={Settlement} />
-      <BottomTab />
+      <BottomTab/>
       {
         showLoading
           ? <div className="loading-model"><div className="Loading"></div></div>

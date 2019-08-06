@@ -1,6 +1,6 @@
 import * as types from './../action-types'
 import { fromJS } from 'immutable'
-import { Action } from './../interface/rating'
+import { Action } from '../../interface/rating'
 const defaultState = fromJS({
   comments: [],
   rating: {},

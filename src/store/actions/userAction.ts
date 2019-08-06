@@ -10,8 +10,8 @@ import {
   UpdateAddress, 
   LogOut, 
   EditName,
-} from './../interface/user'
-import { Address } from './../interface/settlement'
+} from '../../interface/user'
+import { Address } from '../../interface/settlement'
 
 
 export const set_user_info = (user: any): UserInfo => ({

@@ -1,4 +1,4 @@
-import * as types from './../action-types'
+import * as types from '../store/action-types'
 export interface SetrRemarkMulData {
   type: typeof types.SET_REMARK_MUL_DATA
   payload: number,

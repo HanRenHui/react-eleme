@@ -4,15 +4,18 @@ import { ResaurantCounter } from '../Restaurant'
 import * as actions from '../../../../store/actions/homeAction'
 import './downmodel.scss'
 interface IProps {
-  sortBy: any [],
-  get_resturant: Function,
-  lat: number,
-  lng: number,
-  currentSorType: string,
+  sortBy: any[]
+  lat: number
+  lng: number
+  current_category: string
+  get_resturant: Function
   support_ids: string[]
-  set_current_sort_type: Function,
+  set_current_sort_type: Function
   activity_types: string
-
+  currentType: string
+  setShowMsk: (flag: boolean) => void
+  setType: (type: string) => void
+  filterTop?: {top: string}
 }
 const DownModel = memo((props: IProps) => {
   const {
@@ -22,30 +25,32 @@ const DownModel = memo((props: IProps) => {
     lng,
     set_current_sort_type,
     support_ids,
-    currentSorType,
-    activity_types
+    activity_types,
+    setType,
+    currentType,
+    setShowMsk,
+    filterTop, 
+    current_category
   } = props
   const {
-    currentType,
-    setType,
-    setShowMsk,
     setInputTopClass,
     setFilterTopClass,
   } = useContext(ResaurantCounter) as any
   const handleUpdate = (item: string, code: string) => {
     // 记录当前排序类型 用于下拉加载
     set_current_sort_type(code)
-    // get_resturant(lng, lat, 0, 8, code)
-    get_resturant(lat, lng, 0, 7, code, support_ids, activity_types)
-
+    get_resturant(lat, lng, 0, 7, code, support_ids, activity_types, current_category)
     setType(item)
     // 隐藏蒙版
     setShowMsk(false)
-    setInputTopClass('')
-    setFilterTopClass('')
+    setInputTopClass && setInputTopClass('')
+    setFilterTopClass && setFilterTopClass('')
+
   }
+  let style 
+  if (filterTop) style = filterTop
   return (
-    <div className='down-model'>
+    <div className='down-model' style={style}>
       <ul className='down-list'>
         {sortBy && sortBy.map((item: any) => (
           <li className="down-item" key={item} onClick={() => handleUpdate(item.get('name'), item.get('code'))}>
@@ -64,9 +69,10 @@ const mapStateToProps = (state: any) => ({
   sortBy: state.getIn(['home', 'filterNavTab', 'sortBy']),
   lat: state.getIn(['home', 'lat']),
   lng: state.getIn(['home', 'lng']),
-  currentSorType: state.getIn(['home', 'currentSorType']),
   support_ids: state.getIn(['home', 'support_ids']),
   activity_types: state.getIn(['home', 'activity_types']),
+  current_category: state.getIn(['msite', 'currentCategory'])
+
 })
 
 export default connect(mapStateToProps, actions)(DownModel)

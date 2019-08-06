@@ -44,13 +44,37 @@
         img {
           width: px2rem(130);
           height: 90%;
-
         }
       }
     }
   }
-
- 
+  .restaurant-title {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    height: 9.6vw;
+    font-size: 0.4rem;
+    color: #333;
+    margin-top: px2rem(20);
+    &::before {
+      margin-right: 3.466667vw;
+      margin-top: 2vw;
+      display: block;
+      content: "";
+      width: 5.333333vw;
+      height: 0.266667vw;
+      background-color: #999;
+    }
+    &::after {
+      margin-left: 3.466667vw;
+      margin-top: 2vw;
+      display: block;
+      content: "";
+      width: 0.533333rem;
+      height: 0.026667rem;
+      background-color: #999;
+    }
+  }
 
   // }
 }

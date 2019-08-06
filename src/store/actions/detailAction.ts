@@ -7,7 +7,7 @@ import {
   AddSelect, 
   DecreSelect,
   ClearSelect
-} from './../interface/detail'
+} from '../../interface/detail'
 const set_detail = (rs: any): Detail => ({
   payload: rs,
   type: types.SET_DETAIL

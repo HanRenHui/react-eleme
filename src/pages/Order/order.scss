@@ -88,11 +88,11 @@
 .need-login {
   position: relative;
   width: 100%;
-  height: px2rem(300);
+  height: px2rem(350);
   top: 10%;
   .log-btn {
     position: absolute;
-    bottom: px2rem(-10);
+    bottom: px2rem(10);
     left: 50%;
     transform: translateX(-50%);
     padding: px2rem(10) px2rem(30);

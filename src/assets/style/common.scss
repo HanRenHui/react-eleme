@@ -17,6 +17,9 @@ $main: #0085ff;
   box-sizing: border-box;
   padding: 0 px2rem(12);
 }
+.hiden {
+  display: none;
+}
 @mixin flexcenter {
   display: flex;
   justify-content: center;

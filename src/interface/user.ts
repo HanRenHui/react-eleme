@@ -1,4 +1,4 @@
-import * as types from './../action-types'
+import * as types from '../store/action-types'
 export interface UpdateAddress {
   type: typeof types.UPDATE_ADDRESS
   payload: any

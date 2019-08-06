@@ -10,6 +10,8 @@ import DetailRating from '../pages/RestDetail/children/DetailRating'
 import DetailInfo from '../pages/RestDetail/children/DetailInfo'
 import Remark from '../pages/Settlement/children/Remark'
 import Pay from './../pages/Pay'
+import MsiteFood from './../pages/MsiteFood'
+
 export default [
   {
     path: '/',
@@ -83,7 +85,13 @@ export default [
   {
     path: '/pay',
     key: 'pay',
-    exact: true, 
+    exact: true,
     component: Pay
+  },
+  {
+    path: '/msitefood', 
+    key: 'msitefood', 
+    exact: true, 
+    component: MsiteFood
   }
 ]

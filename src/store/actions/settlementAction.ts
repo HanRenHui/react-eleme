@@ -2,7 +2,7 @@ import * as types from './../action-types'
 import { 
   BuyCar,
   Flag
-} from './../interface/settlement'
+} from '../../interface/settlement'
 
 export const set_buy_car = (buycar: any): BuyCar => ({
   type: types.SET_BUY_CAR,

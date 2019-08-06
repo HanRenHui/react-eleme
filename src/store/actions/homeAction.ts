@@ -26,7 +26,7 @@ import {
   ActivityMode,
   CurrentSortType,
   CurrentOffset,
-} from '../interface/Home'
+} from '../../interface/Home'
 
 
 export const set_current_city = (city: string): CurrentCity => ({
@@ -49,22 +49,11 @@ export const set_address = (address: any): Address => ({
   type: types.SET_ADDRESS,
   payload: address
 })
+export const set_current_offset = (payload: number): CurrentOffset => ({
+  type: types.SET_CURRENT_OFFSET,
+  payload
+})
 
-
-export const get_location = () => {
-  return async (dispatch: any) => {
-    let ip = (window as any).IP
-    let rs: any = await req_location(ip)
-
-    if (rs.status === 0) {
-      let { lat, lng} = rs.result.location 
-      // 设置经纬度
-      dispatch(setLatLnt(lat, lng))
-      // 设置位置
-      dispatch(set_address(rs.result))
-    }
-  }
-}
 
 export const show_loading = (): ShowLoading => ({
   type: types.SHOW_LOADING
@@ -84,9 +73,26 @@ const set_city_list = (payload: any): CityList => ({
 })
 
 
+export const get_location = () => {
+  return async (dispatch: any) => {
+    let ip = (window as any).IP
+    let rs: any = await req_location(ip)
+
+    if (rs.status === 0) {
+      let { lat, lng } = rs.result.location
+      // 设置经纬度
+      dispatch(setLatLnt(lat, lng))
+      // 设置位置
+      dispatch(set_address(rs.result))
+    }
+  }
+}
+
+
 async function reqCityAndSetCache() {
   let rs: any = await req_citylist()
   let cityList = rs
+  cityList = cityList.sort((a: any, b: any) => a.idx.localeCompare(b.idx))
   localStorage.setItem('city', JSON.stringify({
     expires: Date.now() + 60 * 1000 * 60 * 24,
     data: cityList
@@ -143,13 +149,14 @@ export const get_resturant =
     limit: number,
     currentSorType: string,
     support_ids: any,
-    activity_types: string
+    activity_types: string,
+    category: string
   ) => {
     return async (dispatch: any, getState: any) => {
       support_ids = getState().get('home').get('support_ids')
       // 先清空原有数据
       if (offset === 0) dispatch(clear_all_rests())
-      let rs = await req_resturant(latitude, longitude, offset, limit, currentSorType, support_ids, activity_types)
+      let rs = await req_resturant(latitude, longitude, offset, limit, currentSorType, support_ids, activity_types, category)
       dispatch(set_rest_data(rs))
     }
   }
@@ -186,10 +193,4 @@ export const set_current_sort_type = (type: String): CurrentSortType => ({
   type: types.SET_CURRENT_SORT_TYPE,
   payload: type
 })
-
-export const set_current_offset = (payload: number): CurrentOffset => ({
-  type: types.SET_CURRENT_OFFSET,
-  payload
-})
-
 

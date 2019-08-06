@@ -3,6 +3,12 @@
   overflow: hidden;
   position: relative;
   z-index: 888;
+  position: fixed;
+  left: 0;
+  top: px2rem(87);
+  width: 100%;
+  height: 0;
+  background: #fff;
   .down-list {
     width: 100%;
     height: 100%;

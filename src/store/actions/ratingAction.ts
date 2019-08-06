@@ -5,7 +5,7 @@ import {
 import {
   Rating,
   ClearCom
-} from './../interface/rating'
+} from '../../interface/rating'
 
 const set_ratign = (payload: any): Rating => ({
   type: types.GET_RATING,

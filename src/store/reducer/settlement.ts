@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable'
 import * as types from './../action-types'
-import { Action } from './../interface/settlement'
+import { Action } from '../../interface/settlement'
 const defaultState = fromJS({
   buycar: [],
   address: {},

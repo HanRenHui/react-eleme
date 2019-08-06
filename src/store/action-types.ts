@@ -49,3 +49,7 @@ export const SET_REMARK_MUL_DATA = 'remark/set_remark_mul_data'
 export const SET_REMARK_SINGLE_DATA = 'remark/set_remark_single_data'
 export const SET_MARK_TEXT = 'remark/set_mark_text'
 export const GET_REMARK_INFO = 'remark/get_remark_info'
+
+// msite page 
+export const SET_CURRENT_CATE= 'msite/set_current_cate'
+export const CLEAR_CURRENT_CATE = 'msite/clear_current_cate'

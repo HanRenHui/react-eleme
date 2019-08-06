@@ -1,31 +1,32 @@
 import React, { memo, useState, useEffect, createContext } from 'react'
 import * as actions from '../../../../store/actions/homeAction'
 import { connect } from 'react-redux'
-import DownModel from '../DownModel'
-import ChooseModel from '../ChooseModel'
-import { CSSTransition } from 'react-transition-group'
-import './restaurant.scss'
 import RestauList from '../RestauList'
 import NoResult from './../../../../Components/NoResult'
 import { Link } from 'react-router-dom'
+import SortTab from './../../../../Components/SortTab'
+import { createNavTab } from './../../../../models/NavTab'
+import {
+  CurrentOffset,
+  CurrentSortType
+} from './../../../../interface/Home'
+import './restaurant.scss'
 export const ResaurantCounter = createContext({})
 
 interface IProps {
-  setInputTopClass: Function
-  setFilterTopClass: Function
-  filterTopClass: string
+  setInputTopClass?: (msg: string) => void
+  setFilterTopClass?: (msg: string) => void
+  filterTopClass?: string
   get_filter_data: Function
-  navTab: any
   get_resturant: Function
-  lng: number
-  lat: number
-  set_current_sort_type: Function
-  support_ids: string[]
+  support_ids: string []
   activity_types: string
-  set_current_offset: any
+  set_current_offset(offset: number): CurrentOffset
+  set_current_sort_type: (type: string) => CurrentSortType
   history: History
   userInfo: any
   homeRef: any
+  navTab: any
 }
 
 
@@ -38,67 +39,25 @@ const Restaurant = memo((props: IProps) => {
     get_filter_data,
     navTab,
     get_resturant,
-    lng,
-    lat,
     set_current_sort_type,
     activity_types,
     support_ids,
     set_current_offset,
     history,
     userInfo,
-    homeRef
+    homeRef,
   } = props
-  const [current, setCurrent] = useState(0)
-  // 用于标记是否显示黑色蒙版
-  const [showMsk, setShowMsk] = useState(false)
-  // 用于标记是否显示排序下拉面板
-  const [showSort, setShowSort] = useState(false)
-  // 用于标记是否显示筛选下拉面板
-  const [showChoose, setChooseSort] = useState(false)
+
   // 用于标记当前排序类型
   const [currentType, setType] = useState('综合排序')
   // 用于标记筛选那一栏是否被选中
+  // 用于标记是否显示排序下拉面板
+  const [showSort, setShowSort] = useState(false)
+  // 用于标记是否显示黑色蒙版
+  const [showMsk, setShowMsk] = useState(false)
+  // 用于标记是否显示筛选下拉面板
+  const [showChoose, setChooseSort] = useState(false)
 
-  const handleUpdate = (index: number) => {
-    switch (index) {
-      case 0:
-        setShowMsk(true)
-        setShowSort(true)
-        setChooseSort(false)
-        setInputTopClass('home-input-top')
-        setFilterTopClass('filter-top')
-        set_current_offset(1)
-        document.body.scrollTop = 0
-
-        break
-      case 1:
-        set_current_sort_type('5')
-        get_resturant(lat, lng, 0, 7, '5', support_ids, activity_types)
-        set_current_offset(1)
-        document.body.scrollTop = 0
-
-        break
-      case 2:
-        set_current_sort_type('666')
-        get_resturant(lat, lng, 0, 7, '666', support_ids, activity_types)
-        document.body.scrollTop = 0
-        set_current_offset(1)
-
-        break
-      case 3:
-        setShowMsk(true)
-        setChooseSort(true)
-        setShowSort(false)
-        setInputTopClass('home-input-top')
-        set_current_offset(1)
-
-        setFilterTopClass('filter-top')
-        document.body.scrollTop = 0
-
-        return
-    }
-    setCurrent(index)
-  }
   const handleMaskClick = () => {
     // 隐藏蒙版
     setShowMsk(false)
@@ -106,50 +65,51 @@ const Restaurant = memo((props: IProps) => {
     setShowSort(false)
     // 隐藏筛选面板
     setChooseSort(false)
-
-    setInputTopClass('')
-    setFilterTopClass('')
+    setInputTopClass && setInputTopClass('')
+    setFilterTopClass && setFilterTopClass('')
   }
   // 请求filter tab的数据
   useEffect(() => {
     get_filter_data()
   }, [get_filter_data])
   const providerObj = {
-    currentType,
     setType,
     setShowMsk,
     setInputTopClass,
     setFilterTopClass
   }
+
   return (
     <div className="restaurant">
       <ResaurantCounter.Provider value={providerObj}>
-        <p className='restaurant-title'>推荐商家</p>
-        {/* 排序tab */}
-        <ul className={`restaurant-filter ${filterTopClass}`}>
-          {navTab && navTab.map((item: any, index: number) => (
-            <li
-              className={`restaurant-filter-item ${current === index ? 'filter-weight' : ''}`}
-              key={item.get('name')} onClick={() => handleUpdate(index)}
-
-            >
-              < span > {index === 0 ? currentType : item.get('name')}</span>
-              {
-                item.get('icon')
-                  ? <i className={`iconfont ${item.get('icon')}`}></i>
-                  : null
-              }
-            </li>
-          ))}
-        </ul>
-        {/* 餐厅 */}
+        {/* 筛选tab */}
+        <SortTab
+          navTab={navTab && createNavTab(navTab.toJS())}
+          filterTopClass={filterTopClass}
+          setShowMsk={setShowMsk}
+          setShowSort={setShowSort}
+          setChooseSort={setChooseSort}
+          showMsk={showMsk}
+          set_current_offset={set_current_offset}
+          set_current_sort_type={set_current_sort_type}
+          get_resturant={get_resturant}
+          support_ids={support_ids}
+          activity_types={activity_types}
+          currentType={currentType}
+          showSort={showSort}
+          showChoose={showChoose}
+          setInputTopClass={setInputTopClass}
+          setFilterTopClass={setFilterTopClass}
+          setType={setType}
+        />
+        {/* 餐厅列表 */}
         {
           userInfo
-            ? <RestauList history={history} homeRef={homeRef}/>
+            ? <RestauList history={history} homeRef={homeRef} />
             : (
               <div className="login-tip">
                 <NoResult
-                  img="//fuss10.elemecdn.com/d/60/70008646170d1f654e926a2aaa3afpng.png"
+                  img="//fuss10.elemecdn.com/2/67/64f199059800f254c47e16495442bgif.gif"
                   title="没有结果"
                   style={{ top: '38%' }}
                   des="登陆后查看更多商家"
@@ -160,32 +120,11 @@ const Restaurant = memo((props: IProps) => {
               </div>
             )
         }
-
         {/* 蒙版 */}
         <div
           className={`filter-mask ${showMsk ? '' : 'mask-hide'}`}
           onClick={handleMaskClick}
         ></div>
-        {/* 左边下拉 */}
-        <CSSTransition
-          timeout={200}
-          classNames='down1'
-          in={showMsk && showSort}
-        >
-          <DownModel />
-        </CSSTransition>
-        {/* 右边下拉 */}
-        <CSSTransition
-          timeout={200}
-          classNames='down2'
-          in={showMsk && showChoose}
-        >
-          <ChooseModel
-            setShowMsk={setShowMsk}
-            setInputTopClass={setInputTopClass}
-            setFilterTopClass={setFilterTopClass}
-          />
-        </CSSTransition>
       </ResaurantCounter.Provider>
 
     </div>
@@ -193,8 +132,6 @@ const Restaurant = memo((props: IProps) => {
 })
 const mapState = (state: any) => ({
   navTab: state.getIn(['home', 'filterNavTab', 'navTab']),
-  lng: state.getIn(['home', 'lng']),
-  lat: state.getIn(['home', 'lat']),
   support_ids: state.getIn(['home', 'support_ids']),
   activity_types: state.getIn(['home', 'activity_types']),
   set_current_offset: state.getIn(['home', 'set_current_offset']),

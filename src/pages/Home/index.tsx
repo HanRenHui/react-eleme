@@ -12,7 +12,6 @@ import PreRenderSwiper from './children/PreRenderSwiper'
 import RendereSwiper from './children/RendereSwiper'
 import './home.scss'
 
-
 interface IProps {
   address: any,
   show_loading: any,
@@ -87,10 +86,11 @@ const Home = (props: IProps) => {
               <span>立即抢购></span>
             </div>
             <div className="home-ads-c-right">
-              <img src="//fuss10.elemecdn.com/e/ee/df43e7e53f6e1346c3fda0609f1d3png.png?imageMogr/format/webp/thumbnail/!282x188r/gravity/Center/crop/282x188/" alt="广告" />
+              <img src="//fuss10.elemecdn.com/e/ee/df43e7e53f6e1346c3fda0609f1d3png.png" alt="广告" />
             </div>
           </div>
         </div>
+        <p className='restaurant-title'>推荐商家</p>
         {/* 推荐餐厅 */}
         <Resaurant
           homeRef={homeRef}

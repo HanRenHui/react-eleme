@@ -4,7 +4,7 @@ import {
   SetrRemarkSingleData,
   Text,
   RemarkInfo
-} from './../interface/remark'
+} from '../../interface/remark'
 export const setRemarkMulData = (payload: number): SetrRemarkMulData => ({
   type: types.SET_REMARK_MUL_DATA,
   payload

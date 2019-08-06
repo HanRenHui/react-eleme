@@ -1,0 +1,84 @@
+@import "assets/style/common.scss";
+.restaurant-filter {
+  background: #fff;
+  z-index: 888;
+  position: sticky;
+  top: px2rem(47);
+  display: flex;
+
+  align-items: center;
+  height: 10.533333vw;
+  box-sizing: border-box;
+  padding: 0 px2rem(12);
+
+  .restaurant-filter-item {
+    width: 25%;
+    flex: 1;
+    color: #666;
+    text-align: center;
+    font-size: 0.373333rem;
+    z-index: 101;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    .icon-sort {
+      font-size: px2rem(8);
+    }
+    .icon-filter {
+      font-size: px2rem(13);
+      margin-left: px2rem(3);
+    }
+  }
+  .filter-weight {
+    color: #3190e8;
+    font-weight: bolder;
+  }
+}
+.changeTop {
+  top: px2rem(40);
+}
+
+$down1height: px2rem(260);
+.down1-enter {
+  height: 0;
+}
+
+.down1-enter-active {
+  height: $down1height;
+  transition: all 0.3s;
+}
+.down1-enter-done {
+  height: $down1height;
+}
+.down1-exit {
+  height: $down1height;
+}
+.down1-exit-active {
+  height: 0;
+  transition: all 0.2s;
+}
+.down1-exit-done {
+  height: 0;
+}
+$down2height: px2rem(340);
+.down2-enter {
+  height: 0;
+}
+
+.down2-enter-active {
+  height: $down2height;
+  transition: all 0.3s;
+}
+.down2-enter-done {
+  height: $down2height;
+}
+.down2-exit {
+  height: $down2height;
+}
+.down2-exit-active {
+  height: 0;
+  transition: all 0.2s;
+}
+.down2-exit-done {
+  height: 0;
+}

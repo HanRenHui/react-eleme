@@ -1,5 +1,5 @@
 // 将数据中的image_path 转换成真正的图片地址
-export const getImgPath = (img_path: string, flag: number) => {
+export const getImgPath = (img_path: string, flag?: number) => {
   let firstPart: string = img_path.slice(0, 1)
   let secPart: string = img_path.slice(1, 3)
   let thrPart: string = img_path.slice(3)
@@ -11,6 +11,7 @@ export const getImgPath = (img_path: string, flag: number) => {
   }
   let option = 0
   // const BaseURL = flag ?  
+  return `https://fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}`
   switch (flag) {
     case 0:
       return `https://fuss10.elemecdn.com/${firstPart}/${secPart}/${thrPart}.${postFix}?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/`

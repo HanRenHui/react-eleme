@@ -6,21 +6,24 @@ import './restauList.scss'
 import RestuaItem from '../RestuaItem'
 import { getImgPath, formatDistance } from '../../../../util/getImgPath'
 import { Icon } from 'antd-mobile'
+
 interface IProps {
-  get_resturant: Function,
-  rests: any,
-  lat: number,
-  lng: number,
-  isNull: boolean,
-  support_ids: any,
-  activity_types: string,
-  hasNext: boolean,
-  currentSorType: string,
-  showLoading: Boolean,
-  currentOffset: number,
-  set_current_offset: any,
-  history: History,
-  homeRef: { current: HTMLDivElement }
+  get_resturant: Function
+  rests: any
+  lat: number
+  lng: number
+  isNull: boolean
+  support_ids: any
+  activity_types: string
+  hasNext: boolean
+  currentSorType: string
+  showLoading: Boolean
+  currentOffset: number
+  set_current_offset: any
+  history: History
+  clear_all_rests: Function
+  homeRef: any,
+  current_category: string 
 }
 
 const getRestData = (list: any) => {
@@ -42,13 +45,24 @@ const RestauList = memo((props: IProps) => {
     currentOffset,
     set_current_offset,
     history,
-    homeRef
+    homeRef,
+    clear_all_rests,
+    current_category
   } = props
+  useEffect(() => {
+    // 重置当前页
+    set_current_offset(1)
+  }, [])
+  useEffect(() => {
+    return () => {
+      // 组件卸载 清空餐厅列表
+      clear_all_rests()
+    }
+  }, [])
   useEffect(() => {
     // 请求餐厅列表
     if (lat !== 0 && lng !== 0) {
-      get_resturant(lat, lng, 0, 8, '0', support_ids, activity_types)
-      set_current_offset(currentOffset + 1)
+      get_resturant(lat, lng, 0, 7, '0', support_ids, activity_types)
     }
   }, [lat, lng])
 
@@ -57,7 +71,6 @@ const RestauList = memo((props: IProps) => {
 
   const moveRef = useRef(null)
   // 用于标记是否已经添加滚动事件
-  let [ flag, setFlag] = useState(false)
   if (isLoading) {
     loadmoreBtn = (
       <span className='loadmore-content'>
@@ -74,7 +87,7 @@ const RestauList = memo((props: IProps) => {
       let { clientHeight, scrollHeight } = document.body
       let scrollTop = document.body.scrollTop ? document.body.scrollTop:  document.documentElement.scrollTop
       if (scrollTop + clientHeight >= scrollHeight - 5 && !isLoading && hasNext && !isNull) {
-        get_resturant(lat, lng, currentOffset, 7, currentSorType, support_ids, activity_types)
+        get_resturant(lat, lng, currentOffset, 7, currentSorType, support_ids, activity_types, current_category)
         set_current_offset(currentOffset + 1)
         setIsLoading(true)
       }
@@ -84,7 +97,7 @@ const RestauList = memo((props: IProps) => {
     return () => {
       Home.removeEventListener('touchmove', cb)
     }
-  }, [ flag, isNull, isLoading, currentOffset, currentSorType, support_ids, activity_types, homeRef, hasNext])
+  }, [ isNull, isLoading, currentOffset, currentSorType, support_ids, activity_types, homeRef, hasNext, current_category])
   useEffect(() => {
     if (!showLoading) {
       setIsLoading(false)
@@ -166,8 +179,8 @@ const mapStateToProp = (state: any) => ({
   hasNext: state.getIn(['home', 'resturants', 'hasNext']),
   currentSorType: state.getIn(['home', 'currentSorType']),
   showLoading: state.getIn(['home', 'showLoading']),
-  currentOffset: state.getIn(['home', 'currentOffset'])
-
+  currentOffset: state.getIn(['home', 'currentOffset']),
+  current_category: state.getIn(['msite', 'currentCategory'])
 })
 export default connect(mapStateToProp, actions)(RestauList)
 

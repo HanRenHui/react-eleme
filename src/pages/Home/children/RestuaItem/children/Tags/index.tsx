@@ -16,7 +16,7 @@ const Tag = memo((props: IProps) => {
         restList.getIn(['recommend', 'reason'])
           ?
           <li>
-            <img src="https://fuss10.elemecdn.com/a/c1/24c767ffa7fd296d3e2d6f01798c6png.png?imageMogr/format/webp/thumbnail/!20x20r/gravity/Center/crop/20x20/" alt="" />
+            <img src="https://fuss10.elemecdn.com/a/c1/24c767ffa7fd296d3e2d6f01798c6png.png" alt="" />
             口碑人气好店
         </li>
           : null
