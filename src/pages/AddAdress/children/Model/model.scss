@@ -43,13 +43,14 @@
       }
     }
     .address-model-input-btn {
-      width: 20%;
+      // width: 20%;
+      flex: 1;
+      margin-left: px2rem(12);
       border: none;
       outline: none;
       background-color: #0097ff;
       color: #fff;
       border-radius: 0.053333rem;
-      width: 1.48rem;
       height: 0.746667rem;
       font-size: 0.373333rem;
     }

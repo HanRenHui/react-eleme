@@ -6,7 +6,7 @@ import './restauList.scss'
 import RestuaItem from '../RestuaItem'
 import { getImgPath, formatDistance } from '../../../../util/getImgPath'
 import { Icon } from 'antd-mobile'
-
+import BackTop from './../../../../Components/BackTop'
 interface IProps {
   get_resturant: Function
   rests: any
@@ -23,7 +23,7 @@ interface IProps {
   history: History
   clear_all_rests: Function
   homeRef: any,
-  current_category: string 
+  current_category: string
 }
 
 const getRestData = (list: any) => {
@@ -67,6 +67,7 @@ const RestauList = memo((props: IProps) => {
   }, [lat, lng])
 
   let [isLoading, setIsLoading] = useState(false)
+  let [showTop, setShowTop] = useState(false)
   let loadmoreBtn
 
   const moveRef = useRef(null)
@@ -85,19 +86,52 @@ const RestauList = memo((props: IProps) => {
   useEffect(() => {
     const cb = () => {
       let { clientHeight, scrollHeight } = document.body
-      let scrollTop = document.body.scrollTop ? document.body.scrollTop:  document.documentElement.scrollTop
+      let scrollTop = document.body.scrollTop ? document.body.scrollTop : document.documentElement.scrollTop
+
       if (scrollTop + clientHeight >= scrollHeight - 5 && !isLoading && hasNext && !isNull) {
         get_resturant(lat, lng, currentOffset, 7, currentSorType, support_ids, activity_types, current_category)
         set_current_offset(currentOffset + 1)
         setIsLoading(true)
       }
     }
-    let Home = homeRef.current 
+    let Home = homeRef.current
     Home.addEventListener('touchmove', cb)
     return () => {
       Home.removeEventListener('touchmove', cb)
     }
-  }, [ isNull, isLoading, currentOffset, currentSorType, support_ids, activity_types, homeRef, hasNext, current_category])
+  }, [isNull, isLoading, currentOffset, currentSorType, support_ids, activity_types, homeRef, hasNext, current_category])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      let scrollTop = document.body.scrollTop > 0
+        ? document.body.scrollTop
+        : document.documentElement.scrollTop
+      if (scrollTop > 300) {
+        if (!showTop) {
+          setShowTop(true)
+        }
+      } else {
+        setShowTop(false)
+      }
+    }
+    // 节流
+    function throttle(fn: () => void, step: number) {
+      let pre = Date.now() 
+      return () => {
+        let now = Date.now() 
+        if( (now -pre) > step) {
+          pre = Date.now() 
+          fn()
+        }
+      }
+    }
+    const throttleHandle = throttle(handleScroll, 100)
+    window.addEventListener('scroll', throttleHandle)
+    return () => {
+      window.removeEventListener('scroll', throttleHandle)
+    }
+  }, [])
+
   useEffect(() => {
     if (!showLoading) {
       setIsLoading(false)
@@ -119,47 +153,57 @@ const RestauList = memo((props: IProps) => {
   }
 
   return (
-    <ul ref={parentRef} className="resturant-list">
-      {
-        rests && rests.map((list: any, index: number) => {
-          // 店铺图片地址
-          let img_path: string = getRestData(list).get('image_path')
-          const allPath = getImgPath(img_path, 0) || ''
-          const restList = getRestData(list)
-          // 配送距离format
-          let distance = formatDistance(restList.get('distance'), restList)
-          // 判断是不是品牌店铺
-          let isBrand = restList.get('is_premium')
-          let isNew = restList.get('is_new')
+    <>
+      <ul ref={parentRef} className="resturant-list">
+        {
+          rests && rests.map((list: any, index: number) => {
+            // 店铺图片地址
+            let img_path: string = getRestData(list).get('image_path')
+            const allPath = getImgPath(img_path, 0) || ''
+            const restList = getRestData(list)
+            // 配送距离format
+            let distance = formatDistance(restList.get('distance'), restList)
+            // 判断是不是品牌店铺
+            let isBrand = restList.get('is_premium')
+            let isNew = restList.get('is_new')
 
-          return (
-            <RestuaItem
-              history={history}
-              restList={restList}
-              allPath={allPath}
-              isBrand={isBrand}
-              isNew={isNew}
-              distance={distance}
-              key={restList.get('name')}
-            />
-          )
-        })
-      }
+            return (
+              <RestuaItem
+                history={history}
+                restList={restList}
+                allPath={allPath}
+                isBrand={isBrand}
+                isNew={isNew}
+                distance={distance}
+                key={restList.get('name')}
+              />
+            )
+          })
+        }
+        {
+          rests.size
+            ? (
+              <p className="loadmore">
+                {
+                  hasNext
+                    ? loadmoreBtn
+                    : <span className="load-end">END</span>
+                }
+              </p>
+            )
+            : null
+        }
+
+      </ul>
       {
-        rests.size
-          ? (
-            <p className="loadmore">
-              {
-                hasNext
-                  ? loadmoreBtn
-                  : '没有更多了'
-              }
-            </p>
-          )
+        showTop
+          ? <BackTop />
           : null
       }
 
-    </ul>
+
+    </>
+
 
   )
 })

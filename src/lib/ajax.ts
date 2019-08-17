@@ -8,7 +8,7 @@ class Ajax {
   withCredentials: boolean
   whiteSpace: string []
   constructor() {
-    this.baseURL = process.env.NODE_ENV === 'development' ? 'http://192.168.0.107:1888/' : '/'
+    this.baseURL = process.env.NODE_ENV === 'development' ? 'http://192.168.106.1:1888/' : '/'
     // this.baseURL = 'http://192.168.0.106:1888'
     this.queue = {}
     this.withCredentials = true

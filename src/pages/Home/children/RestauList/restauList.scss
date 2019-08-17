@@ -12,16 +12,38 @@
   // margin-bottom: px2rem(60);
 }
 .loadmore {
+  position: relative;
   margin-top: px2rem(10);
   text-align: center;
   color: #e0e0e0;
   font-size: px2rem(14);
   // margin-bottom: px2rem(10);
   // padding-bottom: px2rem(10);
+  .load-end {
+    @mixin beforeafter {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: px2rem(20);
+      height: 0.266667vw;
+      display: block;
+      content: "";
+      width: px2rem(20);
+      height: px2re(2);
+      background-color: #e0e0e0;
+    }
+    &::before {
+      @include beforeafter;
+      left: 39%;
+    }
+    &::after {
+      @include beforeafter;
+      right: 39%;
+    }
+  }
 }
 .loadmore-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  
 }

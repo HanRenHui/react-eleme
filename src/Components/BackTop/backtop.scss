@@ -1,0 +1,19 @@
+@import "assets/style/common.scss";
+.back-top {
+  position: fixed;
+  right: 4vw;
+  bottom: 20vw;
+  @include flexcenter;
+  width: 10.333333vw;
+  height: 10.333333vw;
+  border: 0.133333vw solid #999;
+  border-radius: 50%;
+  background: #fff;
+  transition: opacity 0.3s;
+  will-change: transform;
+  z-index: 999;
+  img {
+    width: 5.333333vw;
+    height: 5.333333vw;
+  }
+}
