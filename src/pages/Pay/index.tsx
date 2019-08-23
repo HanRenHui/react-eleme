@@ -164,9 +164,3 @@ const mapStateToProps = (state: any) => ({
 })
 export default connect(mapStateToProps)(Pay)
 
-// address(pin): "湖南工业大学新校区"
-// address_detail(pin): "湖南省株洲市天元区泰山路88号25-108"
-// name(pin): "韩仁辉"
-// phone(pin): "17336624467"
-// sex(pin): 1
-// tag(pin): "学校"
