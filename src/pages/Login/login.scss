@@ -42,9 +42,14 @@ $width: px2rem(270);
   .login-btn {
     width: $width;
     height: px2rem(38);
+    line-height: px2rem(38);
+    font-size: px2rem(20);
+    border-radius: px2rem(5);
+    text-align: center;
     margin-top: px2rem(30);
     background: #4cd96f;
     color: #fff;
+    border: none;
     // border-color: #4cd96f;
   }
 }

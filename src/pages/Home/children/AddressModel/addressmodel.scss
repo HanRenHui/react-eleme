@@ -17,6 +17,12 @@
         font-size: 0.32rem;
         color: #333;
         font-weight: bold;
+        .icon-city {
+          width: px2rem(50);
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
         i {
           color: #0af;
           margin-right: px2rem(2);

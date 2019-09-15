@@ -60,7 +60,7 @@ const MsiteFood = (props: IProps) => {
   const MsiteRef = useRef(null)
   // 控制顶部点击
   const [type, setType] = useState(0)
-
+  
   // 请求头部列表
   useEffect(() => {
     ; (async () => {
@@ -96,10 +96,7 @@ const MsiteFood = (props: IProps) => {
         flag={true}
         chooseTop={{top: '76px'}}
         filterTop={{top: '76px'}}
-
       />
-  
- 
       <RestauList history={history} homeRef={MsiteRef} />
       <BlackMaks show={showMask} hide={() =>  setShowMask(false)} />
       <BlackMaks show={showSortMask} hide={() =>  setShowSortMask(false)} />

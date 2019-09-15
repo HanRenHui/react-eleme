@@ -14,6 +14,10 @@
   height: 13.333333vw;
   background-image: url(//fuss10.elemecdn.com/c/7f/f26d800336750924f6a4b37f52d74png.png);
 }
+.body-prevent-scroll {
+  height: 100%;
+  overflow: hidden;
+}
 .loading-model {
   position: fixed;
   left: 0;

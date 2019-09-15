@@ -67,7 +67,7 @@ const AddressInput = memo((props: AddressInputProps) => {
       <div className="container model-address-input-content">
         <div className="model-add-input-left" onClick={() => setShowCityModel(true)}>
           <i className="iconfont icon-dingwei3"></i>
-          <span>{current}</span>
+          <span className="icon-city">{current}</span>
         </div>
         <div className="model-add-input-wrapper">
           <Icon type="search" className="model-add-input-search" size={'xs'} />
@@ -85,9 +85,6 @@ const AddressInput = memo((props: AddressInputProps) => {
     </div>
   )
 })
-
-
-
 
 
 const AddressModel = memo((props: IProps) => {

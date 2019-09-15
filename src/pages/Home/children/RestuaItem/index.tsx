@@ -39,6 +39,13 @@ const RestuaItem = memo((props: IProps) => {
       return null
     }
   })
+  const handleToDetail  = (e: any) => {
+    history.push('/detail/123/foods')
+  }
+  const handleShowMore = (e: any) => {
+    e.stopPropagation()
+    setShow(!show)
+  }
   let foodArr2 = foods && foods.map((food: any, index: number) => {
     if (index > 2) {
       return (
@@ -67,7 +74,7 @@ const RestuaItem = memo((props: IProps) => {
   }) || null
 
   return (
-    <li key={restList.get('name')} className="rest-list-li" >
+    <li key={restList.get('name')} className="rest-list-li" onClick={e => handleToDetail(e)}>
       <div className="rest-list-left">
         <img src={allPath} alt="" />
         {
@@ -88,7 +95,7 @@ const RestuaItem = memo((props: IProps) => {
             }
             {restList.get('name')}
           </span>
-          <i className="iconfont icon-icon_more" onClick={() => history.push('/detail/123/foods')}></i>
+          <i className="iconfont icon-icon_more" ></i>
         </h4>
         {/* 餐厅评价 */}
         <RestRating restList={restList} />
@@ -104,7 +111,7 @@ const RestuaItem = memo((props: IProps) => {
           {
             foods  && foods.size - 3 > 0
               ? (
-                <p className="control-btn" key="controlbtn" onClick={() => setShow(!show)}>
+                <p className="control-btn"  key="controlbtn" onClick={(e) => handleShowMore(e)}>
                   {
                     show
                       ? <span>收起<i className="iconfont icon-shangjiantou"></i></span>

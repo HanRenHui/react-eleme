@@ -17,7 +17,7 @@ const DetailHeader = memo((props: IProps) => {
       </section>
       <i 
         className="iconfont icon-zuojiantou backbtn"
-        onClick={() => history.goBack()}
+        onClick={() => history.push('/')}
       ></i>
       <img className="header-brand" src={getImgPath(rst.get('image_path') || '', 4)} alt="" />
       {/* 店铺名称 */}

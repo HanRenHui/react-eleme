@@ -1,16 +1,18 @@
-import Home from '../pages/Home'
-import My from '../pages/My'
-import Order from '../pages/Order'
-import Search from '../pages/Search'
-import Login from '../pages/Login'
-import UserDetail from '../pages/UserDetail'
 import RestDetail from '../pages/RestDetail'
-import DetailFoods from '../pages/RestDetail/children/DetailFoods'
-import DetailRating from '../pages/RestDetail/children/DetailRating'
-import DetailInfo from '../pages/RestDetail/children/DetailInfo'
-import Remark from '../pages/Settlement/children/Remark'
-import Pay from './../pages/Pay'
-import MsiteFood from './../pages/MsiteFood'
+import { lazy } from 'react'
+const Home = lazy(() => import('../pages/Home'))
+const My = lazy(() => import('../pages/My'))
+const Order = lazy(() => import('../pages/Order'))
+const Search = lazy(() => import('../pages/Search'))
+const Login = lazy(() => import('../pages/Login'))
+const UserDetail = lazy(() => import ('../pages/UserDetail'))
+// const RestDetail = lazy(() => import ('../pages/RestDetail'))
+const DetailFoods = lazy(() => import('../pages/RestDetail/children/DetailFoods'))
+const DetailInfo = lazy(() => import('../pages/RestDetail/children/DetailInfo'))
+const DetailRating = lazy(() => import('../pages/RestDetail/children/DetailRating'))
+const Remark = lazy(() => import ('../pages/Settlement/children/Remark'))
+const Pay = lazy(() => import('./../pages/Pay'))
+const MsiteFood = lazy(() => import('./../pages/MsiteFood'))
 
 export default [
   {

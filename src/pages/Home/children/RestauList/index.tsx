@@ -151,7 +151,6 @@ const RestauList = memo((props: IProps) => {
       </div>
     )
   }
-
   return (
     <>
       <ul ref={parentRef} className="resturant-list">
@@ -166,7 +165,6 @@ const RestauList = memo((props: IProps) => {
             // 判断是不是品牌店铺
             let isBrand = restList.get('is_premium')
             let isNew = restList.get('is_new')
-
             return (
               <RestuaItem
                 history={history}
@@ -193,18 +191,13 @@ const RestauList = memo((props: IProps) => {
             )
             : null
         }
-
       </ul>
       {
         showTop
           ? <BackTop />
           : null
       }
-
-
     </>
-
-
   )
 })
 

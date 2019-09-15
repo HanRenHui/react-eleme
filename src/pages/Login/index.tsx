@@ -112,7 +112,7 @@ const Login = (props: IProps) => {
           新用户登录即自动注册，并表示已同意
           <span>《用户服务协议》</span>
         </p>
-        <Button  onClick={() => handleLogin()} className="login-btn" >登录</Button>
+        <button  onClick={() => handleLogin()} className="login-btn" >登录</button>
         <p className="about">关于我们</p>
       </div>
     </div>
